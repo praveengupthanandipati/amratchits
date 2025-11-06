@@ -1,0 +1,143 @@
+@use "sass:map"; 
+
+//define a color variables
+$colors: (
+  "black": #000000,
+  "white": #FFFFFF,
+  "gray-50": #F9FAFB,
+  "primary":#20185D,
+  "primary-50":#B8AEFF,
+  "secondary":#E31E25 ,
+  "secondary-50":#FFD6C0,
+);
+
+//loop colours
+@each $color-name, $color-value in $colors {
+  .bg-#{$color-name} {
+    background-color: $color-value;
+  }
+  .text-#{$color-name} {
+    color: $color-value;
+  }
+  .border-#{$color-name} {
+    border: 1px solid $color-value;
+  }
+}
+
+//examples using
+/**
+<div className="bg-primary text-white p-3"></div>
+<div className="border-white p-3"></div>
+**/
+  
+
+// Base font size
+$fsize: 16px;
+
+// Font families
+$flato: "Lato", sans-serif;
+$froboto: "Roboto", sans-serif;
+
+// Comprehensive Font Weights Map
+$font-weights: (
+  "thin": 100,
+  "extra-light": 200,
+  "light": 300,
+  "regular": 400,
+  "medium": 500,
+  "semi-bold": 600,
+  "bold": 700,
+  "extra-bold": 800,
+  "black": 900,
+);
+
+// Lato Font Weight Mappings (Available weights: 100, 300, 400, 700, 900)
+$lato-weights: (
+  "thin": 100,        // Lato Thin
+  "light": 300,       // Lato Light
+  "regular": 400,     // Lato Regular
+  "bold": 700,        // Lato Bold
+  "black": 900,       // Lato Black
+);
+
+// Roboto Font Weight Mappings (Available weights: 100, 300, 400, 500, 700, 900)
+$roboto-weights: (
+  "thin": 100,        // Roboto Thin
+  "light": 300,       // Roboto Light
+  "regular": 400,     // Roboto Regular
+  "medium": 500,      // Roboto Medium
+  "bold": 700,        // Roboto Bold
+  "black": 900,       // Roboto Black
+);
+
+// Helper function to get font weight
+@function get-weight($weight-name) {
+  @return map.get($font-weights, $weight-name);
+}
+
+@function get-lato-weight($weight-name) {
+  @return map.get($lato-weights, $weight-name);
+}
+
+@function get-roboto-weight($weight-name) {
+  @return map.get($roboto-weights, $weight-name);
+}
+
+// Loop through font weights to generate utility classes
+@each $weight-name, $weight-value in $font-weights {
+  .font-#{$weight-name} {
+    font-weight: $weight-value;
+  }
+}
+
+// Loop through Lato font weights to generate Lato-specific utility classes
+@each $weight-name, $weight-value in $lato-weights {
+  .lato-#{$weight-name} {
+    font-family: $flato;
+    font-weight: $weight-value;
+  }
+}
+
+// Loop through Roboto font weights to generate Roboto-specific utility classes
+@each $weight-name, $weight-value in $roboto-weights {
+  .roboto-#{$weight-name} {
+    font-family: $froboto;
+    font-weight: $weight-value;
+  }
+}
+
+/* 
+==============================================
+FONT WEIGHT USAGE EXAMPLES
+==============================================
+
+// GENERATED UTILITY CLASSES FROM LOOPS:
+
+<!-- Using general font weight utilities -->
+<h1 class="font-black">Extra Bold Heading</h1>
+<p class="font-light">Light weight paragraph</p>
+<button class="font-semi-bold">Semi-bold button</button>
+
+<!-- Using Lato-specific utilities -->
+<h1 class="lato-black">Lato Black Heading</h1>
+<h2 class="lato-bold">Lato Bold Subheading</h2>
+<p class="lato-light">Lato Light paragraph</p>
+<span class="lato-thin">Lato Thin text</span>
+
+<!-- Using Roboto-specific utilities -->
+<h1 class="roboto-bold">Roboto Bold Heading</h1>
+<h2 class="roboto-medium">Roboto Medium Subheading</h2>
+<p class="roboto-regular">Roboto Regular paragraph</p>
+<small class="roboto-light">Roboto Light small text</small>
+*/
+
+
+//device breakpoints
+$breakpoints: (
+  "xs": 0,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1400px,
+);

@@ -1,0 +1,116 @@
+@use "sass:map";
+@use "./variables" as v;
+
+@mixin siteMain {
+  background: map.get(v.$colors, "white");
+  -webkit-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  font-smooth: always;
+  font-family: v.$froboto;
+}
+
+//Mixin for Transition
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+  -webkit-transition: $property $duration $timing;
+     -moz-transition: $property $duration $timing;
+       -o-transition: $property $duration $timing;
+          transition: $property $duration $timing;
+}
+
+/**
+Usage Transition
+.element {
+  @include transition(all, 0.5s, linear);
+}
+**/
+
+@mixin translate($x: 0, $y: 0) {
+  transform: translate($x, $y);
+  -webkit-transform: translate($x, $y); // Safari and older browsers
+  -moz-transform: translate($x, $y); // Firefox
+  -ms-transform: translate($x, $y); // IE 9
+  -o-transform: translate($x, $y); // Opera
+}
+
+/**
+.element {
+  @include translate(50%, -20%);
+}
+**/
+
+/*Create a mixin for box-shadow with parameters*/
+@mixin box-shadow($x: 0px, $y: 2px, $blur: 2px, $color: map.get(v.$colors, "gray-50")) {
+  box-shadow: $x $y $blur $color;
+}
+
+/**
+.card {
+  @include box-shadow(0px, 4px, 16px, rgba(0,0,0,0.2)); // Custom values
+}
+**/
+
+//mixin for transform rotate
+@mixin rotate($deg: 0) {
+  transform: rotate(#{$deg}deg);
+  -webkit-transform: rotate(#{$deg}deg);
+  -moz-transform: rotate(#{$deg}deg);
+  -ms-transform: rotate(#{$deg}deg);
+  -o-transform: rotate(#{$deg}deg);
+}
+
+/**
+.element {
+  @include rotate(45);
+}
+**/
+
+
+//responsive mixin
+//Mixin for min-width and max-width
+@mixin respond-between($min, $max) {
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+//Mixin for min-width
+@mixin respond-above($min) {
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+//Mixin for max-width
+@mixin respond-below($max) {
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+/**
+Usage of Mixins of breakpoints
+container {
+    @include respond-between(map.get(v.$breakpoints, "md"), map.get(v.$breakpoints, "xl")) {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+}
+
+header {
+    font-size: 1.5rem;
+    @include respond-above(map.get(v.$breakpoints, "md")) {
+        font-size: 2rem;
+    }
+}
+
+sidebar {
+    width: 25%;
+    @include respond-below(map.get(v.$breakpoints, "xl")) {
+        width: 100%;
+    }
+}
+**/
