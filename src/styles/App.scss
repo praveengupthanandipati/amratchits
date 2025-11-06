@@ -122,6 +122,15 @@ body{
     }
   }
   
+  .cta-section {
+    margin-top: 2rem;
+    
+    .connect-btn {
+      font-size: 1.1rem;
+      padding: 15px 30px;
+    }
+  }
+  
   .home-features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
