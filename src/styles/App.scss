@@ -6,6 +6,7 @@
 @use "./variables.scss" as v;
 @use "./header.scss";
 @use "./footer.scss";
+@use "./fonts.scss";
 
 //fonts Lato
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
@@ -27,6 +28,16 @@ body{
     @include m.respond-below(map.get(v.$breakpoints, "md")) {
         width:95%;
     }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: v.$flato;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+  font-size:clamp(2.5rem, 3vw, 3rem);
 }
 
 .connect-btn {
@@ -68,105 +79,320 @@ body{
     }
   }
 
-// Home Page Styles
-.home-page {
-  padding: 40px 0;
-  min-height: calc(100vh - 140px); // Adjust based on header/footer height
-  
-  .home-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    
-    h1 {
-      font-size: 2.5rem;
-      color: map.get(v.$colors, "primary");
-      margin-bottom: 1rem;
-      
-      @include m.respond-below(map.get(v.$breakpoints, "md")) {
-        font-size: 2rem;
+  .btn-primary-light {
+    display: inline-block;
+    padding: 12px 24px;
+    background: map.get(v.$colors, "primary-50");
+    color: map.get(v.$colors, "black");
+    text-decoration: none;
+    font-family: v.$froboto;
+    font-weight: map.get(v.$roboto-weights, "medium");    
+    border-radius: 25px;
+    @include m.transition(all, 0.3s, ease);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      @include m.transition(left, 0.5s, ease);
+    }
+
+    &:hover {
+      background: map.get(v.$colors, "secondary");
+      @include m.translate(0, -2px);
+      @include m.box-shadow(0px, 6px, 20px, rgba(227, 30, 37, 0.3));
+
+      &::before {
+        left: 100%;
       }
     }
-    
-    > p {
-      font-size: 1.2rem;
-      color: map.get(v.$colors, "black");
-      margin-bottom: 3rem;
+
+    &:active {
+      @include m.translate(0, 0);
+    }
+  }
+
+.Heroleftimg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  &:before{
+    content:'';
+    width:100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    background: linear-gradient(45deg, rgba(32, 24, 93, 0.5), rgba(227, 30, 37, 0.5));
+    border-radius:30px;
+  }
+  article{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+    border-radius:30px;
+    overflow:hidden;    
+    padding:40% 5rem;
+    transform: translate(calc(50% - 50%), 0);
+  }
+}
+
+// Hero Carousel Styles
+.HeroCarousel {
+  position: relative;
+  height: 100%;
+
+  @include m.respond-below(map.get(v.$breakpoints, "md")) {
+    height: 300px;
+  }
+
+
+
+  .hero-swiper {
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    @include m.box-shadow(0px, 10px, 30px, rgba(0, 0, 0, 0.15));
+
+    .swiper-slide {
+      position: relative;
+      overflow: hidden;
+    }
+  }
+
+  .carousel-slide {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    z-index: 10;
+
+      .herobannerpattern{
+        z-index: 2;
+        left:5px;
+        top:2px;
+        bottom:0;
+        height: 98%;            
+      }
+
+    img.sliderimg {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
       
       @include m.respond-below(map.get(v.$breakpoints, "md")) {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
+        height: 300px;
       }
     }
-  }
-  
-  .home-intro {
-    margin-bottom: 3rem;
-    
-    h2 {
-      font-size: 2rem;
-      color: map.get(v.$colors, "primary");
-      margin-bottom: 1rem;
-      
-      @include m.respond-below(map.get(v.$breakpoints, "md")) {
-        font-size: 1.5rem;
-      }
-    }
-    
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: map.get(v.$colors, "black");
-      max-width: 600px;
-      margin: 0 auto;
-    }
-  }
-  
-  .cta-section {
-    margin-top: 2rem;
-    
-    .connect-btn {
-      font-size: 1.1rem;
-      padding: 15px 30px;
-    }
-  }
-  
-  .home-features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-    
-    @include m.respond-below(map.get(v.$breakpoints, "md")) {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    
-    .feature-card {
-      background: map.get(v.$colors, "white");
+
+    .carousel-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
       padding: 2rem;
-      border-radius: 10px;
-      @include m.box-shadow(0px, 4px, 15px, rgba(0, 0, 0, 0.1));
+      background: linear-gradient(45deg, rgba(32, 24, 93, 0.5), rgba(227, 30, 37, 0.5));
+      color: map.get(v.$colors, "white");
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 100;
+      align-items: center;
+
+      @include m.respond-below(map.get(v.$breakpoints, "md")) {
+        padding: 1.5rem;
+      }
+
+      article{
+        width:65%;
+
+        h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: map.get(v.$colors, "white");
+        position:relative;
+        z-index: 999;
+
+        @include m.respond-below(map.get(v.$breakpoints, "md")) {
+          font-size: 1.2rem;
+        }
+      }
+      }
+
+      
+    }
+  }
+
+  // Navigation Buttons
+  .swiper-nav-btn {
+    position: absolute;
+    top: 50%;
+    @include m.translate(0, -50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    @include m.transition(all, 0.3s, ease);
+    @include m.box-shadow(0px, 4px, 15px, rgba(0, 0, 0, 0.2));
+
+    &:hover {
+      background: map.get(v.$colors, "primary");
+      color: map.get(v.$colors, "white");
+      @include m.translate(0, -52%);
+    }
+
+    .nav-icon {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: map.get(v.$colors, "primary");
+      line-height: 1;
+    }
+
+    &:hover .nav-icon {
+      color: map.get(v.$colors, "white");
+    }
+
+    @include m.respond-below(map.get(v.$breakpoints, "md")) {
+      width: 40px;
+      height: 40px;
+      
+      .nav-icon {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .hero-swiper-button-prev {
+    left: 15px;
+  }
+
+  .hero-swiper-button-next {
+    right: 15px;
+  }
+
+  // Pagination Dots
+  .hero-swiper-pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    @include m.translate(-50%, 0);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
       @include m.transition(all, 0.3s, ease);
-      
-      &:hover {
-        @include m.translate(0, -5px);
-        @include m.box-shadow(0px, 8px, 25px, rgba(0, 0, 0, 0.15));
+
+      &.swiper-pagination-bullet-active {
+        background: map.get(v.$colors, "primary");
+        @include m.translate(0, -2px);
       }
-      
-      h3 {
-        font-size: 1.3rem;
-        color: map.get(v.$colors, "primary");
-        margin-bottom: 1rem;
-      }
-      
-      p {
-        font-size: 1rem;
-        line-height: 1.5;
-        color: map.get(v.$colors, "black");
-        margin: 0;
-      }
+    }
+  }
+
+  // Fade Effect Enhancement
+  .swiper-slide-active {
+    .carousel-content {
+      animation: slideUpContent 0.8s ease-out;
     }
   }
 }
 
+// Animations
+@keyframes slideUpContent {
+  from {
+    opacity: 0;
+    @include m.translate(0, 30px);
+  }
+  to {
+    opacity: 1;
+    @include m.translate(0, 0);
+  }
+}
+
+.hero-rt-card{
+ background: linear-gradient(45deg, #DFDAFF, #FFDBDD); 
+ height: 100%;
+ width:100%;
+ padding: 2rem;
+ border-radius: 30px;
+ color: map.get(v.$colors, "black");
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+
+ h2{
+  font-size:clamp(2rem, 4vw, 3rem);
+  margin:0;  
+ }
+
+ .icomoon{
+  font-size:clamp(3rem, 6vw, 4rem);
+  color: map.get(v.$colors, "primary");
+ }
+}
+
+.herovideoimg{
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  margin: 0;
+
+  a{
+    text-decoration: none;
+  }
+
+  .video-play-btn{
+    width:60px;
+    height:60px;   
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include m.transition(all, 0.3s, ease);
+    transform: translate(50%, 50%);
+    top: 25%;
+    bottom: 0;
+    left: 25%;
+    right: 0;
+
+    &:hover{
+      background: map.get(v.$colors, "primary");
+      
+      .icon-play{
+        color: map.get(v.$colors, "white");
+      }
+    }
+
+    .icon-play{
+      font-size: 4rem;
+      color: map.get(v.$colors, "white");
+      line-height:1;
+    }
+  }
+}

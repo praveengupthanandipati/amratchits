@@ -1,11 +1,12 @@
 import React from 'react'
+import Homeherosection from '../components/Homeherosection';
 
 const Home = () => {
   return (
     <React.Fragment>
-      <div className='custom-container'>
-         <p>Home page</p>
-      </div>
+        <section className='herosection'>
+          <Homeherosection />
+        </section>      
     </React.Fragment>
   )
 }
