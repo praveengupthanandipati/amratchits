@@ -124,6 +124,10 @@ h1{
   align-items: center;
   position: relative;
   box-sizing: border-box;
+  height: 100%;
+  height:100%; 
+
+  
   &:before{
     content:'';
     width:100%;
@@ -154,6 +158,11 @@ h1{
 .HeroCarousel {
   position: relative;
   height: 100%;
+  min-height: 300px;
+  
+  @include m.respond-above(map.get(v.$breakpoints, "md")) {
+    min-height: 400px;
+  }
 
   @include m.respond-below(map.get(v.$breakpoints, "md")) {
     height: 300px;
@@ -212,7 +221,7 @@ h1{
       flex-direction: column;
       justify-content: center;
       z-index: 100;
-      align-items: center;
+      align-items: start;
 
       @include m.respond-below(map.get(v.$breakpoints, "md")) {
         padding: 1.5rem;
@@ -221,20 +230,19 @@ h1{
       article{
         width:65%;
 
+        @include m.respond-below(map.get(v.$breakpoints, "md")) {
+          width:100%;
+        }
+
         h3 {
-        font-size: 1.5rem;
+        font-size: clamp(1.5rem, 1.7vw, 1.2rem);
         margin-bottom: 0.5rem;
         color: map.get(v.$colors, "white");
         position:relative;
-        z-index: 999;
-
-        @include m.respond-below(map.get(v.$breakpoints, "md")) {
-          font-size: 1.2rem;
-        }
+        font-weight: map.get(v.$lato-weights, "bold");
+        z-index: 999;       
       }
-      }
-
-      
+      }      
     }
   }
 
@@ -258,7 +266,7 @@ h1{
     &:hover {
       background: map.get(v.$colors, "primary");
       color: map.get(v.$colors, "white");
-      @include m.translate(0, -52%);
+      @include m.translate(0, -2px);
     }
 
     .nav-icon {
@@ -283,11 +291,17 @@ h1{
   }
 
   .hero-swiper-button-prev {
-    left: 15px;
+    bottom: 15px;
+    right: 70px;
+    top: auto;
+    @include m.translate(0, 0);
   }
 
   .hero-swiper-button-next {
+    bottom: 15px;
     right: 15px;
+    top: auto;
+    @include m.translate(0, 0);
   }
 
   // Pagination Dots
@@ -339,7 +353,7 @@ h1{
  background: linear-gradient(45deg, #DFDAFF, #FFDBDD); 
  height: 100%;
  width:100%;
- padding: 2rem;
+ padding: 1.3rem;
  border-radius: 30px;
  color: map.get(v.$colors, "black");
  display: flex;
@@ -349,6 +363,10 @@ h1{
  h2{
   font-size:clamp(2rem, 4vw, 3rem);
   margin:0;  
+ }
+
+ h5{
+  font-size:1.1rem;
  }
 
  .icomoon{
@@ -368,18 +386,16 @@ h1{
   }
 
   .video-play-btn{
-    width:60px;
-    height:60px;   
+    width:50px;
+    height:50px;   
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     @include m.transition(all, 0.3s, ease);
-    transform: translate(50%, 50%);
-    top: 25%;
-    bottom: 0;
-    left: 25%;
-    right: 0;
+    top: 50%;
+    left: 50%;
+    @include m.translate(-50%, -50%);
 
     &:hover{
       background: map.get(v.$colors, "primary");
@@ -396,3 +412,384 @@ h1{
     }
   }
 }
+
+// Hero Section Mobile Responsive Styles
+.hero-section { 
+  
+  @include m.respond-above(map.get(v.$breakpoints, "md")) {
+    padding: 1rem 0;
+  }
+
+  // Equal height columns
+  .row {
+    @include m.respond-above(map.get(v.$breakpoints, "md")) {
+      display: flex;
+      align-items: stretch;
+      
+      .col-12.col-md-6,
+      .col-12.col-lg-6 {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  // Right column layout
+  .col-12.col-lg-6 {
+    @include m.respond-above(map.get(v.$breakpoints, "md")) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 500px;
+    }
+    
+    .HeroCarousel {
+      flex-grow: 1;
+      margin-bottom: 1rem;
+      
+      @include m.respond-above(map.get(v.$breakpoints, "md")) {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  // Mobile-first approach for hero left image
+  .Heroleftimg {
+    article {
+      padding: 2rem 1.5rem;
+      
+      @include m.respond-above(map.get(v.$breakpoints, "sm")) {
+        padding: 3rem 2rem;
+      }
+      
+      @include m.respond-above(map.get(v.$breakpoints, "md")) {
+        padding: 40% 5rem;
+      }
+
+      h1 {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+        
+        @include m.respond-below(map.get(v.$breakpoints, "md")) {
+          font-size: clamp(1.2rem, 3.5vw, 2rem);
+        }
+      }
+
+      p {
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        line-height: 1.4;
+        margin-bottom: 1rem;
+        
+        @include m.respond-above(map.get(v.$breakpoints, "md")) {
+          margin-bottom: 1.5rem;
+        }
+      }
+
+      .btn-primary-light {
+        font-size: clamp(0.85rem, 2vw, 1rem);
+        padding: 0.75rem 1.5rem;
+        
+        @include m.respond-above(map.get(v.$breakpoints, "md")) {
+          padding: 12px 24px;
+        }
+      }
+    }
+  }
+}
+
+// Hero Carousel Mobile Responsive Updates
+.HeroCarousel {
+  @include m.respond-below(map.get(v.$breakpoints, "md")) {
+    height: 280px;
+    margin-bottom: 1rem;
+  }
+  
+  @include m.respond-below(map.get(v.$breakpoints, "sm")) {
+    height: 250px;
+  }
+
+  .carousel-slide {
+    img.sliderimg {
+      @include m.respond-below(map.get(v.$breakpoints, "md")) {
+        height: 280px;
+      }
+      
+      @include m.respond-below(map.get(v.$breakpoints, "sm")) {
+        height: 250px;
+      }
+    }
+
+    .carousel-content {
+      @include m.respond-below(map.get(v.$breakpoints, "md")) {
+        padding: 1rem;
+      }
+      
+      @include m.respond-below(map.get(v.$breakpoints, "sm")) {
+        padding: 0.75rem;
+      }
+
+      h3 {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+        line-height: 1.3;
+        
+        @include m.respond-below(map.get(v.$breakpoints, "sm")) {
+          font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+        }
+      }
+    }
+  }
+
+  // Mobile navigation buttons
+  .swiper-nav-btn {
+    @include m.respond-below(map.get(v.$breakpoints, "sm")) {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  .hero-swiper-button-prev {
+    @include m.respond-below(map.get(v.$breakpoints, "sm")) {
+      right: 55px;
+      bottom: 10px;
+    }
+  }
+
+  .hero-swiper-button-next {
+    @include m.respond-below(map.get(v.$breakpoints, "sm")) {
+      right: 10px;
+      bottom: 10px;
+    }
+  }
+}
+
+.feature-col{
+  .feature-icon{
+     .icomoon{
+       font-size: 3.5rem;      
+       color: map.get(v.$colors, "secondarynew");
+     }
+  }
+  p{
+     color: map.get(v.$colors, "primarynew");
+  }
+}
+
+  .chitplans-section{
+    background:url("../assets/img/chitplansbg.png") right center  no-repeat map.get(v.$colors, "primarynew");
+    padding: 5rem 0;
+    min-height: 500px;
+  }
+
+  .section-title{
+    position: relative;
+
+    &:before{
+      content:'';
+      width:60px;
+      height:4px;
+      background: map.get(v.$colors, "secondarynew");
+      position: absolute;
+      top:-10px;
+      left:0;
+    }
+  }
+
+  // Chit Plans Tabs Styles
+  .chit-tabs-container {
+    margin-top: 3rem;
+    
+    .chit-nav-tabs {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 0;
+      
+      .nav-item {
+        margin-bottom: -2px;
+        
+        .nav-link {
+          background: transparent;
+          border: none;
+          border-bottom: 2px solid transparent;
+          color: map.get(v.$colors, "white");
+          padding: 1rem 1.5rem;
+          font-weight: map.get(v.$roboto-weights, "medium");
+          @include m.transition(all, 0.3s, ease);
+          
+          &:hover {
+            border-bottom-color: map.get(v.$colors, "secondarynew");
+            color: map.get(v.$colors, "secondarynew");
+            background: rgba(255, 255, 255, 0.05);
+          }
+          
+          &.active {
+            border-bottom-color: map.get(v.$colors, "secondarynew");
+            color: map.get(v.$colors, "secondarynew");
+            background: rgba(255, 255, 255, 0.1);
+          }
+        }
+      }
+    }
+    
+    .chit-tab-content {
+      padding: 2rem 0;
+    }
+  }
+
+  // Chit Plan Cards
+  .chit-plan-card {
+    @include m.box-shadow(0px, 10px, 30px, rgba(0, 0, 0, 0.1));
+    @include m.transition(all, 0.3s, ease);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    min-height: 280px;
+    
+    &:hover {
+      @include m.translate(0, -5px);
+      @include m.box-shadow(0px, 20px, 40px, rgba(0, 0, 0, 0.15));
+    }
+    
+    .chit-price-title {
+      color: map.get(v.$colors, "primary");
+      font-weight: map.get(v.$lato-weights, "black");
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      margin: 0 0 1rem 0;
+      padding: 0.5rem;
+      background: linear-gradient(45deg, rgba(32, 24, 93, 0.05), rgba(227, 30, 37, 0.05));
+      border-radius: 10px;
+      
+      @include m.respond-below(map.get(v.$breakpoints, "lg")) {
+        font-size: clamp(1rem, 1.5vw, 1.4rem);
+      }
+      
+      @include m.respond-below(map.get(v.$breakpoints, "md")) {
+        font-size: clamp(1.1rem, 2vw, 1.6rem);
+      }
+    }
+    
+    .plan-details {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      
+      .detail-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0.4rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        font-size: 0.9rem;
+        
+        @include m.respond-below(map.get(v.$breakpoints, "lg")) {
+          font-size: 0.8rem;
+        }
+        
+        &:last-of-type {
+          border-bottom: none;
+          margin-bottom: 1rem !important;
+        }
+        
+        strong {
+          color: map.get(v.$colors, "dark");
+          font-weight: map.get(v.$roboto-weights, "medium");
+          font-size: 0.85rem;
+          
+          @include m.respond-below(map.get(v.$breakpoints, "lg")) {
+            font-size: 0.75rem;
+          }
+        }
+      }
+      
+      .btn {
+        background: map.get(v.$colors, "primary");
+        border: none;
+        padding: 0.6rem 1rem;
+        font-weight: map.get(v.$roboto-weights, "medium");
+        font-size: 0.9rem;
+        @include m.transition(all, 0.3s, ease);
+        
+        @include m.respond-below(map.get(v.$breakpoints, "lg")) {
+          padding: 0.5rem 0.8rem;
+          font-size: 0.8rem;
+        }
+        
+        &:hover {
+          background: map.get(v.$colors, "secondary");
+          @include m.translate(0, -2px);
+        }
+      }
+    }
+    
+    // Desktop 5-card layout adjustments
+    @include m.respond-above(map.get(v.$breakpoints, "lg")) {
+      .plan-details {
+        .detail-item {
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+          
+          strong {
+            margin-bottom: 0.2rem;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  // Mobile Accordion Styles
+  .chit-accordion-container {
+    margin-top: 2rem;
+    
+    .accordion {
+      .accordion-item {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 1rem;
+        border-radius: 15px;
+        overflow: hidden;
+        
+        .accordion-header {
+          .accordion-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: map.get(v.$colors, "white");
+            font-weight: map.get(v.$roboto-weights, "medium");
+            border: none;
+            padding: 1rem 1.5rem;
+            
+            &:not(.collapsed) {
+              background: rgba(255, 255, 255, 0.2);
+              color: map.get(v.$colors, "white");
+              @include m.box-shadow(none);
+            }
+            
+            &:focus {
+              @include m.box-shadow(none);
+              border: none;
+            }
+            
+            &::after {
+              filter: brightness(0) invert(1);
+            }
+          }
+        }
+        
+        .accordion-collapse {
+          .accordion-body {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            
+            .chit-plan-card {
+              background: map.get(v.$colors, "white") !important;
+              
+              &:last-child {
+                margin-bottom: 0 !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
