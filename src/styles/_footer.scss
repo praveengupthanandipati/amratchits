@@ -2,3 +2,31 @@
 @use "sass:color";
 @use "./variables" as v;
 @use "./mixins.scss" as m;
+
+footer{
+    background:url(../assets/img/footer-pattern.png) no-repeat center top / cover map.get(v.$colors, "primarynew");
+    padding:6rem 0;
+    color:#B8AEFF;
+    font-family: v.$froboto;
+
+    a.nav-link{
+        color:#B8AEFF;    
+    }
+
+    a{
+        &:hover{
+            color:map.get(v.$colors, "white")!important;
+        }
+    }
+
+    .mainrow{
+        border-top:1px solid rgba(255,255,255,0.2);
+        padding-top:3rem;
+        border-bottom:1px solid rgba(255,255,255,0.2);
+        padding-bottom:3rem;
+        margin-top:3rem;        
+    }
+    .rightsrow{
+        padding-top:5rem;
+    }
+}

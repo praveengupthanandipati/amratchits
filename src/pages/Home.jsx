@@ -1,6 +1,14 @@
-import React from 'react'
-import Homeherosection from '../components/Homeherosection';
-import Homechitplans from '../components/Homechitplans';
+import React from "react";
+import Homeherosection from "../components/Homeherosection";
+import Homechitplans from "../components/Homechitplans";
+import Sectiontitle from "../components/Sectiontitle";
+import Whatsets from "../components/Whatsets";
+import Testimonials from "../components/Testimonials";
+import { Link } from "react-router-dom";
+import welcomeImg from "../assets/img/welcome-img.jpg";
+import chitfundImg from "../assets/img/chitfundsolutions-img.jpg";
+import transparentImg from "../assets/img/transparentprocess.jpg";
+import financialGuidenImg from "../assets/img/financial-guidance.jpg";
 
 const Home = () => {
   // Features data array
@@ -9,56 +17,201 @@ const Home = () => {
       id: 1,
       icon: "icon-trusted",
       title: "Trusted & Secure",
-      subtitle: "Financial Partnerships"
+      subtitle: "Financial Partnerships",
     },
     {
       id: 2,
       icon: "icon-savings",
       title: "Achieve Big Goals",
-      subtitle: "with Small Savings"
+      subtitle: "with Small Savings",
     },
     {
       id: 3,
       icon: "icon-wallet",
       title: "Flexible Payouts &",
-      subtitle: "Loan Facilities"
+      subtitle: "Loan Facilities",
     },
     {
       id: 4,
       icon: "icon-bonus",
       title: "Bonus Earnings",
-      subtitle: "as a Subscriber"
-    }
+      subtitle: "as a Subscriber",
+    },
   ];
 
   return (
     <React.Fragment>
-        <section className='herosection'>
-          <Homeherosection />
-        </section>      
-        {/* features */}
-        <section className='features py-3'>
-          <div className='custom-container'>
-             <div className="row">
-               {featuresData.map((feature) => (
-                 <div key={feature.id} className="col-md-3">
-                    <div className='feature-col d-flex py-3'>
-                      <div className='feature-icon me-3'>
-                         <span className={`${feature.icon} icomoon text-secondarynew`}></span>
-                      </div>
-                      <p className='align-self-center p-0 m-0'>
-                        {feature.title} <br /> {feature.subtitle}
-                      </p>
-                    </div>
-                 </div>
-               ))}
-             </div>
+      <section className="herosection">
+        <Homeherosection />
+      </section>
+      {/* features */}
+      <section className="features py-3">
+        <div className="custom-container">
+          <div className="row">
+            {featuresData.map((feature) => (
+              <div key={feature.id} className="col-md-3">
+                <div className="feature-col d-flex py-3">
+                  <div className="feature-icon me-3">
+                    <span
+                      className={`${feature.icon} icomoon text-secondarynew`}
+                    ></span>
+                  </div>
+                  <p className="align-self-center p-0 m-0">
+                    {feature.title} <br /> {feature.subtitle}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        </section>
-        {/* chit plans section */}
-        <Homechitplans/>  
-    </React.Fragment>
-  )
-}
+        </div>
+      </section>
+      {/* chit plans section */}
+      <Homechitplans />
 
-export default Home
+      {/* Welcome Section */}
+      <section className="welcomehome">
+        <div className="custom-container">
+          <div className="row justify-content-between">
+            <div className="col-lg-3">
+              <Sectiontitle
+                title="Welcome to Amrat Chits India Pvt. Ltd."
+                titleClass=" text-primarynew text-uppercase font-bold"
+              />
+            </div>
+            <div className="col-lg-5">
+              <div className="top-about pb-5 border-bottom mb-5">
+                <div className="d-flex">
+                  <div className="number-welcome text-primarynew">7</div>
+                  <div className="ps-3">
+                    <p className="p-0 m-0 h4">+</p>
+                    <p className="h5">Years</p>
+                  </div>
+                </div>
+                <p className="pt-3">
+                  At Amrat Chits, we are a trusted chit fund company dedicated
+                  to providing reliable and efficient financial solutions. With
+                  a strong presence in the market, we have been empowering
+                  individuals and businesses to achieve their financial goals
+                  for over 5 years.
+                </p>
+                <Link to="/contact" className="btn-primary-light">
+                  View All team
+                </Link>
+              </div>
+              <div className="quote-coo d-flex">
+                <div>
+                  <span class="icon-quotes icomoon"></span>
+                </div>
+                <div className="ceeomsg">
+                  <h6>
+                    True success is built by our people. My focus is empowering
+                    every team member, because when you grow, our company and
+                    our shared future thrives
+                  </h6>
+                  <div className="mt-5">
+                    <h5 className="text-primarynew fw-bold">Sritik Saxena</h5>
+                    <p className="text-gray-20">
+                      <small>COO, Director-Finance</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-3">
+              <figure>
+                <img
+                  src={welcomeImg}
+                  alt="Welcome to Amrat Chits India Pvt. Ltd."
+                  className="img-fluid rounded-5"
+                />
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* services Section */}
+      <section className="serviceshome">
+        <div className="g-0">
+           <div className="row g-0">
+              <div className="col-md-4 g-0">
+                  <div className="service-col">
+                     <figure className="m-0 p-0">
+                        <img src={chitfundImg} alt="Chit Fund Solutions" className="img-fluid"/>
+                      </figure>
+                      <article>
+                         <h3>Chit Fund Solutions</h3>
+                         <p className="p-0 m-0">We offer a wide range of chit fund options tailored to meet the diverse needs of our customers. Our chit funds provide an opportunity for disciplined savings and the chance to access funds when needed.</p>
+                      </article>
+                  </div>
+              </div>
+                  <div className="col-md-4 g-0">
+                  <div className="service-col">
+                     <figure className="m-0 p-0">
+                        <img src={transparentImg} alt="Chit Fund Solutions" className="img-fluid"/>
+                      </figure>
+                      <article>
+                         <h3>Transparent Processes</h3>
+                         <p className="p-0 m-0">We believe in maintaining transparency in all our processes. Our customers can trust that their investments are handled with utmost care and transparency.</p>
+                      </article>
+                  </div>
+              </div>
+                  <div className="col-md-4 g-0">
+                  <div className="service-col">
+                     <figure className="m-0 p-0">
+                        <img src={financialGuidenImg} alt="Chit Fund Solutions" className="img-fluid"/>
+                      </figure>
+                      <article>
+                         <h3>Financial Guidance</h3>
+                         <p className="p-0 m-0">We understand that financial decisions can be complex. Our expert team is always available to provide guidance and assist our customers in making informed investment choices.</p>
+                      </article>
+                  </div>
+              </div>
+           </div>
+        </div>
+      </section>
+
+      <Whatsets />
+
+      {/*customers / agents*/}
+      <section className="customer-agents">
+        <div className="custom-container w-100 g-0">
+            <div className="row g-0">
+              <div className="col-md-6 customer-block left-customer  text-center border-end">
+                <article>
+                   <h4 className="text-uppercase font-bold mb-2">Amrat for Individuals Customers</h4>
+                   <p>Amrat Chits empowers your personal financial journey. Our tailored chit schemes help you systematically save for life's big moments—a new home, your child's education, or a dream wedding. </p>
+                    <Link to="" className="btn-primary-light">Find Out More</Link>
+                </article>               
+              </div>
+              <div className="col-md-6 customer-block right-customer  text-center border-end">
+                <article>
+                   <h4 className="text-uppercase font-bold mb-2">Amrat Chits for Agents</h4>
+                   <p>Amrat Chits empowers your personal financial journey. Our tailored chit schemes help you systematically save for life's big moments—a new home, your child's education, or a dream wedding. </p>
+                    <Link to="" className="btn-primary-light">Find Out More</Link>
+                </article>               
+              </div>
+            </div>
+        </div>
+      </section>
+
+      {/* testimonials section */}
+      <section className="testimonials-home">
+         <div className="container">
+             <Sectiontitle
+                title="Testimonials"
+                titleClass=" text-primarynew text-uppercase font-bold"
+                description="Here is what our customers say about us."
+                descriptionClass="text-gray-20"
+              />
+              {/* testimonials carousel */}
+              <div className="testimonials-carousel py-4">
+                  <Testimonials/> 
+              </div>
+         </div>
+      </section>
+    </React.Fragment>
+  );
+};
+
+export default Home;

@@ -66,101 +66,101 @@ const Homeherosection = () => {
               </div>
             </div>
             <div className="col-12 col-lg-6">
-            {/* carousel */}
-            <div className="HeroCarousel">
-              <Swiper
-                modules={[Navigation, Autoplay, EffectFade]}
-                spaceBetween={30}
-                slidesPerView={1}
-                navigation={{
-                  nextEl: ".hero-swiper-button-next",
-                  prevEl: ".hero-swiper-button-prev",
-                }}
-                autoplay={{
-                  delay: 4000,
-                  disableOnInteraction: false,
-                }}
-                effect="fade"
-                fadeEffect={{
-                  crossFade: true,
-                }}
-                loop={true}
-                className="hero-swiper"
-              >
-                {carouselSlides.map((slide) => (
-                  <SwiperSlide key={slide.id} className="position-relative">
-                    <div className="carousel-slide">
-                      <img
-                        src={herobannerpattern}
-                        alt="herobannerpattern"
-                        className="herobannerpattern position-absolute"
-                      />
-                      <img
-                        src={slide.image}
-                        alt={slide.alt}
-                        className="img-fluid w-100 rounded-4 sliderimg"
-                      />
-                      <div className="carousel-content">
-                        <article>
-                          <h3 className="roboto-bold text-white text-uppercase">
-                            {slide.title}
-                          </h3>
-                        </article>
+              {/* carousel */}
+              <div className="HeroCarousel">
+                <Swiper
+                  modules={[Navigation, Autoplay, EffectFade]}
+                  spaceBetween={30}
+                  slidesPerView={1}
+                  navigation={{
+                    nextEl: ".hero-swiper-button-next",
+                    prevEl: ".hero-swiper-button-prev",
+                  }}
+                  autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false,
+                  }}
+                  effect="fade"
+                  fadeEffect={{
+                    crossFade: true,
+                  }}
+                  loop={true}
+                  className="hero-swiper"
+                >
+                  {carouselSlides.map((slide) => (
+                    <SwiperSlide key={slide.id} className="position-relative">
+                      <div className="carousel-slide">
+                        <img
+                          src={herobannerpattern}
+                          alt="herobannerpattern"
+                          className="herobannerpattern position-absolute"
+                        />
+                        <img
+                          src={slide.image}
+                          alt={slide.alt}
+                          className="img-fluid w-100 rounded-4 sliderimg"
+                        />
+                        <div className="carousel-content">
+                          <article>
+                            <h3 className="roboto-bold text-white text-uppercase">
+                              {slide.title}
+                            </h3>
+                          </article>
+                        </div>
                       </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
 
-              {/* Custom Navigation Buttons */}
-              <div className="hero-swiper-button-prev swiper-nav-btn">
-                <span class="icon-left-icon icomoon"></span>
+                {/* Custom Navigation Buttons */}
+                <div className="hero-swiper-button-prev swiper-nav-btn">
+                  <span class="icon-left-icon icomoon"></span>
+                </div>
+                <div className="hero-swiper-button-next swiper-nav-btn">
+                  <span class="icon-right-icon icomoon"></span>
+                </div>
+
+                {/* Custom Pagination */}
+                <div className="hero-swiper-pagination swiper-pagination-custom"></div>
               </div>
-              <div className="hero-swiper-button-next swiper-nav-btn">
-               <span class="icon-right-icon icomoon"></span>
-              </div>
 
-              {/* Custom Pagination */}
-              <div className="hero-swiper-pagination swiper-pagination-custom"></div>
-            </div>
-
-            {/** cards */}
-            <div className="row ">
-              <div className="col-6 col-md-4">
-                <div className="hero-rt-card rounded-4">
-                  <article>
-                    <h2 className="lato-black">1000+</h2>
-                    <h5>Customers</h5>
-                  </article>
-                  <figure className="mt-3 mt-md-5">
-                    <span className="icon-customers icomoon"></span>
+              {/** cards */}
+              <div className="row ">
+                <div className="col-6 col-md-4">
+                  <div className="hero-rt-card rounded-4">
+                    <article>
+                      <h2 className="lato-black">1000+</h2>
+                      <h5>Customers</h5>
+                    </article>
+                    <figure className="mt-3 mt-md-5">
+                      <span className="icon-customers icomoon"></span>
+                    </figure>
+                  </div>
+                </div>
+                <div className="col-6 col-md-4">
+                  <div className="hero-rt-card rounded-4">
+                    <article>
+                      <h2 className="lato-black">150+</h2>
+                      <h5>Chit Agents</h5>
+                    </article>
+                    <figure className="mt-3 mt-md-5">
+                      <span className="icon-agents icomoon"></span>
+                    </figure>
+                  </div>
+                </div>
+                <div className="col-12 col-md-4 mt-3 mt-md-0">
+                  <figure className="position-relative herovideoimg">
+                    <img
+                      src={herovideoimg}
+                      alt="herovideoimg"
+                      className="img-fluid rounded-4 w-100"
+                    />
+                    <Link to="#" className="video-play-btn position-absolute">
+                      <span className="icon-play icomoon"></span>
+                    </Link>
                   </figure>
                 </div>
               </div>
-              <div className="col-6 col-md-4">
-                <div className="hero-rt-card rounded-4">
-                  <article>
-                    <h2 className="lato-black">150+</h2>
-                    <h5>Chit Agents</h5>
-                  </article>
-                  <figure className="mt-3 mt-md-5">
-                    <span className="icon-agents icomoon"></span>
-                  </figure>
-                </div>
-              </div>
-              <div className="col-12 col-md-4 mt-3 mt-md-0">
-                <figure className="position-relative herovideoimg">
-                  <img
-                    src={herovideoimg}
-                    alt="herovideoimg"
-                    className="img-fluid rounded-4 w-100"
-                  />
-                  <Link to="#" className="video-play-btn position-absolute">
-                    <span className="icon-play icomoon"></span>
-                  </Link>
-                </figure>
-              </div>
-            </div>
             </div>
           </div>
         </div>

@@ -43,7 +43,7 @@ h1{
 .connect-btn {
     display: inline-block;
     padding: 12px 24px;
-    background: map.get(v.$colors, "primary");
+    background: map.get(v.$colors, "primarynew");
     color: map.get(v.$colors, "white");
     text-decoration: none;
     font-family: v.$froboto;
@@ -350,7 +350,7 @@ h1{
 }
 
 .hero-rt-card{
- background: linear-gradient(45deg, #DFDAFF, #FFDBDD); 
+ background: linear-gradient(45deg, rgba(223, 218, 255, 0.8), rgba(255, 219, 221, 0.8)); 
  height: 100%;
  width:100%;
  padding: 1.3rem;
@@ -424,8 +424,7 @@ h1{
   .row {
     @include m.respond-above(map.get(v.$breakpoints, "md")) {
       display: flex;
-      align-items: stretch;
-      
+      align-items: stretch;      
       .col-12.col-md-6,
       .col-12.col-lg-6 {
         display: flex;
@@ -790,6 +789,392 @@ h1{
       }
     }
   }
+
+  .welcomehome{
+     background: linear-gradient(45deg, rgba(223, 218, 255, 0.5), rgba(255, 219, 221, 0.5)); 
+     padding:125px 0;
+
+     .number-welcome{
+      font-size:clamp(3rem, 8vw, 8rem);
+      font-weight: map.get(v.$lato-weights, "black");
+      line-height: 8rem;
+     }
+       .quote-coo{
+        .icomoon{
+          font-size:clamp(3rem, 6vw, 4rem);
+          color: map.get(v.$colors, "primary");
+        }
+
+        .ceeomsg{
+          font-size:clamp(1.5rem, 4vw, 2rem);
+          font-weight: map.get(v.$lato-weights, "bold");
+          margin:0 0 0 3rem;
+
+          h5{
+            font-size:18px;
+            font-weight: map.get(v.$roboto-weights, "black");
+          }
+
+          p{
+            font-size:15px;
+            color: map.get(v.$colors, "gray-40");
+            font-weight: map.get(v.$roboto-weights, "regular");
+          }
+        }
+       }
+  }
+
+  .serviceshome{
+    .row{
+      .col-md-4{
+          .service-col{
+            position: relative;
+            article{
+              width:90%;
+              margin:-200px auto 0 auto;
+              border-radius:25px;
+              padding:2rem;
+              color: map.get(v.$colors, "white");
+              z-index: 999;
+              position: relative;
+
+              h3{
+                font-size:clamp(1.3rem, 1.8vw, 1.8rem);
+                font-weight: map.get(v.$lato-weights, "bold");
+                margin-bottom:0.5rem;
+                text-transform: uppercase;
+              }
+            }
+         }         
+      }
+      :nth-child(1) .service-col article{         
+          background: linear-gradient(45deg, rgba(9, 0, 72, 0.9), rgba(32, 24, 93, 0.9));
+      }
+      :nth-child(2) .service-col article{                   
+          background: linear-gradient(45deg, rgba(223, 218, 255, 0.9), rgba(200, 190, 255, 0.9));
+          color: map.get(v.$colors, "black");
+      }
+      :nth-child(3) .service-col article{    
+          background : linear-gradient(45deg, rgba(227, 30, 37, 0.9), rgba(255, 99, 130, 1));
+      }
+    }
+  }
+
+  .whatsets-section{
+    padding:4rem 0;
+
+    // Equal height columns
+    .row {
+      display: flex;
+      align-items: stretch;
+      
+      .col-md-3 {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .whatsets-col{            
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), rgba(237, 234, 255, 0.8));
+      @include m.box-shadow(0px, 5px, 20px, rgba(0, 0, 0, 0.1));
+      border-radius: 30px;
+      padding:5rem 2rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      .icomoon{
+        font-size:clamp(3rem, 6vw, 4rem);
+        color: map.get(v.$colors, "primarynew");
+        margin-bottom:3rem;
+        display: inline-block;
+        flex-shrink: 0;
+      }
+      
+      article {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        
+        h4 {
+          flex-shrink: 0;
+        }
+        
+        p {
+          flex-grow: 1;
+          margin: 0;
+          display: flex;
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+
+  .customer-agents{
+    position: relative;
+
+    &:before{
+      content:'';
+      background:url("../assets/img/triangle.png") center bottom  no-repeat;
+      position: absolute;
+      bottom:-50px;
+      left:0;
+      width:100%;
+      height: 100%;
+      z-index: 99;
+    }
+    
+    .customer-block{
+    padding:6rem 0;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    }
+  }
+
+.customer-block{
+    background: url(../assets/img/left-customer-bg.jpg)no-repeat center center / cover;
+    position: relative;
+
+    &:before{
+      content:'';
+      width:100%;
+      height: 100%;
+      position: absolute;
+      top:0;
+      left:0;      
+      opacity: 0.9;
+      background: linear-gradient(45deg, rgba(32, 24, 93, 0.99), rgba(227, 30, 37, 0.99));
+      z-index:1;
+    }
+
+    article{
+      width:70%;
+      margin:0 auto;
+      position: relative;
+      z-index: 99;
+      color:map.get(v.$colors, "white");
+      text-align: center;
+
+      h4{
+        font-size:clamp(1.4rem, 2vw, 2rem);
+        margin-bottom:1rem;
+      }
+    }
+}
+
+.left-customer{
+  background: url(../assets/img/left-customer-bg.jpg)no-repeat center center / cover;
+}
+.right-customer{
+  background: url(../assets/img/rt-customer-bg.jpg)no-repeat center center / cover;
+}
+
+.testimonials-home{
+  position: relative;
+  min-height: 500px;
+  padding:6rem 0;
+
+  .swiper-wrapper{
+    padding-bottom:55px;
+   
+  }
+
+  &:before{
+    content:'';
+    background:url("../assets/img/testimonials-lt.png") left top  no-repeat;
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width:100%;    
+    height: 100%;
+    z-index: 0;
+  }
+
+  &:after{
+    content:'';
+    background:url("../assets/img/testimonials-rt.png") right bottom  no-repeat;
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    width:100%;    
+    height: 100%;
+    z-index: 0;
+  }
+}
+
+// Testimonials Swiper Styles
+.testimonialsSwiper {
+  padding-bottom: 50px;
+  overflow: visible;
+  
+  .swiper-slide {
+    height: auto;
+    
+    @include m.respond-below(map.get(v.$breakpoints, "sm")) {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  // Built-in pagination styles
+  .swiper-pagination {
+    bottom: 0;
+    
+    .swiper-pagination-bullet {
+      width: 30px;
+      height: 3px;
+      border-radius: 0;      
+      opacity: 1;
+      @include m.transition(all, 0.3s, ease);
+      
+      &.swiper-pagination-bullet-active {
+        background: map.get(v.$colors, "primary");
+        @include m.translate(0, -3px);
+      }
+    }
+  }
+}
+
+// Testimonial Slide Styles
+.testimonial-slide {
+  background: linear-gradient(45deg, rgba(223, 218, 255, 0.5), rgba(255, 219, 221, 0.5));
+  border-radius: 30px;
+  padding: 2rem;
+  height: 100%;
+  min-height: 300px;
+  position: relative;  
+  @include m.transition(all, 0.3s, ease);
+  
+  &:hover {
+    @include m.translate(0, -5px);    
+  }
+  
+  // Quote icon in top right corner
+  .quote-icon {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    
+    .icon-quotes {
+      font-size: 2rem;
+      color: map.get(v.$colors, "primary");
+      opacity: 0.7;
+    }
+  }
+  
+  // Testimonial header with image and info
+  .testimonial-header {
+    margin-top: 2rem;
+    
+    .testimonial-image {
+      position: relative;
+      
+      .avatar-img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border: 3px solid map.get(v.$colors, "white");
+        @include m.box-shadow(0px, 5px, 15px, rgba(0, 0, 0, 0.1));
+      }
+      
+      .avatar-circle {
+        width: 60px;
+        height: 60px;
+        background: map.get(v.$colors, "primary");
+        color: map.get(v.$colors, "white");
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: map.get(v.$lato-weights, "bold");
+        font-size: 1.5rem;
+        border: 3px solid map.get(v.$colors, "white");
+        @include m.box-shadow(0px, 5px, 15px, rgba(0, 0, 0, 0.1));
+      }
+    }
+    
+    .testimonial-info {
+      .testimonial-name {
+        font-weight: map.get(v.$lato-weights, "bold");
+        color: map.get(v.$colors, "primary");
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+      }
+      
+      .testimonial-designation {
+        color: map.get(v.$colors, "dark");
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+    }
+  }
+  
+  // Testimonial description
+  .testimonial-description {
+    margin-top: 1.5rem;
+    
+    p {
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: map.get(v.$colors, "dark");
+      margin: 0;
+      
+      @include m.respond-below(map.get(v.$breakpoints, "md")) {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  // Responsive adjustments
+  @include m.respond-below(map.get(v.$breakpoints, "md")) {
+    padding: 1.5rem;
+    min-height: 280px;
+    
+    .quote-icon {
+      top: 1rem;
+      right: 1rem;
+      
+      .icon-quotes {
+        font-size: 1.5rem;
+      }
+    }
+    
+    .testimonial-header {
+      margin-top: 1.5rem;
+      
+      .testimonial-image {
+        .avatar-img {
+          width: 50px;
+          height: 50px;
+        }
+        
+        .avatar-circle {
+          width: 50px;
+          height: 50px;
+          font-size: 1.2rem;
+        }
+      }
+      
+      .testimonial-info {
+        .testimonial-name {
+          font-size: 1.1rem;
+        }
+        
+        .testimonial-designation {
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+}
+
+
+
+
 
 
 
