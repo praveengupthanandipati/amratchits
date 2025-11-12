@@ -277,13 +277,13 @@ const Homeherosection = () => {
           tabIndex="-1"
           onClick={handleCloseModal}
         >
-          <div className="modal-dialog modal-dialog-centered modal-lg">
+          <div className="modal-dialog modal-dialog-centered modal-xl">
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header border-0">
                 <h5 className="modal-title">Watch Our Video</h5>
                 <button 
                   type="button" 
-                  className="btn-close" 
+                  className="btn-close btn-close-black"
                   onClick={handleCloseModal}
                   aria-label="Close"
                 ></button>
