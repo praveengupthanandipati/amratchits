@@ -78,7 +78,7 @@
       top: 100%;
       left: 0;
       background: map.get(v.$colors, "white");
-      min-width: 220px;
+      min-width: 250px;
       list-style: none;
       margin: 0;
       padding: 0.5rem 0;
@@ -108,8 +108,8 @@
           @include m.transition(all, 0.2s, ease);
 
           &:hover {
-            background: map.get(v.$colors, "gray-50");
-            color: map.get(v.$colors, "primary");
+            background: map.get(v.$colors, "primarynew");
+            color: map.get(v.$colors, "white");
             padding-left: 2rem;
           }
         }

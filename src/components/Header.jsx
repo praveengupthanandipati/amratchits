@@ -31,11 +31,8 @@ const Header = () => {
       href: '/company',
       subMenu: [
         { title: 'About Us', href: '/company/about' },
-        { title: 'Our Vision', href: '/company/vision' },
-        { title: 'Our Mission', href: '/company/mission' },
-        { title: 'Leadership Team', href: '/company/leadership' },
-        { title: 'Careers', href: '/company/careers' },       
-        { title: 'Contact Us', href: '/company/contact' }
+        { title: 'Our Vision & Mission', href: '/company/visionmission' },
+        { title: 'Leadership Team', href: '/company/leadership' },    
       ]
     },
     {
@@ -43,12 +40,11 @@ const Header = () => {
       title: 'Chit Plans',
       href: '/chit-plans',
       subMenu: [
-        { title: 'Monthly Chit Plans', href: '/chit-plans/monthly' },
-        { title: 'Weekly Chit Plans', href: '/chit-plans/weekly' },
-        { title: 'Special Chit Plans', href: '/chit-plans/special' },
-        { title: 'Corporate Plans', href: '/chit-plans/corporate' },
-        { title: 'Festival Plans', href: '/chit-plans/festival' },
-        { title: 'Investment Plans', href: '/chit-plans/investment' }
+        { title: 'Monthly Chits - Long period', href: '/chit-plans/monthlychit-long' },
+        { title: 'Monthly Chits - Short Period', href: '/chit-plans/monthlychit-short' },
+        { title: 'Monthly Chits - Middle Period', href: '/chit-plans/monthlychit-middle' },
+        { title: 'Daily Chits - Long Period', href: '/chit-plans/dailychit-long' },
+        { title: 'Daily Chits - Short Period', href: '/chit-plans/dailychit-short' },        
       ]
     },
     {
@@ -59,15 +55,19 @@ const Header = () => {
         { title: 'Chit Fund Management', href: '/services/chit-management' },
         { title: 'Financial Consulting', href: '/services/consulting' },
         { title: 'Investment Advisory', href: '/services/investment' },
-        { title: 'Loan Services', href: '/services/loans' },
-        { title: 'Customer Support', href: '/services/support' },
-        { title: 'Online Services', href: '/services/online' }
+        { title: 'Loan Services', href: '/services/loans' },       
       ]
     },
     {
       id: 5,
       title: 'Guide',
       href: '/guide',
+      subMenu: null
+    },
+     {
+      id: 6,
+      title: 'Careers',
+      href: '/careers',
       subMenu: null
     }
   ];
@@ -134,7 +134,7 @@ const Header = () => {
                   >
                     <a 
                       href={item.href} 
-                      className="nav-link"
+                      className="nav-link text-uppercase font-medium"
                       onClick={(e) => {
                         if (isMobile && item.subMenu) {
                           e.preventDefault();

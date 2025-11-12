@@ -1,7 +1,47 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Sectiontitle from "./Sectiontitle";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 const Whatsets = () => {
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    // Set initial visibility
+    gsap.set(cardsRef.current, { clearProps: "all" });
+
+    // Animate cards on scroll with stagger
+    cardsRef.current.forEach((card, index) => {
+      if (card) {
+        gsap.fromTo(card,
+          {
+            opacity: 0,
+            y: 60,
+          },
+          {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              end: "bottom 20%",
+              toggleActions: "play reverse play reverse",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: index * 0.15,
+            ease: "power3.out",
+          }
+        );
+      }
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
   // What Sets Us Apart data array
   const whatsetsData = [
     {
@@ -39,8 +79,12 @@ const Whatsets = () => {
             titleClass=" text-primarynew text-uppercase font-bold"
           />
           <div className="row py-4">
-            {whatsetsData.map((item) => (
-              <div key={item.id} className="col-md-3">
+            {whatsetsData.map((item, index) => (
+              <div 
+                key={item.id} 
+                className="col-md-3"
+                ref={(el) => (cardsRef.current[index] = el)}
+              >
                 <div className="whatsets-col text-center border rounded-4 mb-4">
                   <span className={`${item.icon} icomoon`}></span>
                   <article>

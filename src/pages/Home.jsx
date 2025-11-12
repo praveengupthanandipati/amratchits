@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Homeherosection from "../components/Homeherosection";
 import Homechitplans from "../components/Homechitplans";
 import Sectiontitle from "../components/Sectiontitle";
@@ -9,8 +9,155 @@ import welcomeImg from "../assets/img/welcome-img.jpg";
 import chitfundImg from "../assets/img/chitfundsolutions-img.jpg";
 import transparentImg from "../assets/img/transparentprocess.jpg";
 import financialGuidenImg from "../assets/img/financial-guidance.jpg";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
+  const featuresRef = useRef([]);
+  const welcomeRef = useRef(null);
+  const servicesRef = useRef([]);
+  const customerAgentsRef = useRef([]);
+  const testimonialsRef = useRef(null);
+
+  useEffect(() => {
+    // Set initial visibility for all elements
+    gsap.set([
+      ...featuresRef.current,
+      welcomeRef.current,
+      ...servicesRef.current,
+      ...customerAgentsRef.current,
+      testimonialsRef.current
+    ], { clearProps: "all" });
+
+    // Features animation on scroll
+    featuresRef.current.forEach((feature, index) => {
+      if (feature) {
+        gsap.fromTo(feature,
+          {
+            opacity: 0,
+            y: 50,
+          },
+          {
+            scrollTrigger: {
+              trigger: feature,
+              start: "top 85%",
+              end: "bottom 20%",
+              toggleActions: "play reverse play reverse",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: index * 0.1,
+            ease: "power3.out",
+          }
+        );
+      }
+    });
+
+    // Welcome section animation
+    if (welcomeRef.current) {
+      const welcomeElements = welcomeRef.current.querySelectorAll(".col-lg-3, .col-lg-5, .col-lg-3 figure");
+      gsap.fromTo(welcomeElements,
+        {
+          opacity: 0,
+          y: 60,
+        },
+        {
+          scrollTrigger: {
+            trigger: welcomeRef.current,
+            start: "top 70%",
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.3,
+          ease: "power3.out",
+        }
+      );
+    }
+
+    // Services animation
+    servicesRef.current.forEach((service, index) => {
+      if (service) {
+        gsap.fromTo(service,
+          {
+            opacity: 0,
+            y: 80,
+          },
+          {
+            scrollTrigger: {
+              trigger: service,
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play reverse play reverse",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: index * 0.2,
+            ease: "power3.out",
+          }
+        );
+      }
+    });
+
+    // Customer/Agents blocks animation
+    customerAgentsRef.current.forEach((block, index) => {
+      if (block) {
+        gsap.fromTo(block,
+          {
+            opacity: 0,
+            y: 60,
+          },
+          {
+            scrollTrigger: {
+              trigger: block,
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play reverse play reverse",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: index * 0.2,
+            ease: "power3.out",
+          }
+        );
+      }
+    });
+
+    // Testimonials section animation
+    if (testimonialsRef.current) {
+      gsap.fromTo(testimonialsRef.current,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          scrollTrigger: {
+            trigger: testimonialsRef.current,
+            start: "top 75%",
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+        }
+      );
+    }
+
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
   // Features data array
   const featuresData = [
     {
@@ -48,8 +195,12 @@ const Home = () => {
       <section className="features py-3">
         <div className="custom-container">
           <div className="row">
-            {featuresData.map((feature) => (
-              <div key={feature.id} className="col-md-3">
+            {featuresData.map((feature, index) => (
+              <div 
+                key={feature.id} 
+                className="col-md-3"
+                ref={(el) => (featuresRef.current[index] = el)}
+              >
                 <div className="feature-col d-flex py-3">
                   <div className="feature-icon me-3">
                     <span
@@ -69,7 +220,7 @@ const Home = () => {
       <Homechitplans />
 
       {/* Welcome Section */}
-      <section className="welcomehome">
+      <section className="welcomehome" ref={welcomeRef}>
         <div className="custom-container">
           <div className="row justify-content-between">
             <div className="col-lg-3">
@@ -134,7 +285,10 @@ const Home = () => {
       <section className="serviceshome">
         <div className="g-0">
            <div className="row g-0">
-              <div className="col-md-4 g-0">
+              <div 
+                className="col-md-4 g-0"
+                ref={(el) => (servicesRef.current[0] = el)}
+              >
                   <div className="service-col">
                      <figure className="m-0 p-0">
                         <img src={chitfundImg} alt="Chit Fund Solutions" className="img-fluid"/>
@@ -145,7 +299,10 @@ const Home = () => {
                       </article>
                   </div>
               </div>
-                  <div className="col-md-4 g-0">
+                  <div 
+                    className="col-md-4 g-0"
+                    ref={(el) => (servicesRef.current[1] = el)}
+                  >
                   <div className="service-col">
                      <figure className="m-0 p-0">
                         <img src={transparentImg} alt="Chit Fund Solutions" className="img-fluid"/>
@@ -156,7 +313,10 @@ const Home = () => {
                       </article>
                   </div>
               </div>
-                  <div className="col-md-4 g-0">
+                  <div 
+                    className="col-md-4 g-0"
+                    ref={(el) => (servicesRef.current[2] = el)}
+                  >
                   <div className="service-col">
                      <figure className="m-0 p-0">
                         <img src={financialGuidenImg} alt="Chit Fund Solutions" className="img-fluid"/>
@@ -177,14 +337,20 @@ const Home = () => {
       <section className="customer-agents">
         <div className="custom-container w-100 g-0">
             <div className="row g-0">
-              <div className="col-md-6 customer-block left-customer  text-center border-end">
+              <div 
+                className="col-md-6 customer-block left-customer  text-center border-end"
+                ref={(el) => (customerAgentsRef.current[0] = el)}
+              >
                 <article>
                    <h4 className="text-uppercase font-bold mb-2">Amrat for Individuals Customers</h4>
                    <p>Amrat Chits empowers your personal financial journey. Our tailored chit schemes help you systematically save for life's big moments—a new home, your child's education, or a dream wedding. </p>
                     <Link to="" className="btn-primary-light">Find Out More</Link>
                 </article>               
               </div>
-              <div className="col-md-6 customer-block right-customer  text-center border-end">
+              <div 
+                className="col-md-6 customer-block right-customer  text-center border-end"
+                ref={(el) => (customerAgentsRef.current[1] = el)}
+              >
                 <article>
                    <h4 className="text-uppercase font-bold mb-2">Amrat Chits for Agents</h4>
                    <p>Amrat Chits empowers your personal financial journey. Our tailored chit schemes help you systematically save for life's big moments—a new home, your child's education, or a dream wedding. </p>
@@ -196,7 +362,7 @@ const Home = () => {
       </section>
 
       {/* testimonials section */}
-      <section className="testimonials-home">
+      <section className="testimonials-home" ref={testimonialsRef}>
          <div className="container">
              <Sectiontitle
                 title="Testimonials"

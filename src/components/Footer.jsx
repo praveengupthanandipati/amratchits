@@ -1,7 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Show button when page is scrolled down
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll to top smoothly
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
   return (
     <React.Fragment>
         <footer>
@@ -81,11 +104,23 @@ const Footer = () => {
                 </div>
                 {/** row */}
                 <div className='row rightsrow'>
-                    <div className='col-12 text-center'></div>
+                    <div className='col-12 text-center'>
                         <p className='text-white p-0 m-0'>© 2023 Amrat Chits. All rights reserved.</p>
                     </div>
-                </div>            
+                </div>
+            </div>            
         </footer>
+
+        {/* Scroll to Top Button */}
+        {showScrollTop && (
+          <button
+            onClick={scrollToTop}
+            className="scroll-to-top-btn"
+            aria-label="Scroll to top"
+          >
+            <span className="icon-arrowup icomoon"></span>
+          </button>
+        )}
     </React.Fragment>
   )
 }

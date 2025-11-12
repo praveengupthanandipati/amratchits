@@ -159,6 +159,7 @@ h1{
   position: relative;
   height: 100%;
   min-height: 300px;
+  border-radius: 15px;
   
   @include m.respond-above(map.get(v.$breakpoints, "md")) {
     min-height: 400px;
@@ -193,7 +194,8 @@ h1{
         left:5px;
         top:2px;
         bottom:0;
-        height: 98%;            
+        height: 98%;     
+         border-radius: 15px;       
       }
 
     img.sliderimg {
@@ -623,7 +625,7 @@ h1{
           &.active {
             border-bottom-color: map.get(v.$colors, "secondarynew");
             color: map.get(v.$colors, "secondarynew");
-            background: rgba(255, 255, 255, 0.1);
+            background: map.get(v.$colors, "white");
           }
         }
       }
@@ -631,6 +633,29 @@ h1{
     
     .chit-tab-content {
       padding: 2rem 0;
+      position: relative;
+      
+      .tab-pane {
+        @include m.transition(all, 0.3s, ease);
+      }
+      
+      // Animation classes for smooth tab transitions      
+      .tab-animating-in {
+        .col-lg-2, .col-md-4, .col-sm-6 {
+          animation: cardSlideUp 0.6s ease-out forwards;
+          @include m.translate(0, 30px);
+        }
+      }
+    }
+  }
+
+  // Keyframe animation for individual cards - smooth slide up
+  @keyframes cardSlideUp {
+    from {
+      @include m.translate(0, 30px);
+    }
+    to {
+      @include m.translate(0, 0);
     }
   }
 
@@ -712,7 +737,7 @@ h1{
         }
         
         &:hover {
-          background: map.get(v.$colors, "secondary");
+          background: map.get(v.$colors, "primarynew");
           @include m.translate(0, -2px);
         }
       }
@@ -977,8 +1002,16 @@ h1{
   min-height: 500px;
   padding:6rem 0;
 
+  .container{
+      position: relative;
+      z-index: 999;  
+    }
+
   .swiper-wrapper{
     padding-bottom:55px;
+    
+    
+ 
    
   }
 

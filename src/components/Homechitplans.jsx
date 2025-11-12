@@ -1,8 +1,59 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Sectiontitle from './Sectiontitle'
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 const Homechitplans = () => {
   const [activeTab, setActiveTab] = useState('monthly-long');
+  const [isAnimating, setIsAnimating] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    // Set initial visibility
+    if (sectionRef.current) {
+      gsap.set(sectionRef.current, { clearProps: "all" });
+    }
+
+    // Animate section on scroll
+    if (sectionRef.current) {
+      gsap.fromTo(sectionRef.current,
+        {
+          opacity: 0,
+          y: 60,
+        },
+        {
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+        }
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
+  // Handle tab change with animation
+  const handleTabChange = (tabId) => {
+    if (tabId !== activeTab) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setActiveTab(tabId);
+        setIsAnimating(false);
+      }, 300);
+    }
+  };
 
   // Tab data - 5 cards per tab
   const tabsData = [
@@ -254,7 +305,7 @@ const Homechitplans = () => {
 
   return (
     <React.Fragment>
-        <section className='chitplans-section'>
+        <section className='chitplans-section' ref={sectionRef}>
         <div className='custom-container'>
             <Sectiontitle 
                 title="Flexible, Secure CHIT Plans For You" 
@@ -271,7 +322,7 @@ const Homechitplans = () => {
                       <li key={tab.id} className="nav-item" role="presentation">
                         <button
                           className={`nav-link ${activeTab === tab.id ? 'active' : ''}`}
-                          onClick={() => setActiveTab(tab.id)}
+                          onClick={() => handleTabChange(tab.id)}
                           type="button"
                           role="tab"
                         >
@@ -283,10 +334,16 @@ const Homechitplans = () => {
 
                   {/* Tab Content */}
                   <div className="tab-content chit-tab-content">
-                    <div className="tab-pane fade show active">
-                      <div className="row g-3 pt-4">
-                        {currentTabData?.plans.map((plan) => (
-                          <div key={plan.id} className="col-lg-2 col-md-4 col-sm-6">
+                    <div className={`tab-pane fade show active ${isAnimating ? 'tab-animating-out' : 'tab-animating-in'}`}>
+                      <div className="row g-3 pt-4" key={activeTab}>
+                        {currentTabData?.plans.map((plan, index) => (
+                          <div 
+                            key={plan.id} 
+                            className="col-lg-2 col-md-4 col-sm-6"
+                            style={{ 
+                              animationDelay: `${index * 0.1}s`
+                            }}
+                          >
                             <div className="chit-plan-card bg-white rounded-4 p-3 h-100">
                               <div className="plan-details">
                                 <h3 className="chit-price-title text-center mb-3">

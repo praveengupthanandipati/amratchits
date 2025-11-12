@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import heroleftimg from "../assets/img/heroleft-banner.jpg";
 import herocarousel01 from "../assets/img/Herocarousel01.png";
 import herocarousel02 from "../assets/img/Herocarousel02.jpg";
@@ -8,12 +8,101 @@ import herovideoimg from "../assets/img/video-img.jpg";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
+
 const Homeherosection = () => {
+  const heroLeftRef = useRef(null);
+  const carouselRef = useRef(null);
+  const cardsRef = useRef([]);
+  const videoIframeRef = useRef(null);
+  const [showVideoModal, setShowVideoModal] = React.useState(false);
+  const [videoUrl, setVideoUrl] = React.useState('');
+
+  const handleVideoClick = (e) => {
+    e.preventDefault();
+    setVideoUrl('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=1&fs=1&loop=1&playlist=dQw4w9WgXcQ');
+    setShowVideoModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowVideoModal(false);
+    // Stop video by removing the src
+    setVideoUrl('');
+  };
+
+  useEffect(() => {
+    // Set initial visibility
+    gsap.set([heroLeftRef.current, carouselRef.current, ...cardsRef.current], { 
+      clearProps: "all" 
+    });
+
+    // Initial page load animations with delay to ensure DOM is ready
+    const tl = gsap.timeline({ delay: 0.2 });
+
+    // Animate left hero section
+    tl.fromTo(heroLeftRef.current, 
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        clearProps: "all"
+      }
+    );
+
+    // Animate carousel
+    tl.fromTo(
+      carouselRef.current,
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        clearProps: "all"
+      },
+      "-=0.5"
+    );
+
+    // Animate cards with stagger
+    tl.fromTo(
+      cardsRef.current,
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out",
+        clearProps: "all"
+      },
+      "-=0.5"
+    );
+
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      tl.kill();
+    };
+  }, []);
   // Carousel slides data
   const carouselSlides = [
     {
@@ -45,7 +134,10 @@ const Homeherosection = () => {
         <div className="custom-container">
           <div className="row align-items-center">
             <div className="col-12 col-md-6 mb-lg-0">
-              <div className="Heroleftimg position-relative mb-3 mb-md-0">
+              <div 
+                ref={heroLeftRef}
+                className="Heroleftimg position-relative mb-3 mb-md-0"
+              >
                 <img
                   src={heroleftimg}
                   alt="Heroleftimg"
@@ -67,7 +159,7 @@ const Homeherosection = () => {
             </div>
             <div className="col-12 col-lg-6">
               {/* carousel */}
-              <div className="HeroCarousel">
+              <div ref={carouselRef} className="HeroCarousel">
                 <Swiper
                   modules={[Navigation, Autoplay, EffectFade]}
                   spaceBetween={30}
@@ -127,7 +219,10 @@ const Homeherosection = () => {
               {/** cards */}
               <div className="row ">
                 <div className="col-6 col-md-4">
-                  <div className="hero-rt-card rounded-4">
+                  <div 
+                    ref={(el) => (cardsRef.current[0] = el)}
+                    className="hero-rt-card rounded-4"
+                  >
                     <article>
                       <h2 className="lato-black">1000+</h2>
                       <h5>Customers</h5>
@@ -138,7 +233,10 @@ const Homeherosection = () => {
                   </div>
                 </div>
                 <div className="col-6 col-md-4">
-                  <div className="hero-rt-card rounded-4">
+                  <div 
+                    ref={(el) => (cardsRef.current[1] = el)}
+                    className="hero-rt-card rounded-4"
+                  >
                     <article>
                       <h2 className="lato-black">150+</h2>
                       <h5>Chit Agents</h5>
@@ -149,21 +247,64 @@ const Homeherosection = () => {
                   </div>
                 </div>
                 <div className="col-12 col-md-4 mt-3 mt-md-0">
-                  <figure className="position-relative herovideoimg">
+                  <figure 
+                    ref={(el) => (cardsRef.current[2] = el)}
+                    className="position-relative herovideoimg"
+                  >
                     <img
                       src={herovideoimg}
                       alt="herovideoimg"
                       className="img-fluid rounded-4 w-100"
                     />
-                    <Link to="#" className="video-play-btn position-absolute">
+                    <button 
+                      onClick={handleVideoClick} 
+                      className="video-play-btn position-absolute border-0"
+                      style={{ background: 'none', cursor: 'pointer' }}
+                    >
                       <span className="icon-play icomoon"></span>
-                    </Link>
+                    </button>
                   </figure>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Video Modal */}
+        <div 
+          className={`modal fade ${showVideoModal ? 'show' : ''}`} 
+          style={{ display: showVideoModal ? 'block' : 'none' }}
+          tabIndex="-1"
+          onClick={handleCloseModal}
+        >
+          <div className="modal-dialog modal-dialog-centered modal-lg">
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <div className="modal-header border-0">
+                <h5 className="modal-title">Watch Our Video</h5>
+                <button 
+                  type="button" 
+                  className="btn-close" 
+                  onClick={handleCloseModal}
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body p-0">
+                <div className="ratio ratio-16x9">
+                  {videoUrl && (
+                    <iframe
+                      ref={videoIframeRef}
+                      src={videoUrl}
+                      title="Video Player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {showVideoModal && <div className="modal-backdrop fade show" onClick={handleCloseModal}></div>}
       </section>
     </React.Fragment>
   );
