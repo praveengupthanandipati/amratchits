@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import heroleftimg from "../assets/img/heroleft-banner.jpg";
 import herocarousel01 from "../assets/img/Herocarousel01.png";
-import herocarousel02 from "../assets/img/Herocarousel02.jpg";
-import herocarousel03 from "../assets/img/Herocarousel03.jpg";
+import herocarousel02 from "../assets/img/Herocarousel02.png";
+import herocarousel03 from "../assets/img/Herocarousel03.png";
 import herobannerpattern from "../assets/img/herobannerpattern.png";
 import herovideoimg from "../assets/img/video-img.jpg";
 import { Link } from "react-router-dom";
@@ -19,9 +19,7 @@ import "swiper/css/effect-fade";
 gsap.registerPlugin(ScrollTrigger);
 
 const Homeherosection = () => {
-  const heroLeftRef = useRef(null);
   const carouselRef = useRef(null);
-  const cardsRef = useRef([]);
   const videoIframeRef = useRef(null);
   const [showVideoModal, setShowVideoModal] = React.useState(false);
   const [videoUrl, setVideoUrl] = React.useState('');
@@ -39,68 +37,25 @@ const Homeherosection = () => {
   };
 
   useEffect(() => {
-    // Set initial visibility
-    gsap.set([heroLeftRef.current, carouselRef.current, ...cardsRef.current], { 
-      clearProps: "all" 
-    });
-
-    // Initial page load animations with delay to ensure DOM is ready
-    const tl = gsap.timeline({ delay: 0.2 });
-
-    // Animate left hero section
-    tl.fromTo(heroLeftRef.current, 
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-        clearProps: "all"
-      }
-    );
-
-    // Animate carousel
-    tl.fromTo(
-      carouselRef.current,
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-        clearProps: "all"
-      },
-      "-=0.5"
-    );
-
-    // Animate cards with stagger
-    tl.fromTo(
-      cardsRef.current,
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out",
-        clearProps: "all"
-      },
-      "-=0.5"
-    );
-
-    // Cleanup
+    // Animate carousel on load
+    if (carouselRef.current) {
+      gsap.fromTo(
+        carouselRef.current,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          clearProps: "all"
+        }
+      );
+    }
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      tl.kill();
     };
   }, []);
   // Carousel slides data
@@ -109,202 +64,159 @@ const Homeherosection = () => {
       id: 1,
       image: herocarousel01,
       alt: "Chit Fund Benefits",
-      title:
-        "Your Trusted Partner for a Secure Future. Save Smarter, Achieve Faster with Amrat Chits.",
+      title: "Secure Your Future with Amrat Chits India ",
+      description: "Secure your tomorrow with our reliable chit fund schemes and guaranteed, timely payouts.",
+      link: { url: "/contact", label: "Contact Us" }
     },
     {
       id: 2,
       image: herocarousel02,
       alt: "Investment Growth",
-      title:
-        "Build Your Dreams, Together. Start Your Secure Savings Plan with Amrat Chits Today.",
+      title: "Secure Your Future with Amrat Chits India ",
+      description: "Secure your tomorrow with our reliable chit fund schemes and guaranteed, timely payouts.",
+      link: { url: "/chit-plans", label: "View Chit Plans" }
     },
     {
       id: 3,
       image: herocarousel03,
       alt: "Trusted Partnership",
-      title:
-        "Plan, Save, Succeed. Your Reliable Path to Financial Goals with Our Chit Funds.",
+      title: "Secure Your Future with Amrat Chits India ",
+      description: "Secure your tomorrow with our reliable chit fund schemes and guaranteed, timely payouts.",
+      link: { url: "/about", label: "Learn More" }
     },
   ];
 
   return (
     <React.Fragment>
-      <section className="hero-section">
-        <div className="custom-container">
-          <div className="row align-items-center">
-            <div className="col-12 col-md-6 mb-lg-0">
-              <div 
-                ref={heroLeftRef}
-                className="Heroleftimg position-relative mb-3 mb-md-0"
-              >
-                <img
-                  src={heroleftimg}
-                  alt="Heroleftimg"
-                  className="img-fluid w-100 rounded-5"
-                />
-                <article>
-                  <h1 className="text-uppercase text-white font-bold">
-                    Secure Your Future with Amrat Chits India{" "}
-                  </h1>
-                  <p className="text-white pb-2 pt-1">
-                    Secure your tomorrow with our reliable chit fund schemes and
-                    guaranteed, timely payouts.
-                  </p>
-                  <Link to="/contact" className="btn-primary-light">
-                    Read More about us
-                  </Link>
-                </article>
-              </div>
-            </div>
-            <div className="col-12 col-lg-6">
-              {/* carousel */}
-              <div ref={carouselRef} className="HeroCarousel">
-                <Swiper
-                  modules={[Navigation, Autoplay, EffectFade]}
-                  spaceBetween={30}
-                  slidesPerView={1}
-                  navigation={{
-                    nextEl: ".hero-swiper-button-next",
-                    prevEl: ".hero-swiper-button-prev",
-                  }}
-                  autoplay={{
-                    delay: 4000,
-                    disableOnInteraction: false,
-                  }}
-                  effect="fade"
-                  fadeEffect={{
-                    crossFade: true,
-                  }}
-                  loop={true}
-                  className="hero-swiper"
-                >
-                  {carouselSlides.map((slide) => (
-                    <SwiperSlide key={slide.id} className="position-relative">
-                      <div className="carousel-slide">
-                        <img
-                          src={herobannerpattern}
-                          alt="herobannerpattern"
-                          className="herobannerpattern position-absolute"
-                        />
-                        <img
-                          src={slide.image}
-                          alt={slide.alt}
-                          className="img-fluid w-100 rounded-4 sliderimg"
-                        />
-                        <div className="carousel-content">
-                          <article>
-                            <h3 className="roboto-bold text-white text-uppercase">
-                              {slide.title}
-                            </h3>
-                          </article>
+      <section className="hero-section position-relative overflow-hidden">       
+        <div className="w-100">
+          <div className="HeroCarousel" ref={carouselRef}>
+            <Swiper
+              modules={[Navigation, Autoplay, EffectFade]}
+              spaceBetween={30}
+              slidesPerView={1}
+              navigation={{
+                nextEl: ".hero-swiper-button-next",
+                prevEl: ".hero-swiper-button-prev",
+              }}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+              }}
+              effect="fade"
+              fadeEffect={{
+                crossFade: true,
+              }}
+              loop={true}
+              className="hero-swiper"
+              style={{width: '100%', maxWidth: '100%'}}
+            >
+              {carouselSlides.map((slide) => (
+                <SwiperSlide key={slide.id} className="position-relative">
+                  <div className="carousel-slide" style={{
+                    height: window.innerWidth < 768 ? '100vh' : 'auto',
+                    minHeight: window.innerWidth < 768 ? '100vh' : 'auto',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '100%'
+                  }}>
+                    <div className="container h-100">
+                      <div className="row align-items-center flex-column flex-md-row h-100">
+                        {/* Left: Image */}
+                        <div className="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-center align-items-center h-100">
+                          <div style={{position: 'relative', width: '100%'}}>
+                            <img
+                              src={slide.image}
+                              alt={slide.alt}
+                              className="img-fluid sliderimg rounded-4"
+                              style={{
+                                position: 'relative',
+                                zIndex: 3,                                 
+                              }}
+                            />
+                          </div>
+                        </div>
+                        {/* Right: Article */}
+                        <div className="col-12 col-md-6 d-flex align-items-center justify-content-center h-100">
+                          <div className="carousel-content w-100 text-center text-md-start p-3 p-md-0" style={{
+                            background: window.innerWidth < 768 ? 'rgba(32,24,93,0.08)' : 'none',
+                            borderRadius: window.innerWidth < 768 ? '12px' : '0',
+                            boxShadow: window.innerWidth < 768 ? '0 2px 8px rgba(32,24,93,0.07)' : 'none',
+                            marginBottom: window.innerWidth < 768 ? '1rem' : '0'
+                          }}>
+                            <article>
+                              <h3 className="roboto-bold text-uppercase mb-3">
+                                {slide.title}
+                              </h3>
+                              <p className="mb-3" >{slide.description}</p>
+                              {slide.link && (
+                                <Link to={slide.link.url} className="btn-secondary text-uppercase mt-2 text-white">
+                                  Read More About us
+                                </Link>
+                              )}
+                            </article>
+                          </div>
                         </div>
                       </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-
-                {/* Custom Navigation Buttons */}
-                <div className="hero-swiper-button-prev swiper-nav-btn">
-                  <span class="icon-left-icon icomoon"></span>
-                </div>
-                <div className="hero-swiper-button-next swiper-nav-btn">
-                  <span class="icon-right-icon icomoon"></span>
-                </div>
-
-                {/* Custom Pagination */}
-                <div className="hero-swiper-pagination swiper-pagination-custom"></div>
-              </div>
-
-              {/** cards */}
-              <div className="row ">
-                <div className="col-6 col-md-4">
-                  <div 
-                    ref={(el) => (cardsRef.current[0] = el)}
-                    className="hero-rt-card rounded-4"
-                  >
-                    <article>
-                      <h2 className="lato-black">1000+</h2>
-                      <h5>Customers</h5>
-                    </article>
-                    <figure className="mt-3 mt-md-5">
-                      <span className="icon-customers icomoon"></span>
-                    </figure>
+                    </div>
                   </div>
-                </div>
-                <div className="col-6 col-md-4">
-                  <div 
-                    ref={(el) => (cardsRef.current[1] = el)}
-                    className="hero-rt-card rounded-4"
-                  >
-                    <article>
-                      <h2 className="lato-black">150+</h2>
-                      <h5>Chit Agents</h5>
-                    </article>
-                    <figure className="mt-3 mt-md-5">
-                      <span className="icon-agents icomoon"></span>
-                    </figure>
-                  </div>
-                </div>
-                <div className="col-12 col-md-4 mt-3 mt-md-0">
-                  <figure 
-                    ref={(el) => (cardsRef.current[2] = el)}
-                    className="position-relative herovideoimg"
-                  >
-                    <img
-                      src={herovideoimg}
-                      alt="herovideoimg"
-                      className="img-fluid rounded-4 w-100"
-                    />
-                    <button 
-                      onClick={handleVideoClick} 
-                      className="video-play-btn position-absolute border-0"
-                      style={{ background: 'none', cursor: 'pointer' }}
-                    >
-                      <span className="icon-play icomoon"></span>
-                    </button>
-                  </figure>
-                </div>
-              </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            {/* Custom Navigation Buttons */}
+            <div className="hero-swiper-button-prev swiper-nav-btn">
+              <span className="icon-left-icon icomoon"></span>
             </div>
+            <div className="hero-swiper-button-next swiper-nav-btn">
+              <span className="icon-right-icon icomoon"></span>
+            </div>
+            {/* Custom Pagination (not linked to Swiper, for future use) */}
+            {/* <div className="hero-swiper-pagination swiper-pagination-custom"></div> */}
           </div>
         </div>
 
         {/* Video Modal */}
-        <div 
-          className={`modal fade ${showVideoModal ? 'show' : ''}`} 
-          style={{ display: showVideoModal ? 'block' : 'none' }}
-          tabIndex="-1"
-          onClick={handleCloseModal}
-        >
-          <div className="modal-dialog modal-dialog-centered modal-xl">
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <div className="modal-header border-0">
-                <h5 className="modal-title">Watch Our Video</h5>
-                <button 
-                  type="button" 
-                  className="btn-close btn-close-black"
-                  onClick={handleCloseModal}
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div className="modal-body p-0">
-                <div className="ratio ratio-16x9">
-                  {videoUrl && (
-                    <iframe
-                      ref={videoIframeRef}
-                      src={videoUrl}
-                      title="Video Player"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
-                  )}
+        {showVideoModal && (
+          <div>
+            <div 
+              className="modal fade show" 
+              style={{ display: 'block' }}
+              tabIndex="-1"
+              role="dialog"
+              aria-modal="true"
+              onClick={handleCloseModal}
+            >
+              <div className="modal-dialog modal-dialog-centered modal-xl">
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                  <div className="modal-header border-0">
+                    <h5 className="modal-title">Watch Our Video</h5>
+                    <button 
+                      type="button" 
+                      className="btn-close btn-close-black"
+                      onClick={handleCloseModal}
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div className="modal-body p-0">
+                    <div className="ratio ratio-16x9">
+                      {videoUrl && (
+                        <iframe
+                          ref={videoIframeRef}
+                          src={videoUrl}
+                          title="Video Player"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        ></iframe>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            <div className="modal-backdrop fade show" style={{ zIndex: 1050 }} onClick={handleCloseModal}></div>
           </div>
-        </div>
-        {showVideoModal && <div className="modal-backdrop fade show" onClick={handleCloseModal}></div>}
+        )}
       </section>
     </React.Fragment>
   );

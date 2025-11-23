@@ -79,6 +79,7 @@ h1{
     }
   }
 
+
   .btn-primary-light {
     display: inline-block;
     padding: 12px 24px;
@@ -118,132 +119,109 @@ h1{
     }
   }
 
-.Heroleftimg{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  box-sizing: border-box;
-  height: 100%;
-  height:100%; 
+  .btn-secondary {
+    display: inline-block;
+    padding: 12px 24px;
+    background: map.get(v.$colors, "secondarynew");
+    color: map.get(v.$colors, "black");
+    text-decoration: none;
+    font-family: v.$froboto;
+    font-weight: map.get(v.$roboto-weights, "medium");    
+    border-radius: 25px;
+    @include m.transition(all, 0.3s, ease);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      @include m.transition(left, 0.5s, ease);
+    }
+
+    &:hover {
+      background: map.get(v.$colors, "secondary");
+      @include m.translate(0, -2px);
+      @include m.box-shadow(0px, 6px, 20px, rgba(227, 30, 37, 0.3));
+
+      &::before {
+        left: 100%;
+      }
+    }
+
+    &:active {
+      @include m.translate(0, 0);
+    }
+  }
 
   
-  &:before{
-    content:'';
-    width:100%;
-    height: 100%;
-    position: absolute;
-    top:0;
-    right:0;
-    left:0;
-    bottom:0;
-    background: linear-gradient(45deg, rgba(32, 24, 93, 0.5), rgba(227, 30, 37, 0.5));
-    border-radius:30px;
-  }
-  article{
-    position: absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:1;
-    border-radius:30px;
-    overflow:hidden;    
-    padding:40% 5rem;
-    transform: translate(calc(50% - 50%), 0);
-  }
-}
+
 
 // Hero Carousel Styles
 .HeroCarousel {
   position: relative;
   height: 100%;
-  min-height: 300px;
-  border-radius: 15px;
-  
-  @include m.respond-above(map.get(v.$breakpoints, "md")) {
-    min-height: 400px;
-  }
-
-  @include m.respond-below(map.get(v.$breakpoints, "md")) {
-    height: 300px;
-  }
-
+  background:linear-gradient(45deg, #D6D0FF, #FFDADB);
 
 
   .hero-swiper {
     height: 100%;
-    border-radius: 15px;
-    overflow: hidden;
-    @include m.box-shadow(0px, 10px, 30px, rgba(0, 0, 0, 0.15));
+    @include m.box-shadow(0px, 10px, 30px, rgba(0, 0, 0, 0.15));    
+    position: relative;
+
+      &:before{
+      content:"";
+      background-image: url('data:image/svg+xml,<svg width="950" height="707" viewBox="0 0 950 707" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H560L950 707H0V0Z" fill="%2320185D"/></svg>');  
+      background-repeat: no-repeat;      
+      background-position: 0 bottom;
+      position: absolute;   
+      background-size:cover;   
+      left:-45%;
+      top:60px;
+      width:100%;
+      height:100%;
+    }
 
     .swiper-slide {
-      position: relative;
-      overflow: hidden;
+      position: relative;      
     }
   }
 
   .carousel-slide {
     position: relative;
-    height: 100%;
-    overflow: hidden;
+    height: 100%;    
     z-index: 10;
-
-      .herobannerpattern{
-        z-index: 2;
-        left:5px;
-        top:2px;
-        bottom:0;
-        height: 98%;     
-         border-radius: 15px;       
-      }
 
     img.sliderimg {
       width: 100%;
-      height: 400px;
-      object-fit: cover;
+      height: 100%;      
       
-      @include m.respond-below(map.get(v.$breakpoints, "md")) {
-        height: 300px;
+      @include m.respond-below(map.get(v.$breakpoints, "md")) {       
+        width: 100%;
+        display: block;
       }
     }
 
-    .carousel-content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+    .carousel-content {      
       width: 100%;
       height: 100%;
-      padding: 2rem;
-      background: linear-gradient(45deg, rgba(32, 24, 93, 0.5), rgba(227, 30, 37, 0.5));
       color: map.get(v.$colors, "white");
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      z-index: 100;
-      align-items: start;
 
-      @include m.respond-below(map.get(v.$breakpoints, "md")) {
-        padding: 1.5rem;
-      }
-
-      article{
-        width:65%;
-
+      article{   
         @include m.respond-below(map.get(v.$breakpoints, "md")) {
-          width:100%;
-        }
-
-        h3 {
-        font-size: clamp(1.5rem, 1.7vw, 1.2rem);
-        margin-bottom: 0.5rem;
-        color: map.get(v.$colors, "white");
-        position:relative;
-        font-weight: map.get(v.$lato-weights, "bold");
-        z-index: 999;       
-      }
+          width:100%;          
+        }      
+        h3{
+            font-size:clamp(1rem, 3vw, 3rem);
+            color:map.get(v.$colors, "primarynew");
+          } 
+          p{
+            color:map.get(v.$colors, "black");
+          }
       }      
     }
   }
@@ -417,11 +395,16 @@ h1{
 
 // Hero Section Mobile Responsive Styles
 .hero-section { 
-  
-  @include m.respond-above(map.get(v.$breakpoints, "md")) {
-    padding: 1rem 0;
-  }
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(45deg, #D6D0FF, #FFDADB); 
 
+  .HeroCarousel{    
+    background: url('../assets/img/herobannerpattern.png') no-repeat right center;
+  }
+  
   // Equal height columns
   .row {
     @include m.respond-above(map.get(v.$breakpoints, "md")) {
@@ -471,6 +454,7 @@ h1{
         font-size: clamp(1.5rem, 4vw, 2.5rem);
         line-height: 1.2;
         margin-bottom: 0.5rem;
+        color:map.get(v.$colors, "primarynew");
         
         @include m.respond-below(map.get(v.$breakpoints, "md")) {
           font-size: clamp(1.2rem, 3.5vw, 2rem);

@@ -13,6 +13,29 @@
   position: relative;
 }
 
+.top-header{
+  background-image: url('data:image/svg+xml,<svg width="1817" height="50" viewBox="0 0 1817 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H1817V50H51L0 0Z" fill="%2320185D"/></svg>');  
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100px 0;
+  padding:10px 0;
+  color:map.get(v.$colors, "primary-50");
+
+  p{
+    margin:0;
+    padding:0;
+    font-size:14px;    
+  }
+  a{
+    color:map.get(v.$colors, "primary-50");
+    text-decoration: none;
+
+    &:hover{
+        text-decoration: underline;
+    }
+  }
+}
+
 // Logo Section
 .header-logo {
   flex-shrink: 0;
@@ -41,6 +64,7 @@
     margin: 0;
     padding: 0;
     gap: 2rem;
+    justify-content: end;
   }
 
   .nav-item {
@@ -135,17 +159,18 @@
 .mobile-menu-toggle {
   display: none;
   flex-direction: column;
-  background: none;
+  background: map.get(v.$colors, "primarynew");
   border: none;
   cursor: pointer;
   padding: 8px;
   z-index: 1001;
+  border-radius: 8px;
   @include m.transition(all, 0.3s, ease);
 
   .hamburger-line {
     width: 25px;
     height: 3px;
-    background: map.get(v.$colors, "primary");
+    background: map.get(v.$colors, "white");
     margin: 3px 0;
     @include m.transition(all, 0.3s, ease);
     border-radius: 2px;
@@ -199,6 +224,10 @@
 
   .mobile-menu-toggle {
     display: flex;
+    background: map.get(v.$colors, "primarynew");
+    .hamburger-line {
+      background: map.get(v.$colors, "white");
+    }
   }
 
   .header-actions {
@@ -225,6 +254,22 @@
 
     &.nav-open {
       right: 0;
+      /* Light, efficient gradient background for mobile nav */
+      background: linear-gradient(120deg, map.get(v.$colors, "white") 60%, map.get(v.$colors, "primary-50") 100%);
+      box-shadow: 0 0 40px 0 rgba(32,24,93,0.12);
+      position: fixed;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(184,174,255,0.10);
+        z-index: 0;
+        pointer-events: none;
+      }
+      > * {
+        position: relative;
+        z-index: 1;
+      }
     }
 
     .nav-menu {
@@ -234,6 +279,7 @@
       padding: 0 20px;
       flex: 1;
       overflow-y: auto;
+      justify-content: flex-start;
     }
 
     .nav-item {
