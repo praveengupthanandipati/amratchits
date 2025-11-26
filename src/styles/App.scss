@@ -329,11 +329,11 @@ h1{
   }
 }
 
-.hero-rt-card{
+.feature-column{
  background: linear-gradient(45deg, rgba(223, 218, 255, 0.8), rgba(255, 219, 221, 0.8)); 
  height: 100%;
  width:100%;
- padding: 1.3rem;
+ padding: 2rem;
  border-radius: 30px;
  color: map.get(v.$colors, "black");
  display: flex;
@@ -343,10 +343,16 @@ h1{
  h2{
   font-size:clamp(2rem, 4vw, 3rem);
   margin:0;  
+  padding-top:2rem;
  }
 
  h5{
   font-size:1.1rem;
+
+ }
+
+ .icon{
+  padding:50px 0;
  }
 
  .icomoon{
@@ -358,8 +364,13 @@ h1{
 .herovideoimg{
   width: 100%;
   max-height: 100%;
-  object-fit: cover;
   margin: 0;
+
+  img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
 
   a{
     text-decoration: none;
@@ -378,17 +389,10 @@ h1{
     @include m.translate(-50%, -50%);
 
     &:hover{
-      background: map.get(v.$colors, "primary");
-      
-      .icon-play{
-        color: map.get(v.$colors, "white");
-      }
+      background: map.get(v.$colors, "primary");    
     }
-
     .icon-play{
-      font-size: 4rem;
-      color: map.get(v.$colors, "white");
-      line-height:1;
+      font-size: 4rem!important;     
     }
   }
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Homeherosection from "../components/Homeherosection";
+import Homefeatures from "../components/Homefeatures";
 import Homechitplans from "../components/Homechitplans";
 import Sectiontitle from "../components/Sectiontitle";
 import Whatsets from "../components/Whatsets";
@@ -16,7 +17,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  const featuresRef = useRef([]);
   const welcomeRef = useRef(null);
   const servicesRef = useRef([]);
   const customerAgentsRef = useRef([]);
@@ -25,37 +25,12 @@ const Home = () => {
   useEffect(() => {
     // Set initial visibility for all elements
     gsap.set([
-      ...featuresRef.current,
       welcomeRef.current,
       ...servicesRef.current,
       ...customerAgentsRef.current,
       testimonialsRef.current
     ], { clearProps: "all" });
 
-    // Features animation on scroll
-    featuresRef.current.forEach((feature, index) => {
-      if (feature) {
-        gsap.fromTo(feature,
-          {
-            opacity: 0,
-            y: 50,
-          },
-          {
-            scrollTrigger: {
-              trigger: feature,
-              start: "top 85%",
-              end: "bottom 20%",
-              toggleActions: "play reverse play reverse",
-            },
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            delay: index * 0.1,
-            ease: "power3.out",
-          }
-        );
-      }
-    });
 
     // Welcome section animation
     if (welcomeRef.current) {
@@ -158,63 +133,16 @@ const Home = () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
-  // Features data array
-  const featuresData = [
-    {
-      id: 1,
-      icon: "icon-trusted",
-      title: "Trusted & Secure",
-      subtitle: "Financial Partnerships",
-    },
-    {
-      id: 2,
-      icon: "icon-savings",
-      title: "Achieve Big Goals",
-      subtitle: "with Small Savings",
-    },
-    {
-      id: 3,
-      icon: "icon-wallet",
-      title: "Flexible Payouts &",
-      subtitle: "Loan Facilities",
-    },
-    {
-      id: 4,
-      icon: "icon-bonus",
-      title: "Bonus Earnings",
-      subtitle: "as a Subscriber",
-    },
-  ];
 
   return (
     <React.Fragment>
       <section className="herosection">
         <Homeherosection />
       </section>
-      {/* features */}
-      <section className="features py-3">
-        <div className="custom-container">
-          <div className="row">
-            {featuresData.map((feature, index) => (
-              <div 
-                key={feature.id} 
-                className="col-md-3"
-                ref={(el) => (featuresRef.current[index] = el)}
-              >
-                <div className="feature-col d-flex py-3">
-                  <div className="feature-icon me-3">
-                    <span
-                      className={`${feature.icon} icomoon text-secondarynew`}
-                    ></span>
-                  </div>
-                  <p className="align-self-center p-0 m-0">
-                    {feature.title} <br /> {feature.subtitle}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+
+      {/* Features Section  */}
+      <section className="features-section py-2 py-md-5">
+        <Homefeatures />
       </section>
       {/* chit plans section */}
       <Homechitplans />
