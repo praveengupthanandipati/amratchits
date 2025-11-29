@@ -835,40 +835,102 @@ h1{
           }
         }
        }
+
+       .welcome-img{
+        position: relative;
+        width:350px;        
+        margin-top:50px;
+
+         &:before{
+            content:'';
+            width:100%;
+            height: 100%;
+            position: absolute;
+            top:-30px;
+            right:-30px;
+            background:map.get(v.$colors, "primarynew");
+            border-radius:25px;
+            z-index: -1;
+            }
+       }
+
+       .welcome-col{
+        margin-bottom:25px;
+          .icon-div{
+              width:80px;
+              height:80px;
+              background: map.get(v.$colors, "primarynew");
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: 50%;
+              flex-shrink: 0;            
+              overflow: hidden;
+              
+              .icomoon{
+                font-size:clamp(1.3rem, 2.2vw, 2.2rem);
+                color: map.get(v.$colors, "primary-50");
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+          }
+       }
+
+       
   }
 
   .serviceshome{
-    .row{
-      .col-md-4{
-          .service-col{
-            position: relative;
-            article{
-              width:90%;
-              margin:-200px auto 0 auto;
-              border-radius:25px;
-              padding:2rem;
-              color: map.get(v.$colors, "white");
-              z-index: 999;
-              position: relative;
+    position: relative;
+    padding:5rem 0;
 
-              h3{
-                font-size:clamp(1.3rem, 1.8vw, 1.8rem);
-                font-weight: map.get(v.$lato-weights, "bold");
-                margin-bottom:0.5rem;
-                text-transform: uppercase;
-              }
+    &:before{
+      content:'';
+      background: url("../assets/img/bg-service.svg") center top  no-repeat;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top center;
+      position: absolute;
+      top:0;
+      left:0;
+      right:0;
+      width:100%;
+      height: 70%;
+      z-index: 0;
+    }
+    .row{     
+    
+      .col-md-4{              
+        .service-col{            
+          position: relative;
+          z-index: 999;
+          
+          figure{
+            img{
+              width:100%;           
+              object-fit: cover;
+              border-top-left-radius:25px;
+              border-top-right-radius:25px;
             }
-         }         
-      }
-      :nth-child(1) .service-col article{         
-          background: linear-gradient(45deg, rgba(9, 0, 72, 0.9), rgba(32, 24, 93, 0.9));
-      }
-      :nth-child(2) .service-col article{                   
-          background: linear-gradient(45deg, rgba(223, 218, 255, 0.9), rgba(200, 190, 255, 0.9));
-          color: map.get(v.$colors, "black");
-      }
-      :nth-child(3) .service-col article{    
-          background : linear-gradient(45deg, rgba(227, 30, 37, 0.9), rgba(255, 99, 130, 1));
+          }
+          article{
+            border-bottom-left-radius:25px;
+            border-bottom-right-radius:25px;
+            padding:2.5rem;
+            z-index: 999;
+            text-align: center;
+            background: #F7F0FF;                 
+            h3{
+              font-size:clamp(1.1rem, 1.3vw, 1.3rem);
+              font-weight: map.get(v.$lato-weights, "bold");
+              margin-bottom:0.5rem;
+              text-transform: uppercase;
+              color:map.get(v.$colors, "primarynew");
+            }
+          }
+        }
       }
     }
   }
@@ -959,7 +1021,7 @@ h1{
       top:0;
       left:0;      
       opacity: 0.9;
-      background: linear-gradient(45deg, rgba(32, 24, 93, 0.99), rgba(227, 30, 37, 0.99));
+      // background: linear-gradient(45deg, rgba(32, 24, 93, 0.99), rgba(227, 30, 37, 0.99));
       z-index:1;
     }
 
@@ -980,9 +1042,20 @@ h1{
 
 .left-customer{
   background: url(../assets/img/left-customer-bg.jpg)no-repeat center center / cover;
+
+    &:before{
+      content:''; 
+      background: map.get(v.$colors, "primarynew");     
+    }
+
 }
 .right-customer{
   background: url(../assets/img/rt-customer-bg.jpg)no-repeat center center / cover;
+
+    &:before{
+      content:''; 
+      background: map.get(v.$colors, "secondarynew");     
+    }
 }
 
 .testimonials-home{
