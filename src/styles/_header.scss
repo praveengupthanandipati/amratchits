@@ -4,6 +4,21 @@
 @use "./mixins.scss" as m;
 
 
+// Smooth GSAP transition for fixed header
+.fixed-header{
+  background:map.get(v.$colors, "white");
+  box-shadow: 0 8px 24px rgba(32,24,93,0.12);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  opacity: 1;
+  will-change: box-shadow, transform, opacity;
+  transition: box-shadow 0.5s cubic-bezier(0.4,0.2,0.2,1), opacity 0.5s, transform 0.5s;
+}
+
+
 // Header Row Layout
 .header-row {
   display: flex;

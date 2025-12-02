@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useLayoutEffect } from "react";
+// import gsap from "gsap";
 import Homeherosection from "../components/Homeherosection";
 import Homefeatures from "../components/Homefeatures";
 import Homechitplans from "../components/Homechitplans";
 import Sectiontitle from "../components/Sectiontitle";
 import Whatsets from "../components/Whatsets";
 import Testimonials from "../components/Testimonials";
+import Whoweare from "../components/Whoweare";
 import { Link } from "react-router-dom";
 import welcomeImg from "../assets/img/welcome-img.jpg";
 import chitfundImg from "../assets/img/chitfundsolutions-img.jpg";
@@ -18,11 +20,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
   const welcomeRef = useRef(null);
+  const servicesSectionRef = useRef(null);
   const servicesRef = useRef([]);
+  const servicesData = [
+    {
+      img: chitfundImg,
+      title: "Chit Fund Solutions",
+      desc: "We offer a wide range of chit fund options tailored to meet the diverse needs of our customers. Our chit funds provide an opportunity for disciplined savings and the chance to access funds when needed."
+    },
+    {
+      img: transparentImg,
+      title: "Transparent Processes",
+      desc: "We believe in maintaining transparency in all our processes. Our customers can trust that their investments are handled with utmost care and transparency."
+    },
+    {
+      img: financialGuidenImg,
+      title: "Financial Guidance",
+      desc: "We understand that financial decisions can be complex. Our expert team is always available to provide guidance and assist our customers in making informed investment choices."
+    }
+  ];
   const customerAgentsRef = useRef([]);
   const testimonialsRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Set initial visibility for all elements
     gsap.set([
       welcomeRef.current,
@@ -31,80 +51,110 @@ const Home = () => {
       testimonialsRef.current
     ], { clearProps: "all" });
 
-
-    // Welcome section animation
+    // Welcome section animation (top-bottom, repeat on scroll)
     if (welcomeRef.current) {
-      const welcomeElements = welcomeRef.current.querySelectorAll(".col-lg-3, .col-lg-5, .col-lg-3 figure");
-      gsap.fromTo(welcomeElements,
-        {
-          opacity: 0,
-          y: 60,
-        },
-        {
-          scrollTrigger: {
-            trigger: welcomeRef.current,
-            start: "top 70%",
-            end: "bottom 20%",
-            toggleActions: "play reverse play reverse",
-          },
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          stagger: 0.3,
-          ease: "power3.out",
-        }
-      );
+      const welcomeCols = welcomeRef.current.querySelectorAll('.welcome-col');
+      let observer = new window.IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            welcomeCols.forEach((el, idx) => {
+              gsap.fromTo(
+                el,
+                { opacity: 0, y: -60 },
+                {
+                  opacity: 1,
+                  y: 0,
+                  duration: 1,
+                  delay: idx * 0.5,
+                  ease: "power3.out"
+                }
+              );
+            });
+          } else {
+            welcomeCols.forEach((el) => {
+              gsap.set(el, { opacity: 0 });
+            });
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(welcomeRef.current);
+      return () => {
+        if (observer && welcomeRef.current) observer.unobserve(welcomeRef.current);
+      };
     }
 
-    // Services animation
-    servicesRef.current.forEach((service, index) => {
-      if (service) {
-        gsap.fromTo(service,
-          {
-            opacity: 0,
-            y: 80,
-          },
-          {
-            scrollTrigger: {
-              trigger: service,
-              start: "top 80%",
-              end: "bottom 20%",
-              toggleActions: "play reverse play reverse",
-            },
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            delay: index * 0.2,
-            ease: "power3.out",
+    // .service-col GSAP animation on scroll with delay
+    if (servicesSectionRef.current) {
+      const serviceCols = servicesSectionRef.current.querySelectorAll('.service-col');
+      serviceCols.forEach((el) => {
+        if (el) gsap.set(el, { opacity: 0, y: -60 });
+      });
+      let observer = new window.IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            serviceCols.forEach((el, idx) => {
+              if (el) {
+                gsap.to(el, {
+                  opacity: 1,
+                  y: 0,
+                  duration: 1,
+                  delay: idx * 0.5,
+                  ease: "power3.out"
+                });
+              }
+            });
+          } else {
+            serviceCols.forEach((el) => {
+              if (el) gsap.set(el, { opacity: 0, y: -60 });
+            });
           }
-        );
-      }
-    });
+        });
+      }, { threshold: 0.3 });
+      observer.observe(servicesSectionRef.current);
+      return () => {
+        if (observer && servicesSectionRef.current) observer.unobserve(servicesSectionRef.current);
+      };
+    }
 
-    // Customer/Agents blocks animation
-    customerAgentsRef.current.forEach((block, index) => {
-      if (block) {
-        gsap.fromTo(block,
-          {
-            opacity: 0,
-            y: 60,
-          },
-          {
-            scrollTrigger: {
-              trigger: block,
-              start: "top 80%",
-              end: "bottom 20%",
-              toggleActions: "play reverse play reverse",
-            },
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            delay: index * 0.2,
-            ease: "power3.out",
-          }
-        );
+    // Customer/Agents section animation (onscroll, left/right fade-in)
+    if (customerAgentsRef.current.length === 2) {
+      const [leftEl, rightEl] = customerAgentsRef.current;
+      if (leftEl) gsap.set(leftEl, { opacity: 0, x: -60 });
+      if (rightEl) gsap.set(rightEl, { opacity: 0, x: 60 });
+      const parent = leftEl?.parentNode?.parentNode;
+      if (parent) {
+        let observer = new window.IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              if (leftEl) {
+                gsap.to(leftEl, {
+                  opacity: 1,
+                  x: 0,
+                  duration: 1,
+                  ease: "power3.out"
+                });
+              }
+              if (rightEl) {
+                gsap.to(rightEl, {
+                  opacity: 1,
+                  x: 0,
+                  duration: 1,
+                  delay: 0.3,
+                  ease: "power3.out"
+                });
+              }
+            } else {
+              if (leftEl) gsap.set(leftEl, { opacity: 0, x: -60 });
+              if (rightEl) gsap.set(rightEl, { opacity: 0, x: 60 });
+            }
+          });
+        }, { threshold: 0.3 });
+        observer.observe(parent);
+        return () => {
+          if (observer && parent) observer.unobserve(parent);
+        };
       }
-    });
+    }
 
     // Testimonials section animation
     if (testimonialsRef.current) {
@@ -202,58 +252,33 @@ const Home = () => {
 
       {/* services Section */}
       <section className="serviceshome">
-        <div className="container">     
-           <div className="pb-2 pb-md-5 position-relative z-index-1">
-              <Sectiontitle
-                title="Our Services"
-                titleClass="text-primarynew text-uppercase font-bold text-white"
-              />     
-              <p className="text-white">Our reliable chit schemes help you achieve financial goals through disciplined savings and timely payouts.</p>
-           </div>
-           <div className="row">
-              <div 
-                className="col-md-4"
-                ref={(el) => (servicesRef.current[0] = el)}
+        <div className="container" ref={servicesSectionRef}>     
+          <div className="pb-2 pb-md-5 position-relative z-index-1">
+            <Sectiontitle
+             title="Our Services"
+             titleClass="text-primarynew text-uppercase font-bold text-white"
+            />     
+            <p className="text-white">Our reliable chit schemes help you achieve financial goals through disciplined savings and timely payouts.</p>
+          </div>
+          <div className="row align-items-stretch">
+            {servicesData.map((item, idx) => (
+              <div
+                className="col-md-4 d-flex"
+                key={idx}
+                ref={el => servicesRef.current[idx] = el}
               >
-                  <div className="service-col">
-                     <figure className="m-0 p-0">
-                        <img src={chitfundImg} alt="Chit Fund Solutions" className="img-fluid"/>
-                      </figure>
-                      <article>
-                         <h3>Chit Fund Solutions</h3>
-                         <p className="p-0 m-0">We offer a wide range of chit fund options tailored to meet the diverse needs of our customers. Our chit funds provide an opportunity for disciplined savings and the chance to access funds when needed.</p>
-                      </article>
-                  </div>
+                <div className="service-col w-100 d-flex flex-column shadow-sm rounded-5">
+                  <figure className="m-0 p-0">
+                    <img src={item.img} alt={item.title} className="img-fluid" />
+                  </figure>
+                  <article className="flex-grow-1">
+                    <h3>{item.title}</h3>
+                    <p className="p-0 m-0">{item.desc}</p>
+                  </article> 
+                </div>
               </div>
-                  <div 
-                    className="col-md-4"
-                    ref={(el) => (servicesRef.current[1] = el)}
-                  >
-                  <div className="service-col">
-                     <figure className="m-0 p-0">
-                        <img src={transparentImg} alt="Chit Fund Solutions" className="img-fluid"/>
-                      </figure>
-                      <article>
-                         <h3>Transparent Processes</h3>
-                         <p className="p-0 m-0">We believe in maintaining transparency in all our processes. Our customers can trust that their investments are handled with utmost care and transparency.</p>
-                      </article>
-                  </div>
-              </div>
-                  <div 
-                    className="col-md-4"
-                    ref={(el) => (servicesRef.current[2] = el)}
-                  >
-                  <div className="service-col">
-                     <figure className="m-0 p-0">
-                        <img src={financialGuidenImg} alt="Chit Fund Solutions" className="img-fluid"/>
-                      </figure>
-                      <article>
-                         <h3>Financial Guidance</h3>
-                         <p className="p-0 m-0">We understand that financial decisions can be complex. Our expert team is always available to provide guidance and assist our customers in making informed investment choices.</p>
-                      </article>
-                  </div>
-              </div>
-           </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -285,6 +310,11 @@ const Home = () => {
               </div>
             </div>
         </div>
+      </section>
+
+      {/* Who We are Section */}
+      <section className="homeWhoweare">
+        <Whoweare />
       </section>
 
       {/* testimonials section */}

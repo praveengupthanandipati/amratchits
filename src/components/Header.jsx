@@ -1,10 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
 import logo from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef(null);
+  // Scroll event for header behavior
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // GSAP animation for fixed-header
+  useEffect(() => {
+    if (headerRef.current) {
+      if (scrolled) {
+        gsap.to(headerRef.current, {
+          y: 0,
+          opacity: 1,
+          boxShadow: "0 8px 24px rgba(32,24,93,0.12)",
+          duration: 0.7,
+          ease: "elastic.out(1, 0.5)"
+        });
+      } else {
+        gsap.to(headerRef.current, {
+          y: 0,
+          opacity: 1,
+          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+          duration: 0.5,
+          ease: "power3.inOut"
+        });
+      }
+    }
+  }, [scrolled]);
 
   // Check if device is mobile
   useEffect(() => {
@@ -64,10 +102,9 @@ const Header = () => {
       title: "Services",
       href: "/services",
       subMenu: [
-        { title: "Chit Fund Management", href: "/services/chit-management" },
-        { title: "Financial Consulting", href: "/services/consulting" },
-        { title: "Investment Advisory", href: "/services/investment" },
-        { title: "Loan Services", href: "/services/loans" },
+        { title: "Chit Fund Solutions", href: "/services/chit-management" },
+        { title: "Transparent Processes", href: "/services/consulting" },
+        { title: "Financial Guidance", href: "/services/investment" },        
       ],
     },
     {
@@ -117,8 +154,8 @@ const Header = () => {
   return (
     <React.Fragment>
       <header className="header-section">
-        {/* Header top - hidden on mobile */}
-        <section className="top-header d-none d-md-block">
+        {/* Header top - hidden on scroll */}
+        <section className={`top-header d-none d-md-block${scrolled ? " top-header-hide" : ""}`}>
           <div className="container">
             <div className="row">
               <div className="col-md-6">
@@ -143,7 +180,10 @@ const Header = () => {
             </div>
           </div>
         </section>
-        <section className="main-header">
+        <section
+          className={`main-header${scrolled ? " fixed-header" : ""}`}
+          ref={headerRef}
+        >
           <div className="container">
             <div className="header-row justify-content-between align-items-center">
               {/* Left: Logo */}
@@ -232,6 +272,16 @@ const Header = () => {
             </div>
           </div>
         </section>
+        {/* Scroll-to-top button */}
+        {scrolled && (
+          <button
+            className="scroll-to-top-btn"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Scroll to top"
+          >
+            ↑
+          </button>
+        )}
         {/* Mobile Menu Overlay */}
         {isMobile && isMenuOpen && (
           <div className="mobile-overlay" onClick={closeMenu}></div>

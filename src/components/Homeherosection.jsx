@@ -64,24 +64,24 @@ const Homeherosection = () => {
       id: 1,
       image: herocarousel01,
       alt: "Chit Fund Benefits",
-      title: "Secure Your Future with Amrat Chits India ",
-      description: "Secure your tomorrow with our reliable chit fund schemes and guaranteed, timely payouts.",
+      title: "A Legacy of Trust, A Future of Security.",
+      description: "For decades, we've empowered dreams with transparent, RBI-compliant chit funds. Your trusted partner for secure savings and timely loans.",
       link: { url: "/contact", label: "Contact Us" }
     },
     {
       id: 2,
       image: herocarousel02,
       alt: "Investment Growth",
-      title: "Secure Your Future with Amrat Chits India ",
-      description: "Secure your tomorrow with our reliable chit fund schemes and guaranteed, timely payouts.",
+      title: "Your Goal, Our Plan. Achieve It Sooner. ",
+      description: "Plan for education, a home, or a business with our disciplined chit schemes. Turn your ambitions into reality faster.",
       link: { url: "/chit-plans", label: "View Chit Plans" }
     },
     {
       id: 3,
       image: herocarousel03,
       alt: "Trusted Partnership",
-      title: "Secure Your Future with Amrat Chits India ",
-      description: "Secure your tomorrow with our reliable chit fund schemes and guaranteed, timely payouts.",
+      title: "Simple Savings, Collective Growth. ",
+      description: "Join a community-driven financial journey. Save regularly and access a large fund when you need it most.",
       link: { url: "/about", label: "Learn More" }
     },
   ];
@@ -139,7 +139,7 @@ const Homeherosection = () => {
                         </div>
                         {/* Right: Article */}
                         <div className="col-12 col-md-6 d-flex align-items-center justify-content-center h-100">
-                          <div className="carousel-content w-100 text-center text-md-start p-3 p-md-0" style={{
+                          <div className="carousel-content w-100 text-center text-md-start" style={{
                             background: window.innerWidth < 768 ? 'rgba(32,24,93,0.08)' : 'none',
                             borderRadius: window.innerWidth < 768 ? '12px' : '0',
                             boxShadow: window.innerWidth < 768 ? '0 2px 8px rgba(32,24,93,0.07)' : 'none',

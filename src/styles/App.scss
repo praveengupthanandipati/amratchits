@@ -9,220 +9,238 @@
 @use "./fonts.scss";
 
 //fonts Lato
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 //font-family: "Lato", sans-serif;
 
 //fonts-Roboto
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 //font-family: "Roboto", sans-serif;
 
-body{
-    font-size: v.$fsize;
-    @include m.siteMain;
+body {
+  font-size: v.$fsize;
+  @include m.siteMain;
 }
 
-.custom-container{
-    width:90%;
-    margin:0 auto;
+.custom-container {
+  width: 90%;
+  margin: 0 auto;
 
-    @include m.respond-below(map.get(v.$breakpoints, "md")) {
-        width:95%;
-    }
+  @include m.respond-below(map.get(v.$breakpoints, "md")) {
+    width: 95%;
+  }
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: v.$flato;
-    margin: 0;
-    padding: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: v.$flato;
+  margin: 0;
+  padding: 0;
 }
 
-h1{
-  font-size:clamp(2.5rem, 3vw, 3rem);
+h1 {
+  font-size: clamp(2.5rem, 3vw, 3rem);
 }
 
 .connect-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background: map.get(v.$colors, "primarynew");
-    color: map.get(v.$colors, "white");
-    text-decoration: none;
-    font-family: v.$froboto;
-    font-weight: map.get(v.$roboto-weights, "medium");    
-    border-radius: 25px;
-    @include m.transition(all, 0.3s, ease);
-    position: relative;
-    overflow: hidden;
+  display: inline-block;
+  padding: 12px 24px;
+  background: map.get(v.$colors, "primarynew");
+  color: map.get(v.$colors, "white");
+  text-decoration: none;
+  font-family: v.$froboto;
+  font-weight: map.get(v.$roboto-weights, "medium");
+  border-radius: 25px;
+  @include m.transition(all, 0.3s, ease);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    @include m.transition(left, 0.5s, ease);
+  }
+
+  &:hover {
+    background: map.get(v.$colors, "secondary");
+    @include m.translate(0, -2px);
+    @include m.box-shadow(0px, 6px, 20px, rgba(227, 30, 37, 0.3));
 
     &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      @include m.transition(left, 0.5s, ease);
-    }
-
-    &:hover {
-      background: map.get(v.$colors, "secondary");
-      @include m.translate(0, -2px);
-      @include m.box-shadow(0px, 6px, 20px, rgba(227, 30, 37, 0.3));
-
-      &::before {
-        left: 100%;
-      }
-    }
-
-    &:active {
-      @include m.translate(0, 0);
+      left: 100%;
     }
   }
 
+  &:active {
+    @include m.translate(0, 0);
+  }
+}
 
-  .btn-primary-light {
-    display: inline-block;
-    padding: 12px 24px;
-    background: map.get(v.$colors, "primary-50");
-    color: map.get(v.$colors, "black");
-    text-decoration: none;
-    font-family: v.$froboto;
-    font-weight: map.get(v.$roboto-weights, "medium");    
-    border-radius: 25px;
-    @include m.transition(all, 0.3s, ease);
-    position: relative;
-    overflow: hidden;
+.btn-primary-light {
+  display: inline-block;
+  padding: 12px 24px;
+  background: map.get(v.$colors, "primary-50");
+  color: map.get(v.$colors, "black");
+  text-decoration: none;
+  font-family: v.$froboto;
+  font-weight: map.get(v.$roboto-weights, "medium");
+  border-radius: 25px;
+  @include m.transition(all, 0.3s, ease);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    @include m.transition(left, 0.5s, ease);
+  }
+
+  &:hover {
+    background: map.get(v.$colors, "secondary");
+    @include m.translate(0, -2px);
+    @include m.box-shadow(0px, 6px, 20px, rgba(227, 30, 37, 0.3));
 
     &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      @include m.transition(left, 0.5s, ease);
-    }
-
-    &:hover {
-      background: map.get(v.$colors, "secondary");
-      @include m.translate(0, -2px);
-      @include m.box-shadow(0px, 6px, 20px, rgba(227, 30, 37, 0.3));
-
-      &::before {
-        left: 100%;
-      }
-    }
-
-    &:active {
-      @include m.translate(0, 0);
+      left: 100%;
     }
   }
 
-  .btn-secondary {
-    display: inline-block;
-    padding: 12px 24px;
-    background: map.get(v.$colors, "secondarynew");
-    color: map.get(v.$colors, "black");
-    text-decoration: none;
-    font-family: v.$froboto;
-    font-weight: map.get(v.$roboto-weights, "medium");    
-    border-radius: 25px;
-    @include m.transition(all, 0.3s, ease);
-    position: relative;
-    overflow: hidden;
+  &:active {
+    @include m.translate(0, 0);
+  }
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 12px 24px;
+  background: map.get(v.$colors, "secondarynew");
+  color: map.get(v.$colors, "black");
+  text-decoration: none;
+  font-family: v.$froboto;
+  font-weight: map.get(v.$roboto-weights, "medium");
+  border-radius: 25px;
+  @include m.transition(all, 0.3s, ease);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    @include m.transition(left, 0.5s, ease);
+  }
+
+  &:hover {
+    background: map.get(v.$colors, "secondary");
+    @include m.translate(0, -2px);
+    @include m.box-shadow(0px, 6px, 20px, rgba(227, 30, 37, 0.3));
 
     &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      @include m.transition(left, 0.5s, ease);
-    }
-
-    &:hover {
-      background: map.get(v.$colors, "secondary");
-      @include m.translate(0, -2px);
-      @include m.box-shadow(0px, 6px, 20px, rgba(227, 30, 37, 0.3));
-
-      &::before {
-        left: 100%;
-      }
-    }
-
-    &:active {
-      @include m.translate(0, 0);
+      left: 100%;
     }
   }
 
-  
-
+  &:active {
+    @include m.translate(0, 0);
+  }
+}
 
 // Hero Carousel Styles
 .HeroCarousel {
   position: relative;
   height: 100%;
-  background:linear-gradient(45deg, #D6D0FF, #FFDADB);
-
+  background: linear-gradient(45deg, #d6d0ff, #ffdadb);
 
   .hero-swiper {
     height: 100%;
-    @include m.box-shadow(0px, 10px, 30px, rgba(0, 0, 0, 0.15));    
+    @include m.box-shadow(0px, 10px, 30px, rgba(0, 0, 0, 0.15));
     position: relative;
 
-      &:before{
-      content:"";
-      background-image: url('data:image/svg+xml,<svg width="950" height="707" viewBox="0 0 950 707" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H560L950 707H0V0Z" fill="%2320185D"/></svg>');  
-      background-repeat: no-repeat;      
+    &:before {
+      content: "";
+      background-image: url('data:image/svg+xml,<svg width="950" height="707" viewBox="0 0 950 707" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H560L950 707H0V0Z" fill="%2320185D"/></svg>');
+      background-repeat: no-repeat;
       background-position: 0 bottom;
-      position: absolute;   
-      background-size:cover;   
-      left:-45%;
-      top:60px;
-      width:100%;
-      height:100%;
+      position: absolute;
+      background-size: cover;
+      left: -45%;
+      top: 60px;
+      width: 100%;
+      height: 100%;
     }
 
     .swiper-slide {
-      position: relative;      
+      position: relative;
     }
   }
 
   .carousel-slide {
     position: relative;
-    height: 100%;    
+    height: 100%;
     z-index: 10;
 
     img.sliderimg {
       width: 100%;
-      height: 100%;      
-      
-      @include m.respond-below(map.get(v.$breakpoints, "md")) {       
+      height: 100%;
+      border-top-left-radius: 500px !important;
+      border-top-right-radius: 500px !important;
+
+      @include m.respond-below(map.get(v.$breakpoints, "md")) {
         width: 100%;
         display: block;
       }
     }
 
-    .carousel-content {      
+    .carousel-content {
       width: 100%;
       height: 100%;
       color: map.get(v.$colors, "white");
+      padding-left: 10%;
 
-      article{   
+      article {
         @include m.respond-below(map.get(v.$breakpoints, "md")) {
-          width:100%;          
-        }      
-        h3{
-            font-size:clamp(1rem, 3vw, 3rem);
-            color:map.get(v.$colors, "primarynew");
-          } 
-          p{
-            color:map.get(v.$colors, "black");
-          }
-      }      
+          width: 100%;
+        }
+        h3 {
+          font-size: clamp(1rem, 3vw, 3rem);
+          color: map.get(v.$colors, "primarynew");
+        }
+        p {
+          color: map.get(v.$colors, "black");
+        }
+      }
     }
   }
 
@@ -263,7 +281,7 @@ h1{
     @include m.respond-below(map.get(v.$breakpoints, "md")) {
       width: 40px;
       height: 40px;
-      
+
       .nav-icon {
         font-size: 1.4rem;
       }
@@ -329,56 +347,59 @@ h1{
   }
 }
 
-.feature-column{
- background: linear-gradient(45deg, rgba(223, 218, 255, 0.8), rgba(255, 219, 221, 0.8)); 
- height: 100%;
- width:100%;
- padding: 2rem;
- border-radius: 30px;
- color: map.get(v.$colors, "black");
- display: flex;
- flex-direction: column;
- justify-content: space-between;
+.feature-column {
+  background: linear-gradient(
+    45deg,
+    rgba(223, 218, 255, 0.8),
+    rgba(255, 219, 221, 0.8)
+  );
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 30px;
+  color: map.get(v.$colors, "black");
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
- h2{
-  font-size:clamp(2rem, 4vw, 3rem);
-  margin:0;  
-  padding-top:2rem;
- }
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0;
+    padding-top: 2rem;
+  }
 
- h5{
-  font-size:1.1rem;
+  h5 {
+    font-size: 1.1rem;
+  }
 
- }
+  .icon {
+    padding: 50px 0;
+  }
 
- .icon{
-  padding:50px 0;
- }
-
- .icomoon{
-  font-size:clamp(3rem, 6vw, 4rem);
-  color: map.get(v.$colors, "primary");
- }
+  .icomoon {
+    font-size: clamp(3rem, 6vw, 4rem);
+    color: map.get(v.$colors, "primary");
+  }
 }
 
-.herovideoimg{
+.herovideoimg {
   width: 100%;
   max-height: 100%;
   margin: 0;
 
-  img{
+  img {
     width: 100%;
     height: auto;
     object-fit: cover;
   }
 
-  a{
+  a {
     text-decoration: none;
   }
 
-  .video-play-btn{
-    width:50px;
-    height:50px;   
+  .video-play-btn {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -388,32 +409,33 @@ h1{
     left: 50%;
     @include m.translate(-50%, -50%);
 
-    &:hover{
-      background: map.get(v.$colors, "primary");    
+    &:hover {
+      background: map.get(v.$colors, "primary");
     }
-    .icon-play{
-      font-size: 4rem!important;     
+    .icon-play {
+      font-size: 4rem !important;
     }
   }
 }
 
 // Hero Section Mobile Responsive Styles
-.hero-section { 
+.hero-section {
   width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 0;
-  background: linear-gradient(45deg, #D6D0FF, #FFDADB); 
+  background: linear-gradient(45deg, #d6d0ff, #ffdadb);
 
-  .HeroCarousel{    
-    background: url('../assets/img/herobannerpattern.png') no-repeat right center;
+  .HeroCarousel {
+    background: url("../assets/img/herobannerpattern.png") no-repeat right
+      center;
   }
-  
+
   // Equal height columns
   .row {
     @include m.respond-above(map.get(v.$breakpoints, "md")) {
       display: flex;
-      align-items: stretch;      
+      align-items: stretch;
       .col-12.col-md-6,
       .col-12.col-lg-6 {
         display: flex;
@@ -430,11 +452,11 @@ h1{
       justify-content: space-between;
       min-height: 500px;
     }
-    
+
     .HeroCarousel {
       flex-grow: 1;
       margin-bottom: 1rem;
-      
+
       @include m.respond-above(map.get(v.$breakpoints, "md")) {
         margin-bottom: 2rem;
       }
@@ -445,11 +467,11 @@ h1{
   .Heroleftimg {
     article {
       padding: 2rem 1.5rem;
-      
+
       @include m.respond-above(map.get(v.$breakpoints, "sm")) {
         padding: 3rem 2rem;
       }
-      
+
       @include m.respond-above(map.get(v.$breakpoints, "md")) {
         padding: 40% 5rem;
       }
@@ -458,8 +480,8 @@ h1{
         font-size: clamp(1.5rem, 4vw, 2.5rem);
         line-height: 1.2;
         margin-bottom: 0.5rem;
-        color:map.get(v.$colors, "primarynew");
-        
+        color: map.get(v.$colors, "primarynew");
+
         @include m.respond-below(map.get(v.$breakpoints, "md")) {
           font-size: clamp(1.2rem, 3.5vw, 2rem);
         }
@@ -469,7 +491,7 @@ h1{
         font-size: clamp(0.9rem, 2.5vw, 1.1rem);
         line-height: 1.4;
         margin-bottom: 1rem;
-        
+
         @include m.respond-above(map.get(v.$breakpoints, "md")) {
           margin-bottom: 1.5rem;
         }
@@ -478,7 +500,7 @@ h1{
       .btn-primary-light {
         font-size: clamp(0.85rem, 2vw, 1rem);
         padding: 0.75rem 1.5rem;
-        
+
         @include m.respond-above(map.get(v.$breakpoints, "md")) {
           padding: 12px 24px;
         }
@@ -493,7 +515,7 @@ h1{
     height: 280px;
     margin-bottom: 1rem;
   }
-  
+
   @include m.respond-below(map.get(v.$breakpoints, "sm")) {
     height: 250px;
   }
@@ -503,7 +525,7 @@ h1{
       @include m.respond-below(map.get(v.$breakpoints, "md")) {
         height: 280px;
       }
-      
+
       @include m.respond-below(map.get(v.$breakpoints, "sm")) {
         height: 250px;
       }
@@ -513,7 +535,7 @@ h1{
       @include m.respond-below(map.get(v.$breakpoints, "md")) {
         padding: 1rem;
       }
-      
+
       @include m.respond-below(map.get(v.$breakpoints, "sm")) {
         padding: 0.75rem;
       }
@@ -521,7 +543,7 @@ h1{
       h3 {
         font-size: clamp(1rem, 3vw, 1.5rem);
         line-height: 1.3;
-        
+
         @include m.respond-below(map.get(v.$breakpoints, "sm")) {
           font-size: clamp(0.9rem, 2.5vw, 1.2rem);
         }
@@ -552,543 +574,556 @@ h1{
   }
 }
 
-.feature-col{
-  .feature-icon{
-     .icomoon{
-       font-size: 3.5rem;      
-       color: map.get(v.$colors, "secondarynew");
-     }
+.feature-col {
+  .feature-icon {
+    .icomoon {
+      font-size: 3.5rem;
+      color: map.get(v.$colors, "secondarynew");
+    }
   }
-  p{
-     color: map.get(v.$colors, "primarynew");
+  p {
+    color: map.get(v.$colors, "primarynew");
   }
 }
 
-  .chitplans-section{
-    background:url("../assets/img/chitplansbg.png") right center  no-repeat map.get(v.$colors, "primarynew");
-    padding: 5rem 0;
-    min-height: 500px;
+.chitplans-section {
+  background: url("../assets/img/chitplansbg.png") right center no-repeat
+    map.get(v.$colors, "primarynew");
+  padding: 5rem 0;
+  min-height: 500px;
+  background-size:cover;
+}
+
+.section-title {
+  position: relative;
+
+  &:before {
+    content: "";
+    width: 60px;
+    height: 4px;
+    background: map.get(v.$colors, "secondarynew");
+    position: absolute;
+    top: -10px;
+    left: 0;
   }
+}
 
-  .section-title{
-    position: relative;
+// Chit Plans Tabs Styles
+.chit-tabs-container {
+  margin-top: 3rem;
 
-    &:before{
-      content:'';
-      width:60px;
-      height:4px;
-      background: map.get(v.$colors, "secondarynew");
-      position: absolute;
-      top:-10px;
-      left:0;
-    }
-  }
+  .chit-nav-tabs {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0;
 
-  // Chit Plans Tabs Styles
-  .chit-tabs-container {
-    margin-top: 3rem;
-    
-    .chit-nav-tabs {
-      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-      margin-bottom: 0;
-      
-      .nav-item {
-        margin-bottom: -2px;
-        
-        .nav-link {
-          background: transparent;
-          border: none;
-          border-bottom: 2px solid transparent;
-          color: map.get(v.$colors, "white");
-          padding: 1rem 1.5rem;
-          font-weight: map.get(v.$roboto-weights, "medium");
-          @include m.transition(all, 0.3s, ease);
-          
-          &:hover {
-            border-bottom-color: map.get(v.$colors, "secondarynew");
-            color: map.get(v.$colors, "secondarynew");
-            background: rgba(255, 255, 255, 0.05);
-          }
-          
-          &.active {
-            border-bottom-color: map.get(v.$colors, "secondarynew");
-            color: map.get(v.$colors, "secondarynew");
-            background: map.get(v.$colors, "white");
-          }
-        }
-      }
-    }
-    
-    .chit-tab-content {
-      padding: 2rem 0;
-      position: relative;
-      
-      .tab-pane {
-        @include m.transition(all, 0.3s, ease);
-      }
-      
-      // Animation classes for smooth tab transitions      
-      .tab-animating-in {
-        .col-lg-2, .col-md-4, .col-sm-6 {
-          animation: cardSlideUp 0.6s ease-out forwards;
-          @include m.translate(0, 30px);
-        }
-      }
-    }
-  }
+    .nav-item {
+      margin-bottom: -2px;
 
-  // Keyframe animation for individual cards - smooth slide up
-  @keyframes cardSlideUp {
-    from {
-      @include m.translate(0, 30px);
-    }
-    to {
-      @include m.translate(0, 0);
-    }
-  }
-
-  // Chit Plan Cards
-  .chit-plan-card {
-    @include m.box-shadow(0px, 10px, 30px, rgba(0, 0, 0, 0.1));
-    @include m.transition(all, 0.3s, ease);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    min-height: 280px;
-    
-    &:hover {
-      @include m.translate(0, -5px);
-      @include m.box-shadow(0px, 20px, 40px, rgba(0, 0, 0, 0.15));
-    }
-    
-    .chit-price-title {
-      color: map.get(v.$colors, "primary");
-      font-weight: map.get(v.$lato-weights, "black");
-      font-size: clamp(1.2rem, 2vw, 1.8rem);
-      margin: 0 0 1rem 0;
-      padding: 0.5rem;
-      background: linear-gradient(45deg, rgba(32, 24, 93, 0.05), rgba(227, 30, 37, 0.05));
-      border-radius: 10px;
-      
-      @include m.respond-below(map.get(v.$breakpoints, "lg")) {
-        font-size: clamp(1rem, 1.5vw, 1.4rem);
-      }
-      
-      @include m.respond-below(map.get(v.$breakpoints, "md")) {
-        font-size: clamp(1.1rem, 2vw, 1.6rem);
-      }
-    }
-    
-    .plan-details {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      
-      .detail-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 0.4rem 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        font-size: 0.9rem;
-        
-        @include m.respond-below(map.get(v.$breakpoints, "lg")) {
-          font-size: 0.8rem;
-        }
-        
-        &:last-of-type {
-          border-bottom: none;
-          margin-bottom: 1rem !important;
-        }
-        
-        strong {
-          color: map.get(v.$colors, "dark");
-          font-weight: map.get(v.$roboto-weights, "medium");
-          font-size: 0.85rem;
-          
-          @include m.respond-below(map.get(v.$breakpoints, "lg")) {
-            font-size: 0.75rem;
-          }
-        }
-      }
-      
-      .btn {
-        background: map.get(v.$colors, "primary");
-        border: none;
-        padding: 0.6rem 1rem;
-        font-weight: map.get(v.$roboto-weights, "medium");
-        font-size: 0.9rem;
-        @include m.transition(all, 0.3s, ease);
-        
-        @include m.respond-below(map.get(v.$breakpoints, "lg")) {
-          padding: 0.5rem 0.8rem;
-          font-size: 0.8rem;
-        }
-        
-        &:hover {
-          background: map.get(v.$colors, "primarynew");
-          @include m.translate(0, -2px);
-        }
-      }
-    }
-    
-    // Desktop 5-card layout adjustments
-    @include m.respond-above(map.get(v.$breakpoints, "lg")) {
-      .plan-details {
-        .detail-item {
-          flex-direction: column;
-          align-items: flex-start;
-          text-align: left;
-          
-          strong {
-            margin-bottom: 0.2rem;
-            display: block;
-          }
-        }
-      }
-    }
-  }
-
-  // Mobile Accordion Styles
-  .chit-accordion-container {
-    margin-top: 2rem;
-    
-    .accordion {
-      .accordion-item {
+      .nav-link {
         background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        margin-bottom: 1rem;
-        border-radius: 15px;
-        overflow: hidden;
-        
-        .accordion-header {
-          .accordion-button {
-            background: rgba(255, 255, 255, 0.1);
-            color: map.get(v.$colors, "white");
-            font-weight: map.get(v.$roboto-weights, "medium");
-            border: none;
-            padding: 1rem 1.5rem;
-            
-            &:not(.collapsed) {
-              background: rgba(255, 255, 255, 0.2);
-              color: map.get(v.$colors, "white");
-              @include m.box-shadow(none);
-            }
-            
-            &:focus {
-              @include m.box-shadow(none);
-              border: none;
-            }
-            
-            &::after {
-              filter: brightness(0) invert(1);
-            }
-          }
+        border: none;
+        border-bottom: 2px solid transparent;
+        color: map.get(v.$colors, "white");
+        padding: 1rem 1.5rem;
+        font-weight: map.get(v.$roboto-weights, "medium");
+        @include m.transition(all, 0.3s, ease);
+
+        &:hover {
+          border-bottom-color: map.get(v.$colors, "secondarynew");
+          color: map.get(v.$colors, "secondarynew");
+          background: rgba(255, 255, 255, 0.05);
         }
-        
-        .accordion-collapse {
-          .accordion-body {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-            
-            .chit-plan-card {
-              background: map.get(v.$colors, "white") !important;
-              
-              &:last-child {
-                margin-bottom: 0 !important;
-              }
-            }
-          }
+
+        &.active {
+          border-bottom-color: map.get(v.$colors, "secondarynew");
+          color: map.get(v.$colors, "secondarynew");
+          background: map.get(v.$colors, "white");
         }
       }
     }
   }
 
-  .welcomehome{
-     background: linear-gradient(45deg, rgba(223, 218, 255, 0.5), rgba(255, 219, 221, 0.5)); 
-     padding:125px 0;
-
-     .number-welcome{
-      font-size:clamp(3rem, 8vw, 8rem);
-      font-weight: map.get(v.$lato-weights, "black");
-      line-height: 8rem;
-     }
-       .quote-coo{
-        .icomoon{
-          font-size:clamp(3rem, 6vw, 4rem);
-          color: map.get(v.$colors, "primary");
-        }
-
-        .ceeomsg{
-          font-size:clamp(1.5rem, 4vw, 2rem);
-          font-weight: map.get(v.$lato-weights, "bold");
-          margin:0 0 0 3rem;
-
-          h5{
-            font-size:18px;
-            font-weight: map.get(v.$roboto-weights, "black");
-          }
-
-          p{
-            font-size:15px;
-            color: map.get(v.$colors, "gray-40");
-            font-weight: map.get(v.$roboto-weights, "regular");
-          }
-        }
-       }
-
-       .welcome-img{
-        position: relative;
-        width:350px;        
-        margin-top:50px;
-
-         &:before{
-            content:'';
-            width:100%;
-            height: 100%;
-            position: absolute;
-            top:-30px;
-            right:-30px;
-            background:map.get(v.$colors, "primarynew");
-            border-radius:25px;
-            z-index: -1;
-            }
-       }
-
-       .welcome-col{
-        margin-bottom:25px;
-          .icon-div{
-              width:80px;
-              height:80px;
-              background: map.get(v.$colors, "primarynew");
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              border-radius: 50%;
-              flex-shrink: 0;            
-              overflow: hidden;
-              
-              .icomoon{
-                font-size:clamp(1.3rem, 2.2vw, 2.2rem);
-                color: map.get(v.$colors, "primary-50");
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              }
-          }
-       }
-
-       
-  }
-
-  .serviceshome{
+  .chit-tab-content {
+    padding: 2rem 0;
     position: relative;
-    padding:5rem 0;
 
-    &:before{
-      content:'';
-      background: url("../assets/img/bg-service.svg") center top  no-repeat;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: top center;
-      position: absolute;
-      top:0;
-      left:0;
-      right:0;
-      width:100%;
-      height: 70%;
-      z-index: 0;
+    .tab-pane {
+      @include m.transition(all, 0.3s, ease);
     }
-    .row{     
-    
-      .col-md-4{              
-        .service-col{            
-          position: relative;
-          z-index: 999;
-          
-          figure{
-            img{
-              width:100%;           
-              object-fit: cover;
-              border-top-left-radius:25px;
-              border-top-right-radius:25px;
-            }
+
+    // Animation classes for smooth tab transitions
+    .tab-animating-in {
+      .col-lg-2,
+      .col-md-4,
+      .col-sm-6 {
+        animation: cardSlideUp 0.6s ease-out forwards;
+        @include m.translate(0, 30px);
+      }
+    }
+  }
+}
+
+// Keyframe animation for individual cards - smooth slide up
+@keyframes cardSlideUp {
+  from {
+    @include m.translate(0, 30px);
+  }
+  to {
+    @include m.translate(0, 0);
+  }
+}
+
+// Chit Plan Cards
+.chit-plan-card {
+  @include m.box-shadow(0px, 10px, 30px, rgba(0, 0, 0, 0.1));
+  @include m.transition(all, 0.3s, ease);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  min-height: 280px;
+
+  &:hover {
+    @include m.translate(0, -5px);
+    @include m.box-shadow(0px, 20px, 40px, rgba(0, 0, 0, 0.15));
+  }
+
+  .chit-price-title {
+    color: map.get(v.$colors, "primary");
+    font-weight: map.get(v.$lato-weights, "black");
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    margin: 0 0 1rem 0;
+    padding: 0.5rem;
+    background: linear-gradient(
+      45deg,
+      rgba(32, 24, 93, 0.05),
+      rgba(227, 30, 37, 0.05)
+    );
+    border-radius: 10px;
+
+    @include m.respond-below(map.get(v.$breakpoints, "lg")) {
+      font-size: clamp(1rem, 1.5vw, 1.4rem);
+    }
+
+    @include m.respond-below(map.get(v.$breakpoints, "md")) {
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+    }
+  }
+
+  .plan-details {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      font-size: 0.9rem;
+
+      @include m.respond-below(map.get(v.$breakpoints, "lg")) {
+        font-size: 0.8rem;
+      }
+
+      &:last-of-type {
+        border-bottom: none;
+        margin-bottom: 1rem !important;
+      }
+
+      strong {
+        color: map.get(v.$colors, "dark");
+        font-weight: map.get(v.$roboto-weights, "medium");
+        font-size: 0.85rem;
+
+        @include m.respond-below(map.get(v.$breakpoints, "lg")) {
+          font-size: 0.75rem;
+        }
+      }
+    }
+
+    .btn {
+      background: map.get(v.$colors, "primary");
+      border: none;
+      padding: 0.6rem 1rem;
+      font-weight: map.get(v.$roboto-weights, "medium");
+      font-size: 0.9rem;
+      @include m.transition(all, 0.3s, ease);
+
+      @include m.respond-below(map.get(v.$breakpoints, "lg")) {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+      }
+
+      &:hover {
+        background: map.get(v.$colors, "primarynew");
+        @include m.translate(0, -2px);
+      }
+    }
+  }
+
+  // Desktop 5-card layout adjustments
+  @include m.respond-above(map.get(v.$breakpoints, "lg")) {
+    .plan-details {
+      .detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+
+        strong {
+          margin-bottom: 0.2rem;
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// Mobile Accordion Styles
+.chit-accordion-container {
+  margin-top: 2rem;
+
+  .accordion {
+    .accordion-item {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 1rem;
+      border-radius: 15px;
+      overflow: hidden;
+
+      .accordion-header {
+        .accordion-button {
+          background: rgba(255, 255, 255, 0.1);
+          color: map.get(v.$colors, "white");
+          font-weight: map.get(v.$roboto-weights, "medium");
+          border: none;
+          padding: 1rem 1.5rem;
+
+          &:not(.collapsed) {
+            background: rgba(255, 255, 255, 0.2);
+            color: map.get(v.$colors, "white");
+            @include m.box-shadow(none);
           }
-          article{
-            border-bottom-left-radius:25px;
-            border-bottom-right-radius:25px;
-            padding:2.5rem;
-            z-index: 999;
-            text-align: center;
-            background: #F7F0FF;                 
-            h3{
-              font-size:clamp(1.1rem, 1.3vw, 1.3rem);
-              font-weight: map.get(v.$lato-weights, "bold");
-              margin-bottom:0.5rem;
-              text-transform: uppercase;
-              color:map.get(v.$colors, "primarynew");
+
+          &:focus {
+            @include m.box-shadow(none);
+            border: none;
+          }
+
+          &::after {
+            filter: brightness(0) invert(1);
+          }
+        }
+      }
+
+      .accordion-collapse {
+        .accordion-body {
+          background: rgba(255, 255, 255, 0.05);
+          padding: 1rem;
+
+          .chit-plan-card {
+            background: map.get(v.$colors, "white") !important;
+
+            &:last-child {
+              margin-bottom: 0 !important;
             }
           }
         }
       }
     }
   }
+}
 
-  .whatsets-section{
-    padding:4rem 0;
+.welcomehome {
+  background: linear-gradient(
+    45deg,
+    rgba(223, 218, 255, 0.5),
+    rgba(255, 219, 221, 0.5)
+  );
+  padding: 125px 0;
 
-    // Equal height columns
-    .row {
-      display: flex;
-      align-items: stretch;
-      
-      .col-md-3 {
-        display: flex;
-        flex-direction: column;
-      }
+  .number-welcome {
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: map.get(v.$lato-weights, "black");
+    line-height: 8rem;
+  }
+  .quote-coo {
+    .icomoon {
+      font-size: clamp(3rem, 6vw, 4rem);
+      color: map.get(v.$colors, "primary");
     }
 
-    .whatsets-col{            
-      background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), rgba(237, 234, 255, 0.8));
-      @include m.box-shadow(0px, 5px, 20px, rgba(0, 0, 0, 0.1));
-      border-radius: 30px;
-      padding:5rem 2rem;
+    .ceeomsg {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: map.get(v.$lato-weights, "bold");
+      margin: 0 0 0 3rem;
+
+      h5 {
+        font-size: 18px;
+        font-weight: map.get(v.$roboto-weights, "black");
+      }
+
+      p {
+        font-size: 15px;
+        color: map.get(v.$colors, "gray-40");
+        font-weight: map.get(v.$roboto-weights, "regular");
+      }
+    }
+  }
+
+  .welcome-img {
+    position: relative;
+    width: 350px;
+    margin-top: 50px;
+
+    &:before {
+      content: "";
+      width: 100%;
       height: 100%;
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      background: map.get(v.$colors, "primarynew");
+      border-radius: 25px;
+      z-index: -1;
+    }
+  }
+
+  .welcome-col {
+    margin-bottom: 25px;
+    .icon-div {
+      width: 80px;
+      height: 80px;
+      background: map.get(v.$colors, "primarynew");
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      flex-shrink: 0;
+      overflow: hidden;
+
+      .icomoon {
+        font-size: clamp(1.3rem, 2.2vw, 2.2rem);
+        color: map.get(v.$colors, "primary-50");
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.serviceshome {
+  position: relative;
+  padding: 5rem 0;
+
+  &:before {
+    content: "";
+    background: url("../assets/img/bg-service.svg") center top no-repeat;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 70%;
+    z-index: 0;
+  }
+  .row {
+    .col-md-4 {
+      .service-col {
+        position: relative;
+        z-index: 999;
+
+        figure {
+          img {
+            width: 100%;
+            object-fit: cover;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+          }
+        }
+        article {
+          border-bottom-left-radius: 25px;
+          border-bottom-right-radius: 25px;
+          padding: 2.5rem;
+          z-index: 999;
+          text-align: center;
+          background: #f7f0ff;
+          h3 {
+            font-size: clamp(1.1rem, 1.3vw, 1.3rem);
+            font-weight: map.get(v.$lato-weights, "bold");
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            color: map.get(v.$colors, "primarynew");
+          }
+        }
+      }
+    }
+  }
+}
+
+.whatsets-section {
+  padding: 4rem 0;
+
+  // Equal height columns
+  .row {
+    display: flex;
+    align-items: stretch;
+
+    .col-md-3 {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+    }
+  }
 
-      .icomoon{
-        font-size:clamp(3rem, 6vw, 4rem);
-        color: map.get(v.$colors, "primarynew");
-        margin-bottom:3rem;
-        display: inline-block;
+  .whatsets-col {
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(237, 234, 255, 0.8)
+    );
+    @include m.box-shadow(0px, 5px, 20px, rgba(0, 0, 0, 0.1));
+    border-radius: 30px;
+    padding: 5rem 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .icomoon {
+      font-size: clamp(3rem, 6vw, 4rem);
+      color: map.get(v.$colors, "primarynew");
+      margin-bottom: 3rem;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    article {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+
+      h4 {
         flex-shrink: 0;
       }
-      
-      article {
-        display: flex;
-        flex-direction: column;
+
+      p {
         flex-grow: 1;
-        
-        h4 {
-          flex-shrink: 0;
-        }
-        
-        p {
-          flex-grow: 1;
-          margin: 0;
-          display: flex;
-          align-items: flex-start;
-        }
+        margin: 0;
+        display: flex;
+        align-items: flex-start;
       }
     }
   }
+}
 
-  .customer-agents{
-    position: relative;
+.customer-agents {
+  position: relative;
 
-    &:before{
-      content:'';
-      background:url("../assets/img/triangle.png") center bottom  no-repeat;
-      position: absolute;
-      bottom:-50px;
-      left:0;
-      width:100%;
-      height: 100%;
-      z-index: 99;
-    }
-    
-    .customer-block{
-    padding:6rem 0;    
+  &:before {
+    content: "";
+    background: url("../assets/img/triangle.png") center bottom no-repeat;
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+  }
+
+  .customer-block {
+    padding: 6rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 400px;
-    }
+  }
+}
+
+.customer-block {
+  background: url(../assets/img/left-customer-bg.jpg) no-repeat center center /
+    cover;
+  position: relative;
+
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.9;
+    // background: linear-gradient(45deg, rgba(32, 24, 93, 0.99), rgba(227, 30, 37, 0.99));
+    z-index: 1;
   }
 
-.customer-block{
-    background: url(../assets/img/left-customer-bg.jpg)no-repeat center center / cover;
+  article {
+    width: 70%;
+    margin: 0 auto;
     position: relative;
+    z-index: 99;
+    color: map.get(v.$colors, "white");
+    text-align: center;
 
-    &:before{
-      content:'';
-      width:100%;
-      height: 100%;
-      position: absolute;
-      top:0;
-      left:0;      
-      opacity: 0.9;
-      // background: linear-gradient(45deg, rgba(32, 24, 93, 0.99), rgba(227, 30, 37, 0.99));
-      z-index:1;
+    h4 {
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      margin-bottom: 1rem;
     }
-
-    article{
-      width:70%;
-      margin:0 auto;
-      position: relative;
-      z-index: 99;
-      color:map.get(v.$colors, "white");
-      text-align: center;
-
-      h4{
-        font-size:clamp(1.4rem, 2vw, 2rem);
-        margin-bottom:1rem;
-      }
-    }
+  }
 }
 
-.left-customer{
-  background: url(../assets/img/left-customer-bg.jpg)no-repeat center center / cover;
+.left-customer {
+  background: url(../assets/img/left-customer-bg.jpg) no-repeat center center /
+    cover;
 
-    &:before{
-      content:''; 
-      background: map.get(v.$colors, "primarynew");     
-    }
-
+  &:before {
+    content: "";
+    background: map.get(v.$colors, "primarynew");
+  }
 }
-.right-customer{
-  background: url(../assets/img/rt-customer-bg.jpg)no-repeat center center / cover;
+.right-customer {
+  background: url(../assets/img/rt-customer-bg.jpg) no-repeat center center /
+    cover;
 
-    &:before{
-      content:''; 
-      background: map.get(v.$colors, "secondarynew");     
-    }
+  &:before {
+    content: "";
+    background: map.get(v.$colors, "secondarynew");
+  }
 }
 
-.testimonials-home{
+.testimonials-home {
   position: relative;
   min-height: 500px;
-  padding:6rem 0;
+  padding: 6rem 0;
 
-  
-
-  .swiper-wrapper{
-    padding-bottom:55px;
+  .swiper-wrapper {
+    padding-bottom: 55px;
   }
 
-  &:before{
-    content:'';
-    background:url("../assets/img/testimonials-lt.png") left top  no-repeat;
+  &:before {
+    content: "";
+    background: url("../assets/img/testimonials-lt.png") left top no-repeat;
     position: absolute;
-    top:0;
-    left:0;
-    bottom:0;
-    width:100%;    
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     height: 100%;
     z-index: 0;
   }
 
-  &:after{
-    content:'';
-    background:url("../assets/img/testimonials-rt.png") right bottom  no-repeat;
+  &:after {
+    content: "";
+    background: url("../assets/img/testimonials-rt.png") right bottom no-repeat;
     position: absolute;
-    top:0;
-    right:0;
-    bottom:0;
-    width:100%;    
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
     height: 100%;
     z-index: 0;
   }
@@ -1098,26 +1133,26 @@ h1{
 .testimonialsSwiper {
   padding-bottom: 50px;
   overflow: visible;
-  
+
   .swiper-slide {
     height: auto;
-    
+
     @include m.respond-below(map.get(v.$breakpoints, "sm")) {
       margin-bottom: 1rem;
     }
   }
-  
+
   // Built-in pagination styles
   .swiper-pagination {
     bottom: 0;
-    
+
     .swiper-pagination-bullet {
       width: 30px;
       height: 3px;
-      border-radius: 0;      
+      border-radius: 0;
       opacity: 1;
       @include m.transition(all, 0.3s, ease);
-      
+
       &.swiper-pagination-bullet-active {
         background: map.get(v.$colors, "primary");
         @include m.translate(0, -3px);
@@ -1128,38 +1163,42 @@ h1{
 
 // Testimonial Slide Styles
 .testimonial-slide {
-  background: linear-gradient(45deg, rgba(223, 218, 255, 0.5), rgba(255, 219, 221, 0.5));
+  background: linear-gradient(
+    45deg,
+    rgba(223, 218, 255, 0.5),
+    rgba(255, 219, 221, 0.5)
+  );
   border-radius: 30px;
   padding: 2rem;
   height: 100%;
   min-height: 300px;
-  position: relative;  
+  position: relative;
   @include m.transition(all, 0.3s, ease);
-  
+
   &:hover {
-    @include m.translate(0, -5px);    
+    @include m.translate(0, -5px);
   }
-  
+
   // Quote icon in top right corner
   .quote-icon {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
-    
+
     .icon-quotes {
       font-size: 2rem;
       color: map.get(v.$colors, "primary");
       opacity: 0.7;
     }
   }
-  
+
   // Testimonial header with image and info
   .testimonial-header {
     margin-top: 2rem;
-    
+
     .testimonial-image {
       position: relative;
-      
+
       .avatar-img {
         width: 60px;
         height: 60px;
@@ -1167,7 +1206,7 @@ h1{
         border: 3px solid map.get(v.$colors, "white");
         @include m.box-shadow(0px, 5px, 15px, rgba(0, 0, 0, 0.1));
       }
-      
+
       .avatar-circle {
         width: 60px;
         height: 60px;
@@ -1182,7 +1221,7 @@ h1{
         @include m.box-shadow(0px, 5px, 15px, rgba(0, 0, 0, 0.1));
       }
     }
-    
+
     .testimonial-info {
       .testimonial-name {
         font-weight: map.get(v.$lato-weights, "bold");
@@ -1190,7 +1229,7 @@ h1{
         font-size: 1.2rem;
         margin-bottom: 0.3rem;
       }
-      
+
       .testimonial-designation {
         color: map.get(v.$colors, "dark");
         font-size: 0.9rem;
@@ -1198,59 +1237,59 @@ h1{
       }
     }
   }
-  
+
   // Testimonial description
   .testimonial-description {
     margin-top: 1.5rem;
-    
+
     p {
       font-style: italic;
       font-size: 1rem;
       line-height: 1.6;
       color: map.get(v.$colors, "dark");
       margin: 0;
-      
+
       @include m.respond-below(map.get(v.$breakpoints, "md")) {
         font-size: 0.9rem;
       }
     }
   }
-  
+
   // Responsive adjustments
   @include m.respond-below(map.get(v.$breakpoints, "md")) {
     padding: 1.5rem;
     min-height: 280px;
-    
+
     .quote-icon {
       top: 1rem;
       right: 1rem;
-      
+
       .icon-quotes {
         font-size: 1.5rem;
       }
     }
-    
+
     .testimonial-header {
       margin-top: 1.5rem;
-      
+
       .testimonial-image {
         .avatar-img {
           width: 50px;
           height: 50px;
         }
-        
+
         .avatar-circle {
           width: 50px;
           height: 50px;
           font-size: 1.2rem;
         }
       }
-      
+
       .testimonial-info {
         .testimonial-name {
           font-size: 1.1rem;
         }
-        
+
         .testimonial-designation {
           font-size: 0.85rem;
         }
@@ -1259,9 +1298,30 @@ h1{
   }
 }
 
+.testimonials-carousel{
+  position: relative;
+  z-index: 999;
+}
 
+.homeWhoweare {
+  padding: 4rem 0;
 
+  .satisfy-customer {
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
 
-
-
-
+    p {
+      font-size: 0.9rem;
+      color: map.get(v.$colors, "primarynew");
+      padding: 0;
+      margin: 0;
+    }
+  }
+  h3 {
+    font-size: clamp(1.5rem, 6vw, 6rem);
+    color: map.get(v.$colors, "secondarynew");
+    font-weight: map.get(v.$lato-weights, "black");
+  }
+}

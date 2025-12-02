@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
 import herovideoimg from "../assets/img/video-img.jpg";
 
 const Homefeatures = () => {
   const [showModal, setShowModal] = React.useState(false);
+  const featureRefs = useRef([]);
+  const sectionRef = useRef(null);
 
   const handlePlayClick = (e) => {
     e.preventDefault();
@@ -13,11 +16,51 @@ const Homefeatures = () => {
     setShowModal(false);
   };
 
+  useEffect(() => {
+    let observer;
+    if (sectionRef.current) {
+      observer = new window.IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              featureRefs.current.forEach((el, idx) => {
+                if (el) {
+                  gsap.fromTo(
+                    el,
+                    { opacity: 0, y: -60 },
+                    {
+                      opacity: 1,
+                      y: 0,
+                      duration: 1,
+                      delay: idx * 0.5,
+                      ease: "power3.out"
+                    }
+                  );
+                }
+              });
+            } else {
+              featureRefs.current.forEach((el) => {
+                if (el) {
+                  gsap.set(el, { opacity: 0 });
+                }
+              });
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      observer.observe(sectionRef.current);
+    }
+    return () => {
+      if (observer && sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+
   return (
     <React.Fragment>
-      <div className="container">
+      <div className="container" ref={sectionRef}>
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-3" ref={el => featureRefs.current[0] = el}>
             <div className="feature-column">
               <h2 className="font-bold">1000 +</h2>
               <h5>Trusted Customers</h5>
@@ -26,7 +69,7 @@ const Homefeatures = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-3" ref={el => featureRefs.current[1] = el}>
             <div className="feature-column">
               <h2 className="font-bold">200 +</h2>
               <h5>Dedicated Working Team</h5>
@@ -35,7 +78,7 @@ const Homefeatures = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-3" ref={el => featureRefs.current[2] = el}>
             <div className="feature-column">
               <h2 className="font-bold">150 +</h2>
               <h5>Chit Agents</h5>
@@ -44,7 +87,7 @@ const Homefeatures = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-3" ref={el => featureRefs.current[3] = el}>
             <div className="feature-column herovideoimg p-0 position-relative">
               <img
                 src={herovideoimg}
