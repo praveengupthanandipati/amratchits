@@ -1325,3 +1325,43 @@ h1 {
     font-weight: map.get(v.$lato-weights, "black");
   }
 }
+
+.subpage{
+  p{
+    line-height: 1.75rem;
+    color:map.get(v.$colors, "gray-80");    
+  }
+
+  h6{
+    letter-spacing: 0.2rem;    
+  }
+  h2{
+    font-size:clamp(1.6rem, 1.8vw, 1.8rem);
+    color:map.get(v.$colors, "primarynew");
+    margin-bottom:1rem;
+  }
+  .subpage-section{
+    padding:4rem 0;
+  }
+
+  .icondiv-section{
+    .div-icon{
+      color: map.get(v.$colors, "primarynew");
+      width:75px;
+      height: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(223, 218, 255, 0.5);
+      margin: 0 2rem 2rem 0;
+      padding:2rem;
+      border-radius:15px;
+
+      .icomoon{
+        font-size:clamp(2rem, 2.2vw, 2.2rem);
+        color:map.get(v.$colors, "primarynew");
+        line-height: 2rem;
+      }
+    }
+  }
+}

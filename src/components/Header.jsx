@@ -70,35 +70,35 @@ const Header = () => {
       href: "/about",
       subMenu: null,
     },
+    // {
+    //   id: 3,
+    //   title: "Chit Plans",
+    //   href: "/chit-plans",
+    //   subMenu: [
+    //     {
+    //       title: "Monthly Chits - Long period",
+    //       href: "/chit-plans/monthlychit-long",
+    //     },
+    //     {
+    //       title: "Monthly Chits - Short Period",
+    //       href: "/chit-plans/monthlychit-short",
+    //     },
+    //     {
+    //       title: "Monthly Chits - Middle Period",
+    //       href: "/chit-plans/monthlychit-middle",
+    //     },
+    //     {
+    //       title: "Daily Chits - Long Period",
+    //       href: "/chit-plans/dailychit-long",
+    //     },
+    //     {
+    //       title: "Daily Chits - Short Period",
+    //       href: "/chit-plans/dailychit-short",
+    //     },
+    //   ],
+    // },
     {
       id: 3,
-      title: "Chit Plans",
-      href: "/chit-plans",
-      subMenu: [
-        {
-          title: "Monthly Chits - Long period",
-          href: "/chit-plans/monthlychit-long",
-        },
-        {
-          title: "Monthly Chits - Short Period",
-          href: "/chit-plans/monthlychit-short",
-        },
-        {
-          title: "Monthly Chits - Middle Period",
-          href: "/chit-plans/monthlychit-middle",
-        },
-        {
-          title: "Daily Chits - Long Period",
-          href: "/chit-plans/dailychit-long",
-        },
-        {
-          title: "Daily Chits - Short Period",
-          href: "/chit-plans/dailychit-short",
-        },
-      ],
-    },
-    {
-      id: 4,
       title: "Services",
       href: "/services",
       subMenu: [
@@ -108,13 +108,13 @@ const Header = () => {
       ],
     },
     {
-      id: 5,
-      title: "Guide",
+      id: 4,
+      title: "Guide To Chitfund",
       href: "/guide",
       subMenu: null,
     },
     {
-      id: 6,
+      id: 5,
       title: "Contact",
       href: "/contact",
       subMenu: null,
@@ -171,10 +171,7 @@ const Header = () => {
                   </Link>
                   <Link to="/" className="me-3">
                     FAQ's
-                  </Link>
-                  <Link to="/" className="me-3">
-                    Blogs
-                  </Link>
+                  </Link>                 
                 </div>
               </div>
             </div>

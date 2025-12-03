@@ -24,8 +24,7 @@ const Testimonials = () => {
     // Animate testimonials swiper on scroll
     if (swiperRef.current) {
       gsap.fromTo(swiperRef.current,
-        {
-          opacity: 0,
+        {         
           scale: 0.95,
         },
         {

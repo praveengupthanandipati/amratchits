@@ -38,15 +38,12 @@ const Footer = () => {
                           </li>
                           <li className="nav-item">
                             <Link className="nav-link text-uppercase" to="/">Company</Link>
-                          </li>
-                          <li className="nav-item">
-                            <Link className="nav-link text-uppercase" to="/">Chit Plans</Link>
-                          </li>
+                          </li>                       
                           <li className="nav-item">
                             <Link className="nav-link text-uppercase" to="/">Services</Link>
                           </li>
                           <li className="nav-item">
-                            <Link className="nav-link text-uppercase" to="/">Guide</Link>
+                            <Link className="nav-link text-uppercase" to="/">Guide To Chitfund</Link>
                           </li>
                         </ul>
                     </div>
