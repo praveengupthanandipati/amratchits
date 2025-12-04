@@ -88,7 +88,7 @@ const Homeherosection = () => {
 
   return (
     <React.Fragment>
-      <section className="hero-section position-relative overflow-hidden">       
+      <section className="hero-section position-relative overflow-hidden">
         <div className="w-100">
           <div className="HeroCarousel" ref={carouselRef}>
             <Swiper
@@ -109,42 +109,30 @@ const Homeherosection = () => {
               }}
               loop={true}
               className="hero-swiper"
-              style={{width: '100%', maxWidth: '100%'}}
+              style={{ width: '100%', maxWidth: '100%' }}
             >
               {carouselSlides.map((slide) => (
                 <SwiperSlide key={slide.id} className="position-relative">
-                  <div className="carousel-slide" style={{
-                    height: window.innerWidth < 768 ? '100vh' : 'auto',
-                    minHeight: window.innerWidth < 768 ? '100vh' : 'auto',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '100%'
-                  }}>
+                  <div className="carousel-slide carousel-slide-inner">
                     <div className="container h-100">
                       <div className="row align-items-center flex-column flex-md-row h-100">
                         {/* Left: Image */}
                         <div className="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-center align-items-center h-100">
-                          <div style={{position: 'relative', width: '100%'}}>
+                          <div style={{ position: 'relative', width: '100%' }}>
                             <img
                               src={slide.image}
                               alt={slide.alt}
                               className="img-fluid sliderimg rounded-4"
                               style={{
                                 position: 'relative',
-                                zIndex: 3,                                 
+                                zIndex: 3,
                               }}
                             />
                           </div>
                         </div>
                         {/* Right: Article */}
                         <div className="col-12 col-md-6 d-flex align-items-center justify-content-center h-100">
-                          <div className="carousel-content w-100 text-center text-md-start" style={{
-                            background: window.innerWidth < 768 ? 'rgba(32,24,93,0.08)' : 'none',
-                            borderRadius: window.innerWidth < 768 ? '12px' : '0',
-                            boxShadow: window.innerWidth < 768 ? '0 2px 8px rgba(32,24,93,0.07)' : 'none',
-                            marginBottom: window.innerWidth < 768 ? '1rem' : '0'
-                          }}>
+                          <div className="carousel-content carousel-content-wrapper text-center text-md-start">
                             <article>
                               <h3 className="roboto-bold text-uppercase mb-3">
                                 {slide.title}
@@ -179,8 +167,8 @@ const Homeherosection = () => {
         {/* Video Modal */}
         {showVideoModal && (
           <div>
-            <div 
-              className="modal fade show" 
+            <div
+              className="modal fade show"
               style={{ display: 'block' }}
               tabIndex="-1"
               role="dialog"
@@ -191,8 +179,8 @@ const Homeherosection = () => {
                 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                   <div className="modal-header border-0">
                     <h5 className="modal-title">Watch Our Video</h5>
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       className="btn-close btn-close-black"
                       onClick={handleCloseModal}
                       aria-label="Close"

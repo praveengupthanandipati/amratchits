@@ -1,5 +1,6 @@
 import React, { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import whoweareimg1 from '../assets/img/whoweare01.jpg';
 import whoweareimg2 from '../assets/img/whoweare02.jpg';
 import whoweareimg3 from '../assets/img/whoweare03.png';
@@ -8,36 +9,34 @@ import { Link } from 'react-router-dom';
 const Whoweare = () => {
     const sectionRef = useRef(null);
 
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger);
+
     useLayoutEffect(() => {
         if (sectionRef.current) {
             const objects = sectionRef.current.querySelectorAll('.whoweare-animate');
-            objects.forEach((el) => {
-                gsap.set(el, { opacity: 0, y: -60 });
+
+            // Set initial state
+            gsap.set(objects, { opacity: 0, y: 60 });
+
+            ScrollTrigger.batch(objects, {
+                onEnter: (batch) => {
+                    gsap.to(batch, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        stagger: 0.2,
+                        ease: "power3.out",
+                        overwrite: true
+                    });
+                },
+                start: "top 80%",
+                // markers: true
             });
-            let observer = new window.IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        objects.forEach((el, idx) => {
-                            gsap.to(el, {
-                                opacity: 1,
-                                y: 0,
-                                duration: 1,
-                                delay: idx * 0.4,
-                                ease: "power3.out"
-                            });
-                        });
-                    } else {
-                        objects.forEach((el) => {
-                            gsap.set(el, { opacity: 0, y: -60 });
-                        });
-                    }
-                });
-            }, { threshold: 0.3 });
-            observer.observe(sectionRef.current);
-            return () => {
-                if (observer && sectionRef.current) observer.unobserve(sectionRef.current);
-            };
         }
+        return () => {
+            ScrollTrigger.getAll().forEach(t => t.kill());
+        };
     }, []);
 
     return (
@@ -51,17 +50,17 @@ const Whoweare = () => {
                         </div>
                         <div className="row">
                             <div className="col-6 whoweare-animate">
-                                <img src={whoweareimg1} alt="Who We Are Image 1" className="img-fluid mb-4 mb-md-0"/>
+                                <img src={whoweareimg1} alt="Who We Are Image 1" className="img-fluid mb-4 mb-md-0" />
                             </div>
                             <div className="col-6 whoweare-animate">
-                                <img src={whoweareimg2} alt="Who We Are Image 2" className="img-fluid mb-4 mb-md-0"/>
+                                <img src={whoweareimg2} alt="Who We Are Image 2" className="img-fluid mb-4 mb-md-0" />
                             </div>
                         </div>
                     </div>
                     <div className="col-md-6 right-sidewhovare whoweare-animate">
                         <Sectiontitle
                             title="WHO WE ARE"
-                            titleClass=" text-primarynew text-uppercase font-bold"                           
+                            titleClass=" text-primarynew text-uppercase font-bold"
                             descriptionClass="text-gray-20"
                         />
                         <p>Welcome to Amrat Chits! We provide reliable chit fund schemes that help you achieve your financial goals through disciplined savings and timely payouts. Your secure future starts here..</p>

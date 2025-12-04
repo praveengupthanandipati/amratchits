@@ -23,6 +23,13 @@ const Header = () => {
 
   // GSAP animation for fixed-header
   useEffect(() => {
+    // Initial load animation
+    gsap.fromTo(
+      headerRef.current,
+      { y: -100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+    );
+
     if (headerRef.current) {
       if (scrolled) {
         gsap.to(headerRef.current, {

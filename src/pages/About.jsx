@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import About01img from "../assets/img/aboutpageimg01.jpg";
 import About02img from "../assets/img/aboutpageimg02.jpg";
 import About03img from "../assets/img/aboutpageimg03.jpg";
@@ -6,11 +8,42 @@ import About04img from "../assets/img/aboutpageimg04.jpg";
 import Aboutbanner01 from "../assets/img/aboutpagebanner01.jpg";
 import Aboutbanner02 from "../assets/img/section2img.jpg";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const About = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      const animElements = sectionRef.current.querySelectorAll('.about-anim');
+
+      ScrollTrigger.batch(animElements, {
+        onEnter: (batch) => {
+          gsap.fromTo(batch,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              stagger: 0.15,
+              ease: "power3.out",
+              overwrite: true
+            }
+          );
+        },
+        start: "top 85%",
+        // markers: true
+      });
+    }
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+  }, []);
+
   return (
     <React.Fragment>
-      <section className="subpage">
-        <div className="subpage-section">
+      <section className="subpage" ref={sectionRef}>
+        <div className="subpage-section about-anim">
           <div className="container">
             <div className="row">
               <div className="col-md-6 align-self-center">
@@ -72,7 +105,7 @@ const About = () => {
           </div>
         </div>
 
-        <figure>
+        <figure className="about-anim">
           <img
             src={Aboutbanner01}
             alt="about banner"
@@ -84,9 +117,9 @@ const About = () => {
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                <div className="py-3 my-2 d-flex icondiv-section pb-3 border-bottom">
+                <div className="py-3 my-2 d-flex icondiv-section pb-3 border-bottom about-anim">
                   <div className="div-icon">
-                    <i class="fi fi-rr-time-forward icomoon"></i>
+                    <i className="fi fi-rr-time-forward icomoon"></i>
                   </div>
                   <article>
                     <h2 className="font-bold">Our Tradition, Your Future</h2>
@@ -103,9 +136,9 @@ const About = () => {
                   </article>
                 </div>
 
-                <div className="py-3 my-2 d-flex icondiv-section pb-3 border-bottom">
+                <div className="py-3 my-2 d-flex icondiv-section pb-3 border-bottom about-anim">
                   <div className="div-icon">
-                   <i class="fi fi-rs-shield-check icomoon"></i>
+                    <i className="fi fi-rs-shield-check icomoon"></i>
                   </div>
                   <article>
                     <h2 className="font-bold">Service Beyond Expectations</h2>
@@ -121,9 +154,9 @@ const About = () => {
                   </article>
                 </div>
 
-                <div className="py-3 my-2 d-flex icondiv-section pb-3 border-bottom">
+                <div className="py-3 my-2 d-flex icondiv-section pb-3 border-bottom about-anim">
                   <div className="div-icon">
-                    <i class="fi fi-rr-user-robot icomoon"></i>
+                    <i className="fi fi-rr-user-robot icomoon"></i>
                   </div>
                   <article>
                     <h2 className="font-bold">
@@ -144,7 +177,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="subpage-section bg-light">
+        <div className="subpage-section bg-light about-anim">
           <div className="container">
             <div className="row">
               <div className="col-md-4 align-self-center">
@@ -175,7 +208,7 @@ const About = () => {
                   <div className="col-md-6">
                     <div className="py-3 my-2 d-flex icondiv-section pb-3">
                       <div className="div-icon">
-                        <i class="fi fi-rr-shield-keyhole icomoon"></i>
+                        <i className="fi fi-rr-shield-keyhole icomoon"></i>
                       </div>
                       <article>
                         <h4 className="font-bold text-primarynew pb-2">
@@ -194,7 +227,7 @@ const About = () => {
                   <div className="col-md-6">
                     <div className="py-3 my-2 d-flex icondiv-section pb-3">
                       <div className="div-icon">
-                        <i class="fi fi-rs-hr-person icomoon"></i>
+                        <i className="fi fi-rs-hr-person icomoon"></i>
                       </div>
                       <article>
                         <h4 className="font-bold text-primarynew pb-2">
@@ -212,7 +245,7 @@ const About = () => {
                   <div className="col-md-6">
                     <div className="py-3 my-2 d-flex icondiv-section pb-3">
                       <div className="div-icon">
-                        <i class="fi fi-rr-user-experience icomoon"></i>
+                        <i className="fi fi-rr-user-experience icomoon"></i>
                       </div>
                       <article>
                         <h4 className="font-bold text-primarynew pb-2">
@@ -231,7 +264,7 @@ const About = () => {
                   <div className="col-md-6">
                     <div className="py-3 my-2 d-flex icondiv-section pb-3">
                       <div className="div-icon">
-                        <i class="fi fi-rr-calendar-gavel-legal icomoon"></i>
+                        <i className="fi fi-rr-calendar-gavel-legal icomoon"></i>
                       </div>
                       <article>
                         <h4 className="font-bold text-primarynew pb-2">
@@ -251,20 +284,46 @@ const About = () => {
           </div>
         </div>
 
-        <div className="subpage-section">
+        <div className="subpage-section about-anim">
           <div className="container">
-                <div className="row">
-                  <div className="col-md-4">
-                     <div className="pb-3">
-                      <h6 className="text-secondarynew text-uppercase letter-spacing font-bold pb-2">
-                        OUR TEAM
-                      </h6>
-                      <h1 className="font-bold text-primarynew">
-                          Leading the way in business transformation
-                      </h1>
-                    </div>
-                  </div>
+            <div className="row">
+              <div className="col-md-4">
+                <div className="pb-3">
+                  <h6 className="text-secondarynew text-uppercase letter-spacing font-bold pb-2">
+                    OUR TEAM
+                  </h6>
+                  <h1 className="font-bold text-primarynew">
+                    Leading the way in business transformation
+                  </h1>
                 </div>
+              </div>
+              <div className="col-md-8">
+                  <div className="row">
+                    {[
+                      { name: "Amrat Kumar Jain", title: "Chairman", img: "https://randomuser.me/api/portraits/men/11.jpg"},
+                      { name: "S.K. Saxena", title: "Director", img: "https://randomuser.me/api/portraits/men/21.jpg"},
+                      { name: "Vishal Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/31.jpg"},
+                      { name: "Abhay Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/41.jpg"},
+                      { name: "Shailesh Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/51.jpg"}
+                    ].map((member, idx) => (
+                      <div className="col-md-4 mb-4 about-anim" key={member.name}>
+                        <div className="card text-center border-0 shadow-sm h-100 pb-2 d-flex flex-column align-items-center justify-content-center" style={{ background: "rgba(255,255,255,0.95)", borderRadius: "1rem" }}>
+                          <div style={{ width: "100%", aspectRatio: "1/1", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                              <img
+                                src={member.img}
+                                alt={member.name}
+                                className="w-100"
+                                style={{ width: "100%", height: "100%", objectFit: "cover", borderTopLeftRadius: "15px", borderTopRightRadius: "15px", borderBottomLeftRadius: "50%", borderBottomRightRadius: "50%" }}
+                            />
+                          </div>
+                          <h5 className="font-bold mt-3 mb-1 text-primarynew w-100">{member.name}</h5>
+                          <p className="text-secondarynew mb-0 w-100">{member.title}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

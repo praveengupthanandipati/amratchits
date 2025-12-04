@@ -413,4 +413,6 @@
 
 .header-section{
     background:map.get(v.$colors, "white");
+    position: relative;
+    z-index: 999;
 }
