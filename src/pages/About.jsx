@@ -105,13 +105,53 @@ const About = () => {
           </div>
         </div>
 
-        <figure className="about-anim">
-          <img
-            src={Aboutbanner01}
-            alt="about banner"
-            className="img-fluid w-100"
-          />
-        </figure>
+          <figure className="about-anim about-hero">
+            <img
+              src={Aboutbanner01}
+              alt="about banner"
+              className="img-fluid w-100"
+            />
+            <div className="about-hero-content">
+              <h2 className="spaced-title font-bold">Increase your money systematically</h2>
+              <p className="lead">Everyone with a high and useful reward for his/her trading, purchase and investment. Our goal is to make the financial journey reliable and rewarding.</p>
+            </div>
+          </figure>
+
+          {/* Features grid */}
+          <div className="subpage-section">
+            <div className="container">
+              <div className="row gy-4">
+                <div className="col-md-4 about-anim">
+                  <div className="feature-box text-center p-4 rounded-4">
+                    <div className="feature-icon mb-3">
+                      <img src={About01img} alt="Protecting" className="img-fluid rounded-circle" style={{width:80, height:80, objectFit:'cover'}} />
+                    </div>
+                    <h5 className="font-bold pb-2 text-primarynew">Protecting your company</h5>
+                    <p className="mb-0">We help protect your investments and ensure a transparent, compliant process.</p>
+                  </div>
+                </div>
+                <div className="col-md-4 about-anim">
+                  <div className="feature-box text-center p-4 rounded-4">
+                    <div className="feature-icon mb-3">
+                      <img src={About02img} alt="Solutions" className="img-fluid rounded-circle" style={{width:80, height:80, objectFit:'cover'}} />
+                    </div>
+                    <h5 className="font-bold pb-2 text-primarynew">We offer you solutions</h5>
+                    <p className="mb-0">Tailored chit plans and guidance to suit your savings goals and timelines.</p>
+                  </div>
+                </div>
+                <div className="col-md-4 about-anim">
+                  <div className="feature-box text-center p-4 rounded-4">
+                    <div className="feature-icon mb-3">
+                      <img src={About03img} alt="Care" className="img-fluid rounded-circle" style={{width:80, height:80, objectFit:'cover'}} />
+                    </div>
+                    <h5 className="font-bold pb-2 text-primarynew">We take care of you</h5>
+                    <p className="mb-0">Personalized support, timely payouts and a trusted process backed by decades of experience.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
 
         <div className="subpage-section">
           <div className="container">
@@ -245,7 +285,7 @@ const About = () => {
                   <div className="col-md-6">
                     <div className="py-3 my-2 d-flex icondiv-section pb-3">
                       <div className="div-icon">
-                        <i className="fi fi-rr-user-experience icomoon"></i>
+                       <i class="fi fi-rr-team-check icomoon"></i>
                       </div>
                       <article>
                         <h4 className="font-bold text-primarynew pb-2">

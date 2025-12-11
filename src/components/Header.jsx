@@ -63,71 +63,7 @@ const Header = () => {
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
-  // Menu data with submenus
-  const menuItems = [
-    {
-      id: 1,
-      title: "Home",
-      href: "/",
-      subMenu: null,
-    },
-    {
-      id: 2,
-      title: "About",
-      href: "/about",
-      subMenu: null,
-    },
-    // {
-    //   id: 3,
-    //   title: "Chit Plans",
-    //   href: "/chit-plans",
-    //   subMenu: [
-    //     {
-    //       title: "Monthly Chits - Long period",
-    //       href: "/chit-plans/monthlychit-long",
-    //     },
-    //     {
-    //       title: "Monthly Chits - Short Period",
-    //       href: "/chit-plans/monthlychit-short",
-    //     },
-    //     {
-    //       title: "Monthly Chits - Middle Period",
-    //       href: "/chit-plans/monthlychit-middle",
-    //     },
-    //     {
-    //       title: "Daily Chits - Long Period",
-    //       href: "/chit-plans/dailychit-long",
-    //     },
-    //     {
-    //       title: "Daily Chits - Short Period",
-    //       href: "/chit-plans/dailychit-short",
-    //     },
-    //   ],
-    // },
-    {
-      id: 3,
-      title: "Services",
-      href: "/services",
-      subMenu: [
-        { title: "Chit Fund Solutions", href: "/services/chit-management" },
-        { title: "Transparent Processes", href: "/services/consulting" },
-        { title: "Financial Guidance", href: "/services/investment" },        
-      ],
-    },
-    {
-      id: 4,
-      title: "Guide To Chitfund",
-      href: "/guide",
-      subMenu: null,
-    },
-    {
-      id: 5,
-      title: "Contact",
-      href: "/contact",
-      subMenu: null,
-    },
-  ];
-
+  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     if (!isMenuOpen) {
@@ -173,10 +109,10 @@ const Header = () => {
               </div>
               <div className="col-md-6">
                 <div className="text-md-end">
-                  <Link to="/" className="me-3">
+                  <Link to="/careers" className="me-3">
                     Careers
                   </Link>
-                  <Link to="/" className="me-3">
+                  <Link to="/faqs" className="me-3">
                     FAQ's
                   </Link>                 
                 </div>
@@ -192,7 +128,7 @@ const Header = () => {
             <div className="header-row justify-content-between align-items-center">
               {/* Left: Logo */}
               <div className="header-logo">
-                <a href="/" className="logo-link">
+                <Link to="/" className="logo-link" onClick={closeMenu}>
                   <img
                     src={logo}
                     alt="AmratChits Logo"
@@ -202,63 +138,36 @@ const Header = () => {
                       e.target.nextSibling.style.display = "block";
                     }}
                   />
-                </a>
+                </Link>
               </div>
               {/* Right: Navigation Menu */}
               <nav className={`header-nav ${isMenuOpen ? "nav-open" : ""}`}>
                 <ul className="nav-menu justify-content-md-end">
-                  {menuItems.map((item) => (
-                    <li
-                      key={item.id}
-                      className={`nav-item ${
-                        activeDropdown === item.id ? "dropdown-active" : ""
-                      }`}
-                      onMouseEnter={() => handleMouseEnter(item.id)}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      <a
-                        href={item.href}
-                        className="nav-link text-uppercase font-medium"
-                        onClick={(e) => {
-                          if (isMobile && item.subMenu) {
-                            e.preventDefault();
-                            handleDropdownToggle(item.id);
-                          }
-                        }}
-                      >
-                        {item.title}
-                        {item.subMenu && (
-                          <span
-                            className={`dropdown-arrow ${
-                              activeDropdown === item.id ? "arrow-up" : ""
-                            }`}
-                          >
-                            ▼
-                          </span>
-                        )}
-                      </a>
-                      {/* Submenu */}
-                      {item.subMenu && (
-                        <ul
-                          className={`sub-menu ${
-                            activeDropdown === item.id ? "sub-menu-open" : ""
-                          }`}
-                        >
-                          {item.subMenu.map((subItem, index) => (
-                            <li key={index} className="sub-item">
-                              <a
-                                href={subItem.href}
-                                className="sub-link"
-                                onClick={closeMenu}
-                              >
-                                {subItem.title}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
+                  <li className="nav-item">
+                    <Link to="/" className="nav-link text-uppercase font-medium" onClick={closeMenu}>
+                      Home
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/about" className="nav-link text-uppercase font-medium" onClick={closeMenu}>
+                      About
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/services" className="nav-link text-uppercase font-medium" onClick={closeMenu}>
+                      Services
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/guide" className="nav-link text-uppercase font-medium" onClick={closeMenu}>
+                      Guide To Chitfund
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/contact" className="nav-link text-uppercase font-medium" onClick={closeMenu}>
+                      Contact
+                    </Link>
+                  </li>
                 </ul>
               </nav>
               {/* Mobile Menu Toggle */}
