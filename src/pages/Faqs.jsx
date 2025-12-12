@@ -74,7 +74,7 @@ const Faqs = () => {
                 <div className="pb-3 text-center">
                   <h6 className="text-secondarynew text-uppercase letter-spacing font-bold pb-2">Frequently Asked Questions</h6>
                   <h1 className="font-bold text-primarynew pb-3">Amrat Chits India Pvt Ltd — FAQs</h1>
-                  <p className="lead">Answers to common questions about our chitfund services and how we operate from Hyderabad.</p>
+                  <p>Answers to common questions about our chitfund services and how we operate from Hyderabad.</p>
                 </div>
 
                 <div className="accordion" id="faqsAccordion">

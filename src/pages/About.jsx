@@ -7,6 +7,9 @@ import About03img from "../assets/img/aboutpageimg03.jpg";
 import About04img from "../assets/img/aboutpageimg04.jpg";
 import Aboutbanner01 from "../assets/img/aboutpagebanner01.jpg";
 import Aboutbanner02 from "../assets/img/section2img.jpg";
+import protectingcompany from "../assets/img/protechcompany.jpg";
+import solutionsimg from "../assets/img/solutions.jpg";
+import wecare from "../assets/img/wecare.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -124,7 +127,7 @@ const About = () => {
                 <div className="col-md-4 about-anim">
                   <div className="feature-box text-center p-4 rounded-4">
                     <div className="feature-icon mb-3">
-                      <img src={About01img} alt="Protecting" className="img-fluid rounded-circle" style={{width:80, height:80, objectFit:'cover'}} />
+                      <img src={protectingcompany} alt="Protecting" className="img-fluid rounded-circle" style={{width:80, height:80, objectFit:'cover'}} />
                     </div>
                     <h5 className="font-bold pb-2 text-primarynew">Protecting your company</h5>
                     <p className="mb-0">We help protect your investments and ensure a transparent, compliant process.</p>
@@ -133,7 +136,7 @@ const About = () => {
                 <div className="col-md-4 about-anim">
                   <div className="feature-box text-center p-4 rounded-4">
                     <div className="feature-icon mb-3">
-                      <img src={About02img} alt="Solutions" className="img-fluid rounded-circle" style={{width:80, height:80, objectFit:'cover'}} />
+                      <img src={solutionsimg} alt="Solutions" className="img-fluid rounded-circle" style={{width:80, height:80, objectFit:'cover'}} />
                     </div>
                     <h5 className="font-bold pb-2 text-primarynew">We offer you solutions</h5>
                     <p className="mb-0">Tailored chit plans and guidance to suit your savings goals and timelines.</p>
@@ -142,7 +145,7 @@ const About = () => {
                 <div className="col-md-4 about-anim">
                   <div className="feature-box text-center p-4 rounded-4">
                     <div className="feature-icon mb-3">
-                      <img src={About03img} alt="Care" className="img-fluid rounded-circle" style={{width:80, height:80, objectFit:'cover'}} />
+                      <img src={wecare} alt="Care" className="img-fluid rounded-circle" style={{width:80, height:80, objectFit:'cover'}} />
                     </div>
                     <h5 className="font-bold pb-2 text-primarynew">We take care of you</h5>
                     <p className="mb-0">Personalized support, timely payouts and a trusted process backed by decades of experience.</p>

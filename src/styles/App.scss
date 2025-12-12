@@ -119,6 +119,52 @@ body {
   }
 }
 
+/* Why Join Us thumbnails */
+.whyus-section {
+  padding: 2.5rem 0 3.5rem;
+
+  .why-card {
+    background: rgba(255,255,255,0.98);
+    border-radius: 12px;
+    padding: 1rem;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 10px 30px rgba(16,24,40,0.06);
+  }
+
+  .why-icon {
+    width: 72px;
+    height: 72px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    font-size: 28px;
+    background: linear-gradient(135deg, map.get(v.$colors, "primarynew"), map.get(v.$colors, "secondarynew"));
+    box-shadow: 0 8px 20px rgba(32,24,93,0.08);
+  }
+
+  .why-icon svg {
+    width: 36px;
+    height: 36px;
+    display: block;
+    fill: #fff;
+  }
+
+  .why-title { margin: 0.35rem 0 0.25rem; font-weight: 700; color: map.get(v.$colors, "primarynew"); }
+  .why-desc { margin: 0; color: map.get(v.$colors, "gray-80"); font-size: 0.95rem; text-align: center; }
+
+  @include m.respond-below(map.get(v.$breakpoints, "md")) {
+    .why-icon { width: 60px; height: 60px; font-size: 22px; }
+    .why-card { min-height: auto; }
+  }
+}
+
+
 /* FAQ accordion card styling */
 .accordion .accordion-item.card {
   border: none;
@@ -141,6 +187,31 @@ body {
 
 @include m.respond-below(map.get(v.$breakpoints, "md")) {
   .accordion-button { font-size: 0.95rem; }
+}
+
+/* Careers table styling */
+.careers-table thead {
+  background: linear-gradient(90deg, rgba(18,63,117,0.06), rgba(18,63,117,0.02));
+}
+.careers-table thead th {
+  color: map.get(v.$colors, "primarynew");
+  font-weight: 700;
+  border-bottom: 0;
+}
+.careers-table tbody tr:nth-child(odd) {
+  background: rgba(255,255,255,0.95);
+}
+.careers-table tbody tr:nth-child(even) {
+  background: rgba(248,250,252,0.85);
+}
+.careers-table td, .careers-table th { vertical-align: middle; }
+.careers-table { border-radius: 12px; overflow: hidden; }
+
+@include m.respond-below(map.get(v.$breakpoints, "md")) {
+  .careers-table thead { display: none; }
+  .careers-table tbody tr { display: block; margin-bottom: 1rem; }
+  .careers-table tbody td { display: block; text-align: left; padding-left: 1rem; }
+  .careers-table tbody td:first-child { font-weight: 700; }
 }
 
 /* Contact page styles */
