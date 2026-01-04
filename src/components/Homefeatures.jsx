@@ -1,6 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import herovideoimg from "../assets/img/video-img.jpg";
 
 const Homefeatures = () => {
@@ -17,51 +15,9 @@ const Homefeatures = () => {
     setShowModal(false);
   };
 
-  // Register GSAP plugins
-  gsap.registerPlugin(ScrollTrigger);
-
   useEffect(() => {
-    // Set initial state
-    if (sectionRef.current) {
-      const features = featureRefs.current;
-      gsap.set(features, { opacity: 0, y: 60 });
-
-      ScrollTrigger.batch(features, {
-        onEnter: (batch) => {
-          gsap.to(batch, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power3.out",
-            overwrite: true
-          });
-        },
-        onLeave: (batch) => {
-          gsap.set(batch, { opacity: 0, y: -60, overwrite: true });
-        },
-        onEnterBack: (batch) => {
-          gsap.to(batch, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power3.out",
-            overwrite: true
-          });
-        },
-        onLeaveBack: (batch) => {
-          gsap.set(batch, { opacity: 0, y: 60, overwrite: true });
-        },
-        start: "top 85%",
-        end: "bottom 15%",
-        // markers: true // for debugging
-      });
-    }
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
+    // Animations disabled for this page (temporary)
+    return () => {};
   }, []);
 
   return (

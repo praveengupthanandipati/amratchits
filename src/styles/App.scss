@@ -46,11 +46,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(
-      135deg,
-      map.get(v.$colors, "primarynew"),
-      map.get(v.$colors, "secondarynew")
-    );
+    background: linear-gradient(135deg,
+        map.get(v.$colors, "primarynew"),
+        map.get(v.$colors, "secondarynew"));
   }
 
   .fin-thumb h5 {
@@ -79,10 +77,10 @@ body {
   padding: 3rem 0 5rem;
 
   .comp-card {
-    background: rgba(255,255,255,0.98);
+    background: rgba(255, 255, 255, 0.98);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 12px 30px rgba(16,24,40,0.08);
+    box-shadow: 0 12px 30px rgba(16, 24, 40, 0.08);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -111,11 +109,16 @@ body {
     flex-direction: column;
     gap: 0.35rem;
 
-    li { color: map.get(v.$colors, "gray-80"); font-size: 0.95rem; }
+    li {
+      color: map.get(v.$colors, "gray-80");
+      font-size: 0.95rem;
+    }
   }
 
   @include m.respond-below(map.get(v.$breakpoints, "md")) {
-    .card-banner { height: 120px; }
+    .card-banner {
+      height: 120px;
+    }
   }
 }
 
@@ -124,7 +127,7 @@ body {
   padding: 2.5rem 0 3.5rem;
 
   .why-card {
-    background: rgba(255,255,255,0.98);
+    background: rgba(255, 255, 255, 0.98);
     border-radius: 12px;
     padding: 1rem;
     min-height: 160px;
@@ -132,7 +135,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    box-shadow: 0 10px 30px rgba(16,24,40,0.06);
+    box-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
   }
 
   .why-icon {
@@ -145,7 +148,7 @@ body {
     color: white;
     font-size: 28px;
     background: linear-gradient(135deg, map.get(v.$colors, "primarynew"), map.get(v.$colors, "secondarynew"));
-    box-shadow: 0 8px 20px rgba(32,24,93,0.08);
+    box-shadow: 0 8px 20px rgba(32, 24, 93, 0.08);
   }
 
   .why-icon svg {
@@ -155,12 +158,29 @@ body {
     fill: #fff;
   }
 
-  .why-title { margin: 0.35rem 0 0.25rem; font-weight: 700; color: map.get(v.$colors, "primarynew"); }
-  .why-desc { margin: 0; color: map.get(v.$colors, "gray-80"); font-size: 0.95rem; text-align: center; }
+  .why-title {
+    margin: 0.35rem 0 0.25rem;
+    font-weight: 700;
+    color: map.get(v.$colors, "primarynew");
+  }
+
+  .why-desc {
+    margin: 0;
+    color: map.get(v.$colors, "gray-80");
+    font-size: 0.95rem;
+    text-align: center;
+  }
 
   @include m.respond-below(map.get(v.$breakpoints, "md")) {
-    .why-icon { width: 60px; height: 60px; font-size: 22px; }
-    .why-card { min-height: auto; }
+    .why-icon {
+      width: 60px;
+      height: 60px;
+      font-size: 22px;
+    }
+
+    .why-card {
+      min-height: auto;
+    }
   }
 }
 
@@ -171,14 +191,17 @@ body {
   border-radius: 12px;
   overflow: hidden;
 }
+
 .accordion-button {
   font-weight: 700;
   color: map.get(v.$colors, "primarynew");
   padding: 1rem 1.25rem;
 }
+
 .accordion-button:not(.collapsed) {
-  background: linear-gradient(90deg, rgba(240,246,255,1), rgba(250,250,255,1));
+  background: linear-gradient(90deg, rgba(240, 246, 255, 1), rgba(250, 250, 255, 1));
 }
+
 .accordion-body {
   padding: 1rem 1.25rem 1.5rem;
   background: white;
@@ -186,60 +209,143 @@ body {
 }
 
 @include m.respond-below(map.get(v.$breakpoints, "md")) {
-  .accordion-button { font-size: 0.95rem; }
+  .accordion-button {
+    font-size: 0.95rem;
+  }
 }
 
 /* Careers table styling */
 .careers-table thead {
-  background: linear-gradient(90deg, rgba(18,63,117,0.06), rgba(18,63,117,0.02));
+  background: linear-gradient(90deg, rgba(18, 63, 117, 0.06), rgba(18, 63, 117, 0.02));
 }
+
 .careers-table thead th {
   color: map.get(v.$colors, "primarynew");
   font-weight: 700;
   border-bottom: 0;
 }
+
 .careers-table tbody tr:nth-child(odd) {
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.95);
 }
+
 .careers-table tbody tr:nth-child(even) {
-  background: rgba(248,250,252,0.85);
+  background: rgba(248, 250, 252, 0.85);
 }
-.careers-table td, .careers-table th { vertical-align: middle; }
-.careers-table { border-radius: 12px; overflow: hidden; }
+
+.careers-table td,
+.careers-table th {
+  vertical-align: middle;
+}
+
+.careers-table {
+  border-radius: 12px;
+  overflow: hidden;
+}
 
 @include m.respond-below(map.get(v.$breakpoints, "md")) {
-  .careers-table thead { display: none; }
-  .careers-table tbody tr { display: block; margin-bottom: 1rem; }
-  .careers-table tbody td { display: block; text-align: left; padding-left: 1rem; }
-  .careers-table tbody td:first-child { font-weight: 700; }
+  .careers-table thead {
+    display: none;
+  }
+
+  .careers-table tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .careers-table tbody td {
+    display: block;
+    text-align: left;
+    padding-left: 1rem;
+  }
+
+  .careers-table tbody td:first-child {
+    font-weight: 700;
+  }
 }
 
 /* Contact page styles */
 .contact-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,255,0.98));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 250, 255, 0.98));
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(16,24,40,0.08);
+  box-shadow: 0 20px 50px rgba(16, 24, 40, 0.08);
 }
+
 .contact-card .card-title {
   font-size: 1.5rem;
   margin-bottom: 0.25rem;
 }
-.contact-card .card-sub { color: map.get(v.$colors, "gray-80"); margin-bottom: 1rem; }
-.contact-form { display: grid; gap: 0.75rem; }
-.form-group { display: flex; flex-direction: column; }
-.form-group label { font-weight: 600; margin-bottom: 0.5rem; }
+
+.contact-card .card-sub {
+  color: map.get(v.$colors, "gray-80");
+  margin-bottom: 1rem;
+}
+
+.contact-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
 .form-group input,
-.form-group textarea { border: 1px solid rgba(16,24,40,0.08); padding: 0.75rem 0.85rem; border-radius: 10px; font-size: 0.95rem; }
-.form-group input:focus, .form-group textarea:focus { outline: none; box-shadow: 0 8px 20px rgba(16,24,40,0.06); border-color: map.get(v.$colors, "primarynew"); }
-.invalid-feedback { color: map.get(v.$colors, "secondarynew"); font-size: 0.85rem; margin-top: 0.35rem; }
-.has-error input, .has-error textarea { border-color: rgba(255,0,0,0.14); }
-.form-actions { margin-top: 0.5rem; }
-.btn-primary { background: map.get(v.$colors, "primarynew"); color: white; padding: 0.75rem 1.25rem; border-radius: 10px; border: none; cursor: pointer; font-weight: 600; }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(16,24,40,0.08); }
+.form-group textarea {
+  border: 1px solid rgba(16, 24, 40, 0.08);
+  padding: 0.75rem 0.85rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  box-shadow: 0 8px 20px rgba(16, 24, 40, 0.06);
+  border-color: map.get(v.$colors, "primarynew");
+}
+
+.invalid-feedback {
+  color: map.get(v.$colors, "secondarynew");
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+}
+
+.has-error input,
+.has-error textarea {
+  border-color: rgba(255, 0, 0, 0.14);
+}
+
+.form-actions {
+  margin-top: 0.5rem;
+}
+
+.btn-primary {
+  background: map.get(v.$colors, "primarynew");
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(16, 24, 40, 0.08);
+}
 
 @include m.respond-below(map.get(v.$breakpoints, "md")) {
-  .contact-card { padding: 1.25rem; }
+  .contact-card {
+    padding: 1.25rem;
+  }
 }
 
 /* success message */
@@ -247,9 +353,9 @@ body {
   margin-top: 0.75rem;
   padding: 0.75rem 1rem;
   border-radius: 8px;
-  background: linear-gradient(90deg, rgba(220,255,235,1), rgba(235,255,245,1));
+  background: linear-gradient(90deg, rgba(220, 255, 235, 1), rgba(235, 255, 245, 1));
   color: map.get(v.$colors, "primarynew");
-  border: 1px solid rgba(34,197,94,0.12);
+  border: 1px solid rgba(34, 197, 94, 0.12);
   font-weight: 600;
 }
 
@@ -297,12 +403,10 @@ h1 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
     @include m.transition(left, 0.5s, ease);
   }
 
@@ -341,12 +445,10 @@ h1 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
     @include m.transition(left, 0.5s, ease);
   }
 
@@ -385,12 +487,10 @@ h1 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
     @include m.transition(left, 0.5s, ease);
   }
 
@@ -465,10 +565,12 @@ h1 {
         @include m.respond-below(map.get(v.$breakpoints, "md")) {
           width: 100%;
         }
+
         h3 {
           font-size: clamp(1rem, 3vw, 3rem);
           color: map.get(v.$colors, "primarynew");
         }
+
         p {
           color: map.get(v.$colors, "black");
         }
@@ -573,6 +675,7 @@ h1 {
     opacity: 0;
     @include m.translate(0, 30px);
   }
+
   to {
     opacity: 1;
     @include m.translate(0, 0);
@@ -580,11 +683,9 @@ h1 {
 }
 
 .feature-column {
-  background: linear-gradient(
-    45deg,
-    rgba(223, 218, 255, 0.8),
-    rgba(255, 219, 221, 0.8)
-  );
+  background: linear-gradient(45deg,
+      rgba(223, 218, 255, 0.8),
+      rgba(255, 219, 221, 0.8));
   height: 100%;
   width: 100%;
   padding: 2rem;
@@ -616,11 +717,9 @@ h1 {
 
 // Service rows gradient + card styling
 .service-anim {
-  background: linear-gradient(
-    135deg,
-    rgba(250, 250, 255, 0.8),
-    rgba(244, 249, 255, 0.6)
-  );
+  background: linear-gradient(135deg,
+      rgba(250, 250, 255, 0.8),
+      rgba(244, 249, 255, 0.6));
   padding: 1.25rem;
   border-radius: 12px;
   margin-bottom: 1.25rem;
@@ -657,6 +756,7 @@ footer {
   }
 
   .footer-col {
+
     p,
     li {
       color: rgba(255, 255, 255, 0.9);
@@ -686,6 +786,7 @@ footer {
 
   @include m.respond-below(map.get(v.$breakpoints, "md")) {
     padding: 2rem 0;
+
     .text-md-end {
       text-align: left !important;
     }
@@ -711,11 +812,9 @@ footer {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.55) 0%,
-      rgba(0, 0, 0, 0.6) 100%
-    );
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.6) 100%);
     z-index: 1;
     pointer-events: none;
   }
@@ -747,11 +846,9 @@ footer {
 }
 
 .feature-box {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.95),
-    rgba(250, 250, 255, 0.9)
-  );
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(250, 250, 255, 0.9));
   border-radius: 12px;
   padding: 1.5rem;
   min-height: 220px;
@@ -763,6 +860,7 @@ footer {
   h5 {
     margin-top: 0.5rem;
   }
+
   p {
     margin-bottom: 0;
     color: map.get(v.$colors, "black");
@@ -807,6 +905,7 @@ footer {
     &:hover {
       background: map.get(v.$colors, "primary");
     }
+
     .icon-play {
       font-size: 4rem !important;
     }
@@ -822,8 +921,7 @@ footer {
   background: linear-gradient(45deg, #d6d0ff, #ffdadb);
 
   .HeroCarousel {
-    background: url("../assets/img/herobannerpattern.png") no-repeat right
-      center;
+    background: url("../assets/img/herobannerpattern.png") no-repeat right center;
   }
 
   // Equal height columns
@@ -831,6 +929,7 @@ footer {
     @include m.respond-above(map.get(v.$breakpoints, "md")) {
       display: flex;
       align-items: stretch;
+
       .col-12.col-md-6,
       .col-12.col-lg-6 {
         display: flex;
@@ -1003,14 +1102,14 @@ footer {
       color: map.get(v.$colors, "secondarynew");
     }
   }
+
   p {
     color: map.get(v.$colors, "primarynew");
   }
 }
 
 .chitplans-section {
-  background: url("../assets/img/chitplansbg.png") right center no-repeat
-    map.get(v.$colors, "primarynew");
+  background: url("../assets/img/chitplansbg.png") right center no-repeat map.get(v.$colors, "primarynew");
   padding: 5rem 0;
   min-height: 500px;
   background-size: cover;
@@ -1075,6 +1174,7 @@ footer {
 
     // Animation classes for smooth tab transitions
     .tab-animating-in {
+
       .col-lg-2,
       .col-md-4,
       .col-sm-6 {
@@ -1090,6 +1190,7 @@ footer {
   from {
     @include m.translate(0, 30px);
   }
+
   to {
     @include m.translate(0, 0);
   }
@@ -1113,11 +1214,9 @@ footer {
     font-size: clamp(1.2rem, 2vw, 1.8rem);
     margin: 0 0 1rem 0;
     padding: 0.5rem;
-    background: linear-gradient(
-      45deg,
-      rgba(32, 24, 93, 0.05),
-      rgba(227, 30, 37, 0.05)
-    );
+    background: linear-gradient(45deg,
+        rgba(32, 24, 93, 0.05),
+        rgba(227, 30, 37, 0.05));
     border-radius: 10px;
 
     @include m.respond-below(map.get(v.$breakpoints, "lg")) {
@@ -1256,11 +1355,9 @@ footer {
 }
 
 .welcomehome {
-  background: linear-gradient(
-    45deg,
-    rgba(223, 218, 255, 0.5),
-    rgba(255, 219, 221, 0.5)
-  );
+  background: linear-gradient(45deg,
+      rgba(223, 218, 255, 0.5),
+      rgba(255, 219, 221, 0.5));
   padding: 125px 0;
 
   .number-welcome {
@@ -1268,6 +1365,7 @@ footer {
     font-weight: map.get(v.$lato-weights, "black");
     line-height: 8rem;
   }
+
   .quote-coo {
     .icomoon {
       font-size: clamp(3rem, 6vw, 4rem);
@@ -1312,6 +1410,7 @@ footer {
 
   .welcome-col {
     margin-bottom: 25px;
+
     .icon-div {
       width: 80px;
       height: 80px;
@@ -1338,7 +1437,9 @@ footer {
 
 .serviceshome {
   position: relative;
-  padding: 5rem 0;
+  padding: 8rem 0;
+  background-color: map.get(v.$colors, "primarynew");
+  overflow: hidden;
 
   &:before {
     content: "";
@@ -1351,38 +1452,155 @@ footer {
     left: 0;
     right: 0;
     width: 100%;
-    height: 70%;
+    height: 100%;
+    opacity: 0.15;
     z-index: 0;
   }
-  .row {
-    .col-md-4 {
-      .service-col {
-        position: relative;
-        z-index: 999;
 
-        figure {
-          img {
-            width: 100%;
-            object-fit: cover;
-            border-top-left-radius: 25px;
-            border-top-right-radius: 25px;
+  .services-bg-decor {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+
+    .decor-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      background: linear-gradient(135deg, map.get(v.$colors, "primary-50"), map.get(v.$colors, "secondarynew"));
+
+      &.circle-1 {
+        width: 300px;
+        height: 300px;
+        top: -100px;
+        left: -50px;
+      }
+
+      &.circle-2 {
+        width: 400px;
+        height: 400px;
+        bottom: -150px;
+        right: -100px;
+        background: linear-gradient(135deg, map.get(v.$colors, "secondarynew"), map.get(v.$colors, "primarynew"));
+      }
+    }
+  }
+
+  .max-w-600 {
+    max-width: 600px;
+  }
+
+  .service-card-modern {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    height: 100%;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+
+    .card-inner {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-image-wrapper {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      border-radius: 25px 25px 0 0;
+
+      .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+
+      .card-image-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent 60%, rgba(32, 24, 93, 0.8));
+      }
+    }
+
+    .card-content {
+      padding: 3rem 2rem 2.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      color: white;
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: white;
+        transition: color 0.3s ease;
+      }
+
+      p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .card-learn-more {
+        display: inline-flex;
+        align-items: center;
+        color: map.get(v.$colors, "primary-50");
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+
+        i {
+          transition: transform 0.3s ease;
+        }
+
+        &:hover {
+          color: white;
+
+          i {
+            transform: translateX(5px);
           }
         }
-        article {
-          border-bottom-left-radius: 25px;
-          border-bottom-right-radius: 25px;
-          padding: 2.5rem;
-          z-index: 999;
-          text-align: center;
-          background: #f7f0ff;
-          h3 {
-            font-size: clamp(1.1rem, 1.3vw, 1.3rem);
-            font-weight: map.get(v.$lato-weights, "bold");
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            color: map.get(v.$colors, "primarynew");
-          }
-        }
+      }
+    }
+
+    &:hover {
+      transform: translateY(-15px);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+
+      .card-img {
+        transform: scale(1.1);
+      }
+
+      h3 {
+        color: map.get(v.$colors, "primary-50");
+      }
+    }
+  }
+
+  @include m.respond-below(map.get(v.$breakpoints, "md")) {
+    padding: 5rem 0;
+
+    .service-card-modern {
+      margin-bottom: 1rem;
+
+      .card-content {
+        padding: 2.5rem 1.5rem 2rem;
       }
     }
   }
@@ -1403,11 +1621,9 @@ footer {
   }
 
   .whatsets-col {
-    background: linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.8),
-      rgba(237, 234, 255, 0.8)
-    );
+    background: linear-gradient(45deg,
+        rgba(255, 255, 255, 0.8),
+        rgba(237, 234, 255, 0.8));
     @include m.box-shadow(0px, 5px, 20px, rgba(0, 0, 0, 0.1));
     border-radius: 30px;
     padding: 5rem 2rem;
@@ -1467,8 +1683,7 @@ footer {
 }
 
 .customer-block {
-  background: url(../assets/img/left-customer-bg.jpg) no-repeat center center /
-    cover;
+  background: url(../assets/img/left-customer-bg.jpg) no-repeat center center / cover;
   position: relative;
 
   &:before {
@@ -1499,17 +1714,16 @@ footer {
 }
 
 .left-customer {
-  background: url(../assets/img/left-customer-bg.jpg) no-repeat center center /
-    cover;
+  background: url(../assets/img/left-customer-bg.jpg) no-repeat center center / cover;
 
   &:before {
     content: "";
     background: map.get(v.$colors, "primarynew");
   }
 }
+
 .right-customer {
-  background: url(../assets/img/rt-customer-bg.jpg) no-repeat center center /
-    cover;
+  background: url(../assets/img/rt-customer-bg.jpg) no-repeat center center / cover;
 
   &:before {
     content: "";
@@ -1585,11 +1799,9 @@ footer {
 
 // Testimonial Slide Styles
 .testimonial-slide {
-  background: linear-gradient(
-    45deg,
-    rgba(223, 218, 255, 0.5),
-    rgba(255, 219, 221, 0.5)
-  );
+  background: linear-gradient(45deg,
+      rgba(223, 218, 255, 0.5),
+      rgba(255, 219, 221, 0.5));
   border-radius: 30px;
   padding: 2rem;
   height: 100%;
@@ -1741,6 +1953,7 @@ footer {
       margin: 0;
     }
   }
+
   h3 {
     font-size: clamp(1.5rem, 6vw, 6rem);
     color: map.get(v.$colors, "secondarynew");
@@ -1752,17 +1965,19 @@ footer {
   p {
     line-height: 1.75rem;
     color: map.get(v.$colors, "gray-80");
-    line-height: 1.6rem;
+    line-height: 1.8rem;
   }
 
   h6 {
     letter-spacing: 0.2rem;
   }
+
   h2 {
     font-size: clamp(1.6rem, 1.8vw, 1.8rem);
     color: map.get(v.$colors, "primarynew");
     margin-bottom: 1rem;
   }
+
   .subpage-section {
     padding: 4rem 0;
   }
@@ -1823,11 +2038,9 @@ footer {
     inset: 0;
     background-color: transparent;
     --background-overlay: "";
-    background-image: linear-gradient(
-      90deg,
-      #14444308 0%,
-      map.get(v.$colors, "primarynew") 32%
-    );
+    background-image: linear-gradient(90deg,
+        #14444308 0%,
+        map.get(v.$colors, "primarynew") 32%);
     z-index: 0;
   }
 }
@@ -1866,11 +2079,9 @@ footer {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: linear-gradient(
-        135deg,
-        map.get(v.$colors, "primarynew"),
-        map.get(v.$colors, "secondarynew")
-      );
+      background: linear-gradient(135deg,
+          map.get(v.$colors, "primarynew"),
+          map.get(v.$colors, "secondarynew"));
       box-shadow: 0 4px 10px rgba(32, 24, 93, 0.08);
     }
 
@@ -1899,6 +2110,7 @@ footer {
     &:hover {
       transform: translateY(-6px);
       @include m.box-shadow(0px, 18px, 40px, rgba(32, 24, 93, 0.06));
+
       &::before {
         transform: translateY(-50%) scale(1.12);
         box-shadow: 0 6px 18px rgba(32, 24, 93, 0.12);
@@ -1922,11 +2134,9 @@ footer {
 
 .workcol {
   margin-bottom: 2rem;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.02),
-    rgba(255, 255, 255, 0.01)
-  );
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0.01));
   padding: 28px;
   border-radius: 8px;
   min-height: 220px;
@@ -1939,13 +2149,16 @@ footer {
 .workSection .swiper {
   padding-bottom: 10px;
 }
+
 .workSection .swiper .swiper-wrapper {
   align-items: stretch;
 }
+
 .workSection .swiper .swiper-slide {
   display: flex;
   align-items: stretch;
 }
+
 .workSection .swiper .swiper-slide .workcol {
   height: 100%;
 }
@@ -1954,6 +2167,7 @@ footer {
 .work-swiper-wrap {
   position: relative;
 }
+
 .work-nav {
   position: absolute;
   top: 50%;
@@ -1970,18 +2184,1136 @@ footer {
   border: none;
   cursor: pointer;
 }
+
 .work-prev {
   left: -18px;
 }
+
 .work-next {
   right: -18px;
 }
+
 .work-nav .icomoon {
   font-size: 1.05rem;
   color: map.get(v.$colors, "primarynew");
 }
 
-.comparisons{
-  background-color:map.get(v.$colors, "secondary-20");
+.comparisons {
+  background-color: map.get(v.$colors, "secondary-20");
   padding: 4rem 0;
+}
+
+/* Why Choose Amrat Section */
+.why-choose-amrat-section {
+  background-color: #f8faff; // Very light blue background
+
+  .why-choose-swiper {
+    padding-bottom: 60px !important;
+
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+
+    .swiper-slide {
+      height: auto;
+      display: flex;
+    }
+  }
+
+  .why-choose-card {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 10px 30px rgba(18, 63, 117, 0.05);
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(18, 63, 117, 0.1);
+      border-color: map.get(v.$colors, "primarynew");
+    }
+
+    .why-card-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(223, 218, 255, 0.4);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+
+      i {
+        font-size: 2rem;
+        color: map.get(v.$colors, "primarynew");
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        line-height: normal;
+      }
+    }
+
+    h4 {
+      flex-shrink: 0;
+    }
+
+    p {
+      flex-grow: 1;
+      margin: 0;
+    }
+
+    &:hover .why-card-icon {
+      background: map.get(v.$colors, "primarynew");
+
+      i {
+        color: white;
+      }
+    }
+  }
+
+  .why-swiper-controls {
+    position: relative;
+    margin-top: 2rem;
+
+    @include m.respond-below(map.get(v.$breakpoints, "md")) {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  .why-pagination {
+    width: auto !important;
+    position: relative !important;
+    bottom: 0 !important;
+
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      background: map.get(v.$colors, "primarynew");
+      opacity: 0.2;
+      transition: all 0.3s ease;
+      margin: 0 4px !important;
+
+      &.swiper-pagination-bullet-active {
+        opacity: 1;
+        width: 24px;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  .swiper-nav-btn-custom {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    color: map.get(v.$colors, "primarynew");
+    border: 1px solid rgba(0, 0, 0, 0.05);
+
+    i {
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    &:hover {
+      background: map.get(v.$colors, "primarynew");
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+  }
+}
+
+/* Team Section Styles */
+.team-section {
+  .team-card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+
+    .team-img-wrapper {
+      overflow: hidden;
+
+      img {
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+    }
+
+    &:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 30px 60px rgba(18, 63, 117, 0.18) !important;
+      z-index: 10;
+
+      .team-img-wrapper img {
+        transform: scale(1.12);
+      }
+    }
+  }
+}
+
+/* Guide Page Specific Styles */
+.guide-page {
+  .guide-hero-section {
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, map.get(v.$colors, "primarynew") 0%, darken(map.get(v.$colors, "primarynew"), 10%) 100%);
+    border-radius: 0 0 50px 50px;
+    margin-top: -20px;
+
+    .guide-hero-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+    }
+  }
+
+  .maskImage-modern {
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  .icon-box-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.5rem;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+    &.bg-blue {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    &.bg-maroon {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    &.bg-gold {
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    }
+  }
+
+  .workSection-v2 {
+    border-radius: 50px;
+    margin: 4rem 0;
+
+    .how-work-card {
+      padding-left: 20px;
+
+      .how-step-num {
+        font-size: 0.9rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        color: #dfdaff;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+      }
+    }
+
+    .image-stack {
+      .abstract-shape {
+        position: absolute;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        background: rgba(255, 255, 255, 0.05);
+        z-index: 1;
+
+        &.shape-1 {
+          width: 400px;
+          height: 400px;
+          top: -20px;
+          left: -50px;
+          animation: blob 20s infinite alternate;
+        }
+
+        &.shape-2 {
+          width: 300px;
+          height: 300px;
+          bottom: -40px;
+          right: -30px;
+          background: rgba(223, 218, 255, 0.1);
+          animation: blob 15s infinite alternate-reverse;
+        }
+      }
+    }
+
+    .how-pagination {
+      .swiper-pagination-bullet {
+        background: white !important;
+        opacity: 0.3;
+
+        &.swiper-pagination-bullet-active {
+          opacity: 1;
+        }
+      }
+    }
+
+    .swiper-nav-btn-custom.ivory {
+      background: white;
+      color: map.get(v.$colors, "primarynew");
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        background: map.get(v.$colors, "secondarynew");
+        color: white;
+      }
+    }
+  }
+
+  .instrument-card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+
+    .card-img-top-wrapper {
+      position: relative;
+      overflow: hidden;
+
+      img {
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      .card-overlay-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(18, 63, 117, 0.5), transparent);
+        opacity: 0.7;
+        transition: opacity 0.4s ease;
+      }
+    }
+
+    .card-body {
+      transition: background-color 0.4s ease;
+    }
+
+    &:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 60px rgba(18, 63, 117, 0.15) !important;
+
+      .card-img-top-wrapper {
+        img {
+          transform: scale(1.15) rotate(1deg);
+        }
+
+        .card-overlay-gradient {
+          opacity: 1;
+        }
+      }
+
+      .card-body {
+        background-color: #fff;
+      }
+    }
+  }
+
+  .comp-ui-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+
+    &.featured-card {
+      transform: scale(1.05);
+      border: 2px solid #dfdaff;
+      box-shadow: 0 30px 60px rgba(18, 63, 117, 0.12) !important;
+      z-index: 2;
+
+      @media (max-width: 991px) {
+        transform: scale(1);
+      }
+    }
+
+    .best-tag {
+      position: absolute;
+      top: 20px;
+      right: -35px;
+      background: #dfdaff;
+      color: #123f75;
+      padding: 5px 40px;
+      transform: rotate(45deg);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .comp-ui-header {
+      padding: 2rem;
+      text-align: center;
+      color: white;
+
+      &.bg-blue {
+        background: #3f51b5;
+      }
+
+      &.bg-maroon {
+        background: #880e4f;
+      }
+
+      &.bg-gold {
+        background: #ff9800;
+      }
+    }
+
+    .comp-ui-body {
+      padding: 2rem;
+
+      .comp-ui-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .label {
+          font-size: 0.9rem;
+        }
+
+        .value {
+          color: #123f75;
+        }
+      }
+    }
+  }
+}
+
+@keyframes blob {
+  0% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+
+  100% {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  }
+}
+
+/* Contact Page Specific Styles */
+.contact-page {
+  .contact-hero-section {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, map.get(v.$colors, "primarynew") 0%, darken(map.get(v.$colors, "primarynew"), 10%) 100%);
+    border-radius: 0 0 50px 50px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -20px;
+
+    .hero-decor {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+  }
+
+  .contact-info-section {
+    margin-top: -60px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .info-card {
+    background: white;
+    border-radius: 30px;
+    padding: 3rem 2rem;
+    height: 100%;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: map.get(v.$colors, "secondarynew");
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+      transform-origin: left;
+    }
+
+    .info-icon-wrapper {
+      width: 85px;
+      height: 85px;
+      background: linear-gradient(135deg, rgba(map.get(v.$colors, "primarynew"), 0.08) 0%, rgba(map.get(v.$colors, "primarynew"), 0.03) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      transition: all 0.5s ease;
+      border: 1px solid rgba(map.get(v.$colors, "primarynew"), 0.1);
+
+      i {
+        font-size: 2.2rem;
+        color: map.get(v.$colors, "primarynew");
+        transition: all 0.5s ease;
+      }
+    }
+
+    h5 {
+      font-weight: 800;
+      color: map.get(v.$colors, "primarynew");
+      margin-bottom: 1.2rem;
+      font-size: 1.25rem;
+    }
+
+    p {
+      margin-bottom: 0.4rem;
+      color: map.get(v.$colors, "gray-80");
+      line-height: 1.6;
+      font-size: 1rem;
+      font-weight: 500;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: map.get(v.$colors, "secondarynew");
+        }
+      }
+    }
+
+    &:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 40px 80px rgba(18, 63, 117, 0.15) !important;
+      border-color: transparent;
+
+      &::before {
+        transform: scaleX(1);
+      }
+
+      .info-icon-wrapper {
+        background: map.get(v.$colors, "primarynew");
+        color: white;
+        transform: rotateY(180deg);
+        box-shadow: 0 15px 30px rgba(map.get(v.$colors, "primarynew"), 0.3);
+
+        i {
+          color: white;
+          transform: rotateY(-180deg);
+        }
+      }
+    }
+  }
+
+  .contact-form-wrapper {
+    background: white;
+    border-radius: 40px;
+    padding: 4rem;
+    box-shadow: 0 50px 120px rgba(18, 63, 117, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+
+    .form-title {
+      font-weight: 900;
+      color: map.get(v.$colors, "primarynew");
+      margin-bottom: 3rem;
+      position: relative;
+      padding-bottom: 1.5rem;
+      font-size: 2.5rem;
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        height: 6px;
+        background: map.get(v.$colors, "secondarynew");
+        border-radius: 3px;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 2rem;
+
+      label {
+        font-weight: 800;
+        color: #333;
+        margin-bottom: 0.8rem;
+        display: block;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 1.2rem 1.5rem;
+        border-radius: 16px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        background: #fdfdff;
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        font-size: 1.05rem;
+
+        &:focus {
+          outline: none;
+          border-color: map.get(v.$colors, "primarynew");
+          background: white;
+          box-shadow: 0 0 0 5px rgba(map.get(v.$colors, "primarynew"), 0.08);
+          transform: translateY(-2px);
+        }
+
+        &::placeholder {
+          color: #adb5bd;
+          opacity: 0.6;
+        }
+      }
+    }
+
+    .btn-submit {
+      background: map.get(v.$colors, "primarynew");
+      color: white;
+      border: none;
+      padding: 1.4rem 3rem;
+      border-radius: 16px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      width: 100%;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+
+      &:hover {
+        background: map.get(v.$colors, "secondarynew");
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(map.get(v.$colors, "secondarynew"), 0.3);
+      }
+
+      &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .map-section {
+    margin-top: 6rem;
+    height: 600px;
+    border-radius: 60px 60px 0 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 -30px 80px rgba(0, 0, 0, 0.08);
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: grayscale(0.1) contrast(1.05);
+    }
+  }
+}
+
+/* Careers Page Specific Styles */
+.careers-page {
+  .careers-hero {
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, map.get(v.$colors, "primarynew") 0%, darken(map.get(v.$colors, "primarynew"), 10%) 100%);
+    border-radius: 0 0 50px 50px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -20px;
+
+    .hero-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+  }
+
+  .intro-image-wrapper {
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+
+    img {
+      transition: transform 0.6s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  .job-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+
+    .job-num {
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      background: map.get(v.$colors, "secondarynew");
+      color: white;
+      font-weight: 800;
+      padding: 5px 15px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      box-shadow: 0 5px 15px rgba(map.get(v.$colors, "secondarynew"), 0.3);
+    }
+
+    .job-title {
+      font-weight: 800;
+      color: map.get(v.$colors, "primarynew");
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .job-desc {
+      color: map.get(v.$colors, "gray-80");
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(18, 63, 117, 0.12) !important;
+      border-color: map.get(v.$colors, "secondarynew");
+
+      .job-num {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .benefit-card {
+    background: #f8faff;
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all 0.4s ease;
+    height: 100%;
+
+    .benefit-icon-wrapper {
+      width: 70px;
+      height: 70px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+
+      i {
+        font-size: 1.8rem;
+        color: map.get(v.$colors, "primarynew");
+      }
+    }
+
+    h5 {
+      font-weight: 800;
+      color: map.get(v.$colors, "primarynew");
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: map.get(v.$colors, "gray-80");
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    &:hover {
+      background: white;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+      transform: translateY(-5px);
+
+      .benefit-icon-wrapper {
+        background: map.get(v.$colors, "primarynew");
+
+        i {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .cta-box {
+    background: linear-gradient(135deg, map.get(v.$colors, "primarynew") 0%, #1a2a6c 100%);
+    border-radius: 40px;
+    padding: 4rem 3rem;
+    box-shadow: 0 30px 60px rgba(18, 63, 117, 0.2);
+
+    h2 {
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .apply-email {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      margin-top: 1.5rem;
+      border: 1px dashed rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+/* FAQ Page Specific Styles */
+.faq-page {
+  .faq-hero {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, map.get(v.$colors, "primarynew") 0%, darken(map.get(v.$colors, "primarynew"), 10%) 100%);
+    border-radius: 0 0 50px 50px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -20px;
+
+    .hero-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+  }
+
+  .faq-accordion-container {
+    margin-top: -60px;
+    position: relative;
+    z-index: 10;
+    padding-bottom: 80px;
+
+    .accordion-item {
+      border: 1px solid rgba(0, 0, 0, 0.05) !important;
+      border-radius: 20px !important;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 15px 45px rgba(18, 63, 117, 0.08);
+        transform: translateY(-2px);
+      }
+
+      .accordion-button {
+        padding: 1.8rem 2rem;
+        font-weight: 700;
+        color: map.get(v.$colors, "primarynew");
+        font-size: 1.15rem;
+        box-shadow: none;
+        background: white;
+
+        &:not(.collapsed) {
+          color: map.get(v.$colors, "secondarynew");
+          background: white;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        &::after {
+          background-size: 1.25rem;
+          transition: transform 0.3s ease;
+        }
+      }
+
+      .accordion-body {
+        padding: 2rem;
+        color: map.get(v.$colors, "gray-80");
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+    }
+  }
+
+  .faq-support-card {
+    background: #f8faff;
+    border-radius: 30px;
+    padding: 3rem;
+    border: 1px solid rgba(18, 63, 117, 0.05);
+    text-align: center;
+
+    .icon-box {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+
+      i {
+        font-size: 2rem;
+        color: map.get(v.$colors, "secondarynew");
+      }
+    }
+
+    h4 {
+      font-weight: 800;
+    }
+  }
+}
+
+/* Global Button Styles */
+.btn-primarynew {
+  background: map.get(v.$colors, "primarynew");
+  color: white !important;
+  border: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+
+  &:hover {
+    background: map.get(v.$colors, "secondarynew");
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    color: white !important;
+  }
+}/* Refined "What We Do" Section Styles */
+.what-we-do-refined {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+
+    .section-bg-element {
+        position: absolute;
+        top: -10%;
+        left: -5%;
+        width: 40%;
+        height: 60%;
+        background: radial-gradient(circle, rgba(32, 24, 93, 0.03) 0%, transparent 70%);
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .content-wrapper {
+        position: relative;
+        z-index: 1;
+    }
+
+    .sidebar-title {
+        position: relative;
+        padding-left: 20px;
+        border-left: 4px solid map.get(v.$colors, "secondarynew");
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+    }
+
+    .info-card-modern {
+        background: #ffffff;
+        border-radius: 30px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: flex-start;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+
+        &:hover {
+            transform: translateX(15px);
+            box-shadow: 0 20px 40px rgba(32, 24, 93, 0.08);
+            border-color: rgba(32, 24, 93, 0.1);
+
+            .icon-wrapper {
+                background: map.get(v.$colors, "secondarynew");
+                transform: rotate(10deg);
+
+                i {
+                    color: #fff;
+                }
+            }
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: #f8faff;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.4s ease;
+
+            i {
+                font-size: 2.2rem;
+                color: map.get(v.$colors, "primarynew");
+                transition: all 0.4s ease;
+            }
+        }
+
+        .card-text {
+            margin-left: 2rem;
+
+            h4 {
+                font-weight: 800;
+                color: map.get(v.$colors, "primarynew");
+                margin-bottom: 0.75rem;
+                font-size: 1.4rem;
+            }
+
+            p {
+                color: map.get(v.$colors, "gray-80");
+                line-height: 1.7;
+                margin-bottom: 0;
+                font-size: 1.05rem;
+            }
+        }
+    }
+
+    .image-side-wrapper {
+        position: relative;
+
+        .main-image {
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+            transition: all 0.5s ease;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+        }
+
+        .floating-badge {
+            position: absolute;
+            bottom: -30px;
+            right: -20px;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+
+            .badge-icon {
+                width: 50px;
+                height: 50px;
+                background: #fff0f0;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                i {
+                    color: map.get(v.$colors, "secondarynew");
+                    font-size: 1.5rem;
+                }
+            }
+
+            .badge-info {
+                span {
+                    display: block;
+                    font-weight: 900;
+                    font-size: 1.2rem;
+                    color: map.get(v.$colors, "primarynew");
+                }
+
+                small {
+                    color: map.get(v.$colors, "gray-40");
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .what-we-do-refined {
+        .info-card-modern {
+            padding: 2rem;
+
+            &:hover {
+                transform: translateY(-5px);
+            }
+        }
+
+        .image-side-wrapper {
+            margin-top: 4rem;
+
+            .floating-badge {
+                right: 0;
+            }
+        }
+    }
 }

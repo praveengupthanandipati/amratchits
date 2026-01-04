@@ -5,11 +5,15 @@ import Workimg from "../assets/img/man1.png";
 import fdImg from "../assets/img/financial-guidance.jpg";
 import mfImg from "../assets/img/Herocarousel02.png";
 import chitImg from "../assets/img/chitfundsolutions-img.jpg";
-// Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Guide = () => {
   const slidesWork = [
@@ -47,321 +51,266 @@ const Guide = () => {
     },
   ];
 
-  const workEqualizedRef = useRef(false);
-
-  const equalizeWorkCols = () => {
-    const cols = document.querySelectorAll(".work-swiper .workcol");
-    if (!cols || cols.length === 0) return;
-    // reset heights
-    cols.forEach((c) => {
-      c.style.height = "auto";
-    });
-    let max = 0;
-    cols.forEach((c) => {
-      const h = c.getBoundingClientRect().height;
-      if (h > max) max = h;
-    });
-    cols.forEach((c) => {
-      c.style.height = max + "px";
-    });
-    workEqualizedRef.current = true;
-  };
+  const sectionRef = useRef(null);
 
   useEffect(() => {
-    // equalize after mount and on resize
-    setTimeout(equalizeWorkCols, 80);
-    const onResize = () => {
-      setTimeout(equalizeWorkCols, 80);
+    if (sectionRef.current) {
+      const animElements = sectionRef.current.querySelectorAll('.guide-anim');
+
+      ScrollTrigger.batch(animElements, {
+        onEnter: (batch) => {
+          gsap.fromTo(batch,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              stagger: 0.15,
+              ease: "power3.out",
+              overwrite: true
+            }
+          );
+        },
+        start: "top 85%",
+      });
+    }
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
     };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
   }, []);
 
   return (
     <React.Fragment>
-      <section className="subpage">
-        <div className="subpage-section">
+      <section className="subpage guide-page" ref={sectionRef}>
+        {/* Hero Section */}
+        <div className="guide-hero-section position-relative overflow-hidden mb-5">
+          <div className="container position-relative z-index-1">
+            <div className="row align-items-center min-vh-50 py-5">
+              <div className="col-lg-7 guide-anim">
+                <h6 className="text-secondary text-uppercase letter-spacing font-bold mb-3 d-inline-block px-3 py-1 bg-white-10 rounded-pill">
+                  Knowledge Hub
+                </h6>
+                <h1 className="display-4 font-bold text-white mb-4">
+                  Navigating Your <br />
+                  <span className="text-secondarynew">Chit Fund Journey</span>
+                </h1>
+                <p className="lead text-white mb-4 me-lg-5">
+                  Unlock the potential of community-driven finance. Discover how Amrat Chits empowers your family's future through disciplined savings and collective growth.
+                </p>
+                <div className="d-flex gap-3">
+                  <a href="#concept" className="btn-secondary px-4 py-3 text-uppercase font-bold">Start Learning</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="guide-hero-bg"></div>
+        </div>
+
+        {/* Concept Section */}
+        <div id="concept" className="subpage-section py-5">
           <div className="container">
-            <div className="row justify-content-md-between align-items-center">
-              <div className="col-md-4 text-center">
-                <div className="maskImage">
+            <div className="row justify-content-lg-between align-items-center g-5">
+              <div className="col-lg-5 guide-anim">
+                <div className="maskImage-modern p-2 bg-white shadow-lg rounded-5">
                   <img
                     src={maskImage}
-                    alt="Service Mask"
-                    className="img-fluid"
+                    alt="Service Concept"
+                    className="img-fluid rounded-5"
                   />
                 </div>
               </div>
-              <div className="col-md-7">
+              <div className="col-lg-6 guide-anim">
                 <div className="pb-3">
                   <h6 className="text-secondarynew text-uppercase letter-spacing font-bold pb-2">
                     CONCEPT OF CHITS
                   </h6>
-                  <h1 className="font-bold text-primarynew">
-                    What is a Chitfund?
-                  </h1>
+                  <h2 className="font-bold text-primarynew h1 mb-4">
+                    What Exactly is a Chitfund?
+                  </h2>
                 </div>
-                <p>
-                  Chitfunds are a unique financial instrument that combines the
-                  benefits of savings, investment, and borrowing within a
-                  community. In this slide, we will explore the concept of chit
-                  funds and how they work, from saving to drawing the amount
-                  through auctions.
-                </p>
-                <p>
-                  Chitfunds offer a distinctive and inclusive financial model,
-                  combining savings, investment, and borrowing in a
-                  community-driven system. By understanding the working of chit
-                  funds, individuals can make informed decisions and leverage
-                  this financial instrument to meet their financial goals.
+                <p className="mb-4 text-muted">
+                  A Chitfund is a unique financial instrument that blends the best aspects of <strong>Savings, Investment, and Borrowing</strong> within a trusted community. It's a formal recognition of the age-old practice of collective saving, now regulated and secured.
                 </p>
 
-                <article className="mt-4">
-                  <h4 className="font-bold text-primarynew py-2">
-                    Who is it useful for?
-                  </h4>
-                  <p>
-                    <strong>
-                      Individuals with a disciplined savings mindset:
-                    </strong>
-                    Chit funds provide a structured approach to savings,
-                    encouraging individuals to set aside a fixed amount
-                    regularly.
-                  </p>
-                  <p>
-                    <strong> People seeking financial flexibility:</strong> Chit
-                    funds offer the opportunity to access funds through
-                    auctions, allowing participants to receive a lump sum when
-                    needed
-                  </p>
-                  <p>
-                    <strong>
-                      Those looking for an alternative to traditional loans:
-                    </strong>
-                    Chit funds provide a borrowing option within the community,
-                    without the need for formal financial institutions.
-                  </p>
-                </article>
-                <Link
-                  to="/about"
-                  className="btn-secondary text-uppercase mt-2 text-white"
-                >
-                  Contact with us
-                </Link>
+                <div className="row g-4 mt-2">
+                  {[
+                    { title: "Disciplined Savings", icon: "fi-rr-bank", color: "blue", desc: "Structured approach to setting aside a fixed amount regularly." },
+                    { title: "Financial Flexibility", icon: "fi-rr-chart-line-up", color: "maroon", desc: "Access lump sums through transparent auctions when you need them." },
+                    { title: "Smart Alternative", icon: "fi-rr-refresh", color: "gold", desc: "A borrowing option within the community without formal bank hassle." }
+                  ].map((item, idx) => (
+                    <div className="col-md-12" key={idx}>
+                      <div className="d-flex align-items-start gap-4 p-4 rounded-4 bg-light hover-lift transition-all">
+                        <div className={`icon-box-circle bg-${item.color}`}>
+                          <i className={`fi ${item.icon}`}></i>
+                        </div>
+                        <div>
+                          <h5 className="font-bold text-primarynew mb-1">{item.title}</h5>
+                          <p className="small mb-0 text-muted">{item.desc}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-          <div className="workSection">
-            <div className="container">
-              <div className="row justify-content-between align-items-center">
-                <div className="col-md-4">
-                  <div className="work-img text-center">
-                    <img
-                      src={Workimg}
-                      alt="Work Image"
-                      className="img-fluid position-relative"
-                    />
-                  </div>
+        </div>
+
+        {/* How it Works Section */}
+        <div className="workSection-v2 py-5 bg-primarynew text-white position-relative">
+          <div className="container py-4">
+            <div className="row mb-5 text-center justify-content-center guide-anim">
+              <div className="col-lg-8">
+                <h6 className="text-uppercase letter-spacing mb-3">Workflow</h6>
+                <h2 className="display-5 font-bold mb-4 text-white">How does it work?</h2>
+                <p className="lead text-white">A simple five-step process that ensures transparency, security, and exponential growth for every subscriber.</p>
+              </div>
+            </div>
+
+            <div className="row g-4 align-items-center">
+              <div className="col-lg-5 guide-anim text-center">
+                <div className="image-stack position-relative d-inline-block">
+                  <img src={Workimg} alt="How it works" className="img-fluid z-index-2 position-relative" style={{ maxHeight: '450px' }} />
+                  <div className="abstract-shape shape-1"></div>
+                  <div className="abstract-shape shape-2"></div>
                 </div>
-                <div className="col-md-7 align-items-center position-relative">
-                  <h1 className="text-secondary-50 pb-md-5 pb-3">
-                    How does a chit fund work?
-                  </h1>
-                  <div className="row workrow">
-                    <div className="col-12">
-                      <div className="work-swiper-wrap position-relative">
-                        <Swiper
-                          className="work-swiper"
-                          modules={[Autoplay, Navigation]}
-                          autoplay={{
-                            delay: 4000,
-                            disableOnInteraction: false,
-                          }}
-                          navigation={{
-                            prevEl: ".work-prev",
-                            nextEl: ".work-next",
-                          }}
-                          spaceBetween={24}
-                          slidesPerView={1}
-                          breakpoints={{
-                            768: { slidesPerView: 2 },
-                            1200: { slidesPerView: 2 },
-                          }}
-                          loop={true}
-                          onSwiper={(s) => {
-                            // call equalize when swiper is initialized
-                            setTimeout(() => {
-                              equalizeWorkCols();
-                            }, 60);
-                          }}
-                          onSlideChange={() => {
-                            setTimeout(() => {
-                              equalizeWorkCols();
-                            }, 60);
-                          }}
-                        >
-                          {slidesWork.map((s, i) => (
-                            <SwiperSlide key={i}>
-                              <div className="workcol">
-                                <article>
-                                  <h3 className="pb-3">{s.title}</h3>
-                                  <ul className="list-items">
-                                    {s.bullets.map((b, bi) => (
-                                      <li key={bi}>{b}</li>
-                                    ))}
-                                  </ul>
-                                </article>
-                              </div>
-                            </SwiperSlide>
+              </div>
+              <div className="col-lg-7 guide-anim">
+                <Swiper
+                  modules={[Pagination, Autoplay]}
+                  spaceBetween={30}
+                  slidesPerView={1}
+                  pagination={{ clickable: true, el: ".how-pagination" }}
+                  autoplay={{ delay: 9000 }}
+                  className="how-works-swiper"
+                >
+                  {slidesWork.map((s, i) => (
+                    <SwiperSlide key={i}>
+                      <div className="how-work-card">
+                        <div className="how-step-num">Step 0{i + 1}</div>
+                        <h3 className="font-bold mb-4 text-secondarynew h2">{s.title}</h3>
+                        <ul className="list-unstyled">
+                          {s.bullets.map((b, bi) => (
+                            <li key={bi} className="d-flex gap-3 mb-3">
+                              <i className="fi fi-rr-checkbox text-secondarynew mt-1"></i>
+                              <span className="opacity-90 lead-small">{b}</span>
+                            </li>
                           ))}
-                        </Swiper>
-                        <button
-                          className="work-prev work-nav"
-                          aria-label="Previous slide"
-                        >
-                          <span className="icon-left-icon icomoon" />
-                        </button>
-                        <button
-                          className="work-next work-nav"
-                          aria-label="Next slide"
-                        >
-                          <span className="icon-right-icon icomoon" />
-                        </button>
+                        </ul>
                       </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+                <div className="d-flex align-items-center justify-content-center mt-5">
+                  <div className="how-pagination"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Financial Instruments */}
+        <div className="financial-grid-section py-5">
+          <div className="container py-5">
+            <div className="row mb-5 text-center justify-content-center guide-anim">
+              <div className="col-lg-8">
+                <h2 className="font-bold text-primarynew h1 mb-4">Financial Instruments</h2>
+                <p className="text-muted">Compare the most common investment avenues to see where Chit Funds stand in terms of value and community impact.</p>
+              </div>
+            </div>
+            <div className="row g-4">
+              {[
+                { title: "FIXED DEPOSITS", img: fdImg, desc: "Safe investment offered by banks with capital protection. Suitable for risk-averse individuals looking for stable but modest returns over fixed periods." },
+                { title: "MUTUAL FUNDS", img: mfImg, desc: "Market-linked investments pooling money from multiple investors. Offers professional management and diversification across equities and bonds." },
+                { title: "CHIT FUNDS", img: chitImg, desc: "A hybrid model of saving and borrowing. Offers internal ROI through dividends and access to immediate lump sums via transparent community auctions." }
+              ].map((item, idx) => (
+                <div className="col-lg-4 guide-anim" key={idx}>
+                  <div className="instrument-card h-100 shadow-sm border-0 rounded-5 overflow-hidden bg-white hover-up transition-all">
+                    <div className="card-img-top-wrapper overflow-hidden">
+                      <img src={item.img} alt={item.title} className="w-100" style={{ height: '240px', objectFit: 'cover' }} />
+                      <div className="card-overlay-gradient"></div>
+                    </div>
+                    <div className="card-body p-4 text-center">
+                      <h4 className="font-bold text-primarynew mb-3">{item.title}</h4>
+                      <p className="text-muted mb-0 small">{item.desc}</p>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="final-instruments">
-          <div className="container">
-            <div className="pb-3">
-              <h1 className="font-bold text-primarynew pb-4">
-                Financial Instruments
-              </h1>
-            </div>
-            <div className="row gy-4">
-              <div className="col-12 col-md-4">
-                <div className="fin-thumb">
-                  <div className="thumb-img rounded-circle">
-                    <img
-                      src={fdImg}
-                      alt="Fixed Deposits"
-                      className="img-fluid"
-                    />
-                  </div>
-                  <h4 className="mt-3 font-bold text-primarynew">FIXED DEPOSITS</h4>
-                  <p className="mb-0">
-                    FDs are investment instruments offered by banks where
-                    individuals can deposit a lump sum for a fixed period at a
-                    predetermined interest rate. FDs offer a higher interest
-                    rate compared to savings accounts and are suitable for
-                    medium to long-term savings.
-                  </p>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4">
-                <div className="fin-thumb">
-                  <div className="thumb-img rounded-circle">
-                    <img src={mfImg} alt="Mutual Funds" className="img-fluid" />
-                  </div>
-                   <h4 className="mt-3 font-bold text-primarynew">MUTUAL FUNDS</h4>
-                  <p className="mb-0">
-                    MFs pool money from multiple investors to invest in a
-                    diversified portfolio of stocks, bonds, or other securities.
-                    They offer individuals the opportunity to participate in the
-                    financial markets without directly managing the investments.
-                  </p>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4">
-                <div className="fin-thumb">
-                  <div className="thumb-img rounded-circle">
-                    <img src={chitImg} alt="Chit Funds" className="img-fluid" />
-                  </div>
-                   <h4 className="mt-3 font-bold text-primarynew">CHIT FUNDS</h4>
-                  <p className="mb-0">
-                    Chits typically offer variable returns as they depend on the
-                    auction or lottery system. The return on investment can vary
-                    depending on the bidding process and the number of
-                    participants. Chits can provide higher returns if the
-                    bidding process results in lower payouts. However, they also
-                    carry a certain level of risk, especially in unregulated or
-                    fraudulent schemes.
-                  </p>
-                </div>
+        {/* Comparison Section */}
+        <div className="comparison-section-v2 py-5 bg-light position-relative">
+          <div className="container py-5">
+            <div className="row mb-5 text-center justify-content-center guide-anim">
+              <div className="col-lg-8">
+                <h6 className="text-secondarynew text-uppercase letter-spacing mb-3">At a Glance</h6>
+                <h2 className="font-bold text-primarynew h1 mb-4">The Ultimate Comparison</h2>
+                <p className="text-muted">Why choose Chit Funds? Let the numbers and features speak for themselves.</p>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="comparisons">
-          <div className="container">
-            <div className="pb-3">
-              <h1 className="font-bold text-primarynew pb-4">Comparison</h1>
-            </div>
-
-            <div className="row gy-4">
-              <div className="col-12 col-md-4">
-                <div className="comp-card h-100">
-                  <img src={fdImg} alt="Fixed Deposits" className="card-banner img-fluid" />
-                  <div className="card-body">
-                    <h5 className="font-bold text-primarynew">FIXED DEPOSITS</h5>
-                    <ul className="comp-list">
-                      <li><strong>ROI:</strong> 5-6.5%</li>
-                      <li><strong>Risk:</strong> Low Risk</li>
-                      <li><strong>Liquidity:</strong> Generally Less Liquid</li>
-                      <li><strong>Term:</strong> Medium to Long Term</li>
-                      <li><strong>Taxation:</strong> Interest Income is Taxable</li>
-                      <li><strong>Flexibility:</strong> Less Flexible</li>
-                      <li><strong>Type:</strong> Debt Instrument</li>
-                    </ul>
+            <div className="row g-4 guide-anim">
+              {[
+                {
+                  title: "Fixed Deposits",
+                  data: [
+                    { label: "ROI", val: "5-6.5%" },
+                    { label: "Risk", val: "Low" },
+                    { label: "Liquidity", val: "Low" },
+                    { label: "Term", val: "Fixed" },
+                    { label: "Flexibility", val: "Nil" }
+                  ],
+                  color: "blue",
+                  best: false
+                },
+                {
+                  title: "Mutual Funds",
+                  data: [
+                    { label: "ROI", val: "10-15%" },
+                    { label: "Risk", val: "High" },
+                    { label: "Liquidity", val: "High" },
+                    { label: "Term", val: "Variable" },
+                    { label: "Flexibility", val: "High" }
+                  ],
+                  color: "maroon",
+                  best: false
+                },
+                {
+                  title: "Chit Funds",
+                  data: [
+                    { label: "ROI", val: "12-15%" },
+                    { label: "Risk", val: "Low" },
+                    { label: "Liquidity", val: "High" },
+                    { label: "Term", val: "Flexible" },
+                    { label: "Flexibility", val: "Very High" }
+                  ],
+                  color: "gold",
+                  best: true
+                }
+              ].map((card, idx) => (
+                <div className="col-lg-4" key={idx}>
+                  <div className={`comp-ui-card h-100 ${card.best ? 'featured-card' : ''}`}>
+                    {card.best && <div className="best-tag">Most Balanced</div>}
+                    <div className={`comp-ui-header bg-${card.color}`}>
+                      <h4 className="font-bold mb-0">{card.title}</h4>
+                    </div>
+                    <div className="comp-ui-body">
+                      {card.data.map((row, ri) => (
+                        <div className="comp-ui-row" key={ri}>
+                          <span className="label text-muted">{row.label}</span>
+                          <span className="value font-bold text-primarynew">{row.val}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="col-12 col-md-4">
-                <div className="comp-card h-100">
-                  <img src={mfImg} alt="Mutual Funds" className="card-banner img-fluid" />
-                  <div className="card-body">
-                    <h5 className="font-bold text-primarynew">MUTUAL FUNDS</h5>
-                    <ul className="comp-list">
-                      <li><strong>ROI:</strong> 10-15%</li>
-                      <li><strong>Risk:</strong> High Risk</li>
-                      <li><strong>Liquidity:</strong> More Liquid</li>
-                      <li><strong>Term:</strong> Short, Medium or Long</li>
-                      <li><strong>Taxation:</strong> Capital Gains are taxable</li>
-                      <li><strong>Flexibility:</strong> More Flexible</li>
-                      <li><strong>Type:</strong> Investment in a diversified portfolio of assets</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-4">
-                <div className="comp-card h-100">
-                  <img src={chitImg} alt="Chit Funds" className="card-banner img-fluid" />
-                  <div className="card-body">
-                    <h5 className="font-bold text-primarynew">CHIT FUNDS</h5>
-                    <ul className="comp-list">
-                      <li><strong>ROI:</strong> 12-15%</li>
-                      <li><strong>Risk:</strong> Low Risk</li>
-                      <li><strong>Liquidity:</strong> More Liquid</li>
-                      <li><strong>Term:</strong> Short, Medium or Long</li>
-                      <li><strong>Taxation:</strong> GST applicable</li>
-                      <li><strong>Flexibility:</strong> Less Flexible</li>
-                      <li><strong>Type:</strong> Savings and investment scheme with a group of individuals</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
+          <div className="comp-decor-circle"></div>
         </div>
       </section>
     </React.Fragment>

@@ -64,22 +64,22 @@ const Homechitplans = () => {
       plans: [
         {
           id: 1,
-          chitPrice: "₹2,50,000-00",
-          monthly: "₹5,000",
+          chitPrice: "₹1,00,00,000",
+          monthly: "₹2,00,000",
           months: 50,
           members: 50,
         },
         {
           id: 2,
-          chitPrice: "₹5,00,000",
-          monthly: "₹10,000",
+          chitPrice: "₹50,00,000",
+          monthly: "₹1,00,000",
           months: 50,
           members: 50,
         },
         {
           id: 3,
-          chitPrice: "₹10,00,000",
-          monthly: "₹20,000",
+          chitPrice: "₹25,00,000",
+          monthly: "₹50,000",
           months: 50,
           members: 50,
         },
@@ -92,29 +92,15 @@ const Homechitplans = () => {
         },
         {
           id: 5,
-          chitPrice: "₹20,00,000",
-          monthly: "₹40,000",
+          chitPrice: "₹10,00,000",
+          monthly: "₹20,000",
           months: 50,
           members: 50,
         },
         {
           id: 6,
-          chitPrice: "₹25,00,000",
-          monthly: "₹50,000",
-          months: 50,
-          members: 50,
-        },
-        {
-          id: 7,
-          chitPrice: "₹50,00,000",
-          monthly: "₹1,00,000",
-          months: 50,
-          members: 50,
-        },
-        {
-          id: 8,
-          chitPrice: "₹1,00,00,000",
-          monthly: "₹2,00,000",
+          chitPrice: "₹5,00,000",
+          monthly: "₹10,000",
           months: 50,
           members: 50,
         },
@@ -126,94 +112,25 @@ const Homechitplans = () => {
       plans: [
         {
           id: 1,
-          chitPrice: "₹1,00,000",
-          monthly: "₹4,000",
+          chitPrice: "₹25,00,000",
+          monthly: "₹1,00,000",
           months: 25,
           members: 25,
         },
         {
           id: 2,
-          chitPrice: "₹2,00,000",
-          monthly: "₹8,000",
-          months: 25,
-          members: 25,
-        },
-        {
-          id: 3,
-          chitPrice: "₹2,50,000",
-          monthly: "₹10,000",
-          months: 25,
-          members: 25,
-        },
-        {
-          id: 4,
-          chitPrice: "₹5,00,000",
-          monthly: "₹20,000",
-          months: 25,
-          members: 25,
-        },
-        {
-          id: 5,
           chitPrice: "₹10,00,000",
           monthly: "₹40,000",
           months: 25,
           members: 25,
         },
         {
-          id: 6,
-          chitPrice: "₹25,00,000",
-          monthly: "₹1,00,000",
-          months: 25,
-          members: 25,
-        },
-         {
-          id: 7,
-          chitPrice: "₹50,00,000",
-          monthly: "₹2,00,000",
-          months: 25,
-          members: 25,
-        },
-      ],
-    },
-    {
-      id: "monthly-middle",
-      label: "Monthly Middle-period",
-      plans: [
-        {
-          id: 1,
-          chitPrice: "₹2,00,000",
-          monthly: "₹5,000",
-          months: 40,
-          members: 40,
-        },
-        {
-          id: 2,
-          chitPrice: "₹5,00,000",
-          monthly: "₹12,500",
-          months: 40,
-          members: 40,
-        },
-        {
           id: 3,
-          chitPrice: "₹10,00,000",
-          monthly: "₹25,000",
-          months: 40,
-          members: 40,
+          chitPrice: "₹5,00,000",
+          monthly: "₹20,000",
+          months: 25,
+          members: 25,
         },
-        {
-          id: 4,
-          chitPrice: "₹20,00,000",
-          monthly: "₹50,000",
-          months: 40,
-          members: 40,
-        },
-        {
-          id: 5,
-          chitPrice: "₹40,00,000",
-          monthly: "₹1,00,000",
-          months: 40,
-          members: 40,
-        },       
       ],
     },
     {
@@ -222,22 +139,22 @@ const Homechitplans = () => {
       plans: [
         {
           id: 1,
-          chitPrice: "₹2,00,000",
-          daily: "₹200",
+          chitPrice: "₹50,00,000",
+          daily: "₹5,000",
           days: 1000,
           members: 100,
         },
         {
           id: 2,
-          chitPrice: "₹3,00,000",
-          daily: "₹300",
+          chitPrice: "₹25,00,000",
+          daily: "₹2,500",
           days: 1000,
           members: 100,
         },
         {
           id: 3,
-          chitPrice: "₹4,00,000",
-          daily: "₹400",
+          chitPrice: "₹10,00,000",
+          daily: "₹1,000",
           days: 1000,
           members: 100,
         },
@@ -245,34 +162,6 @@ const Homechitplans = () => {
           id: 4,
           chitPrice: "₹5,00,000",
           daily: "₹500",
-          days: 1000,
-          members: 100,
-        },
-        {
-          id: 5,
-          chitPrice: "₹10,00,000",
-          daily: "₹1,000",
-          days: 1000,
-          members: 100,
-        },
-        {
-          id: 6,
-          chitPrice: "₹20,00,000",
-          daily: "₹2,000",
-          days: 1000,
-          members: 100,
-        },
-         {
-          id: 7,
-          chitPrice: "₹25,00,000",
-          daily: "₹2,500",
-          days: 1000,
-          members: 100,
-        },
-         {
-          id: 8,
-          chitPrice: "₹50,00,000",
-          daily: "₹5,000",
           days: 1000,
           members: 100,
         },
@@ -284,50 +173,8 @@ const Homechitplans = () => {
       plans: [
         {
           id: 1,
-          chitPrice: "₹1,00,000",
-          daily: "₹200",
-          days: 500,
-          members: 50,
-        },
-        {
-          id: 2,
-          chitPrice: "₹2,00,000",
-          daily: "₹400",
-          days: 500,
-          members: 50,
-        },
-        {
-          id: 3,
-          chitPrice: "₹3,00,000",
-          daily: "₹600",
-          days: 500,
-          members: 50,
-        },
-        {
-          id: 4,
-          chitPrice: "₹4,00,000",
-          daily: "₹800",
-          days: 500,
-          members: 50,
-        },
-        {
-          id: 5,
           chitPrice: "₹5,00,000",
           daily: "₹1,000",
-          days: 500,
-          members: 50,
-        },
-        {
-          id: 6,
-          chitPrice: "₹10,00,000",
-          daily: "₹2,000",
-          days: 500,
-          members: 50,
-        },
-         {
-          id: 7,
-          chitPrice: "₹25,00,000",
-          daily: "₹5,000",
           days: 500,
           members: 50,
         },
@@ -355,9 +202,8 @@ const Homechitplans = () => {
               {tabsData.map((tab) => (
                 <li key={tab.id} className="nav-item" role="presentation">
                   <button
-                    className={`nav-link ${
-                      activeTab === tab.id ? "active" : ""
-                    }`}
+                    className={`nav-link ${activeTab === tab.id ? "active" : ""
+                      }`}
                     onClick={() => handleTabChange(tab.id)}
                     type="button"
                     role="tab"
@@ -371,9 +217,8 @@ const Homechitplans = () => {
             {/* Tab Content */}
             <div className="tab-content chit-tab-content">
               <div
-                className={`tab-pane fade show active ${
-                  isAnimating ? "tab-animating-out" : "tab-animating-in"
-                }`}
+                className={`tab-pane fade show active ${isAnimating ? "tab-animating-out" : "tab-animating-in"
+                  }`}
               >
                 <div className="row g-3 pt-4" key={activeTab}>
                   {currentTabData?.plans.map((plan, index) => (

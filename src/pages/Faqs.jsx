@@ -1,6 +1,33 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Faqs = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      const animElements = sectionRef.current.querySelectorAll('.faq-anim');
+
+      gsap.fromTo(animElements,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+          }
+        }
+      );
+    }
+  }, []);
+
   const faqs = [
     {
       q: 'What is Amrat Chits India Pvt Ltd?',
@@ -66,36 +93,69 @@ const Faqs = () => {
 
   return (
     <React.Fragment>
-      <section className="subpage">
-        <div className="subpage-section">
+      <section className="faq-page" ref={sectionRef}>
+        {/* Hero Section */}
+        <div className="faq-hero">
+          <div className="container position-relative z-index-1">
+            <div className="row justify-content-center text-center">
+              <div className="col-lg-8 faq-anim">
+                <h6 className="text-secondarynew text-uppercase letter-spacing font-bold mb-3">Support Center</h6>
+                <h1 className="display-4 font-bold text-white mb-4">Frequently Asked Questions</h1>
+                <p className="lead text-white opacity-80 mb-0 px-lg-5">Find answers to common questions about our chitfund services, bidding processes, and how we operate in Hyderabad.</p>
+              </div>
+            </div>
+          </div>
+          <div className="hero-pattern"></div>
+        </div>
+
+        {/* FAQs Content */}
+        <div className="faq-accordion-container">
           <div className="container">
             <div className="row justify-content-center">
-              <div className="col-md-6">
-                <div className="pb-3 text-center">
-                  <h6 className="text-secondarynew text-uppercase letter-spacing font-bold pb-2">Frequently Asked Questions</h6>
-                  <h1 className="font-bold text-primarynew pb-3">Amrat Chits India Pvt Ltd — FAQs</h1>
-                  <p>Answers to common questions about our chitfund services and how we operate from Hyderabad.</p>
-                </div>
-
+              <div className="col-lg-9">
                 <div className="accordion" id="faqsAccordion">
                   {faqs.map((item, idx) => {
                     const hid = `faqHeading${idx}`;
                     const cid = `faqCollapse${idx}`;
                     return (
-                      <div className="accordion-item card shadow-sm mb-3" key={idx}>
+                      <div className="accordion-item faq-anim" key={idx}>
                         <h2 className="accordion-header" id={hid}>
-                          <button className={`accordion-button collapsed bg-white`} type="button" data-bs-toggle="collapse" data-bs-target={`#${cid}`} aria-expanded="false" aria-controls={cid}>
+                          <button
+                            className={`accordion-button ${idx !== 0 ? 'collapsed' : ''}`}
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target={`#${cid}`}
+                            aria-expanded={idx === 0 ? "true" : "false"}
+                            aria-controls={cid}
+                          >
                             {item.q}
                           </button>
                         </h2>
-                        <div id={cid} className="accordion-collapse collapse" aria-labelledby={hid} data-bs-parent="#faqsAccordion">
-                          <div className="accordion-body bg-white">
+                        <div
+                          id={cid}
+                          className={`accordion-collapse collapse ${idx === 0 ? 'show' : ''}`}
+                          aria-labelledby={hid}
+                          data-bs-parent="#faqsAccordion"
+                        >
+                          <div className="accordion-body">
                             {item.a}
                           </div>
                         </div>
                       </div>
                     );
                   })}
+                </div>
+
+                {/* Bottom Support Callout */}
+                <div className="mt-5 faq-anim">
+                  <div className="faq-support-card">
+                    <div className="icon-box">
+                      <i className="fi fi-rr-headset"></i>
+                    </div>
+                    <h4>Still have questions?</h4>
+                    <p className="lead text-muted mb-4">Our financial experts are here to guide you through every step of your savings journey.</p>
+                    <a href="/contact" className="btn btn-primarynew px-5 py-3 rounded-pill font-bold text-uppercase letter-spacing">Contact Support Now</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -105,4 +165,5 @@ const Faqs = () => {
     </React.Fragment>
   )
 }
+
 export default Faqs

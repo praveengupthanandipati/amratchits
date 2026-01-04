@@ -49,17 +49,14 @@ const Whoweare = () => {
                             <p>10,000 + Satisfied Customers</p>
                         </div>
                         <div className="row">
-                            <div className="col-6 whoweare-animate">
-                                <img src={whoweareimg1} alt="Who We Are Image 1" className="img-fluid mb-4 mb-md-0" />
-                            </div>
-                            <div className="col-6 whoweare-animate">
-                                <img src={whoweareimg2} alt="Who We Are Image 2" className="img-fluid mb-4 mb-md-0" />
-                            </div>
+                            <div className="col-12 whoweare-animate">
+                                <img src={whoweareimg1} alt="Who We Are Image 1" className="img-fluid mb-4 mb-md-0 w-100" />
+                            </div>                           
                         </div>
                     </div>
                     <div className="col-md-6 right-sidewhovare whoweare-animate">
                         <Sectiontitle
-                            title="WHO WE ARE"
+                            title="WHO WE ARE?"
                             titleClass=" text-primarynew text-uppercase font-bold"
                             descriptionClass="text-gray-20"
                         />

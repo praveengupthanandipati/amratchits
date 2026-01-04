@@ -11,6 +11,12 @@ import protectingcompany from "../assets/img/protechcompany.jpg";
 import solutionsimg from "../assets/img/solutions.jpg";
 import wecare from "../assets/img/wecare.jpg";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
@@ -73,88 +79,28 @@ const About = () => {
                 </article>
               </div>
               <div className="col-md-6">
-                <div className="row">
-                  <div className="col-md-6">
-                    <img
-                      src={About01img}
-                      alt=""
-                      className="img-fluid rounded-5 mb-3"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <img
-                      src={About02img}
-                      alt=""
-                      className="img-fluid rounded-5 mb-3"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <img
-                      src={About03img}
-                      alt=""
-                      className="img-fluid rounded-5 mb-3"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <img
-                      src={About04img}
-                      alt=""
-                      className="img-fluid rounded-5 mb-3"
-                    />
-                  </div>
-                </div>
+                <img
+                  src={About04img}
+                  alt=""
+                  className="img-fluid rounded-5 mb-3"
+                />
               </div>
             </div>
           </div>
         </div>
 
-          <figure className="about-anim about-hero">
-            <img
-              src={Aboutbanner01}
-              alt="about banner"
-              className="img-fluid w-100"
-            />
-            <div className="about-hero-content">
-              <h2 className="spaced-title font-bold">Increase your money systematically</h2>
-              <p className="lead">Everyone with a high and useful reward for his/her trading, purchase and investment. Our goal is to make the financial journey reliable and rewarding.</p>
-            </div>
-          </figure>
-
-          {/* Features grid */}
-          <div className="subpage-section">
-            <div className="container">
-              <div className="row gy-4">
-                <div className="col-md-4 about-anim">
-                  <div className="feature-box text-center p-4 rounded-4">
-                    <div className="feature-icon mb-3">
-                      <img src={protectingcompany} alt="Protecting" className="img-fluid rounded-circle" style={{width:80, height:80, objectFit:'cover'}} />
-                    </div>
-                    <h5 className="font-bold pb-2 text-primarynew">Protecting your company</h5>
-                    <p className="mb-0">We help protect your investments and ensure a transparent, compliant process.</p>
-                  </div>
-                </div>
-                <div className="col-md-4 about-anim">
-                  <div className="feature-box text-center p-4 rounded-4">
-                    <div className="feature-icon mb-3">
-                      <img src={solutionsimg} alt="Solutions" className="img-fluid rounded-circle" style={{width:80, height:80, objectFit:'cover'}} />
-                    </div>
-                    <h5 className="font-bold pb-2 text-primarynew">We offer you solutions</h5>
-                    <p className="mb-0">Tailored chit plans and guidance to suit your savings goals and timelines.</p>
-                  </div>
-                </div>
-                <div className="col-md-4 about-anim">
-                  <div className="feature-box text-center p-4 rounded-4">
-                    <div className="feature-icon mb-3">
-                      <img src={wecare} alt="Care" className="img-fluid rounded-circle" style={{width:80, height:80, objectFit:'cover'}} />
-                    </div>
-                    <h5 className="font-bold pb-2 text-primarynew">We take care of you</h5>
-                    <p className="mb-0">Personalized support, timely payouts and a trusted process backed by decades of experience.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <figure className="about-anim about-hero">
+          <img
+            src={Aboutbanner01}
+            alt="about banner"
+            className="img-fluid w-100"
+          />
+          <div className="about-hero-content">
+            <h2 className="spaced-title font-bold">Increase your money systematically</h2>
+            <p className="lead">Everyone with a high and useful reward for his/her trading, purchase and investment. Our goal is to make the financial journey reliable and rewarding.</p>
           </div>
-    
+        </figure>
+
 
         <div className="subpage-section">
           <div className="container">
@@ -220,106 +166,103 @@ const About = () => {
           </div>
         </div>
 
-        <div className="subpage-section bg-light about-anim">
+        <div className="subpage-section why-choose-amrat-section about-anim">
           <div className="container">
             <div className="row">
-              <div className="col-md-4 align-self-center">
-                <img
-                  src={Aboutbanner02}
-                  alt="about banner"
-                  className="img-fluid rounded-4"
-                />
-              </div>
-              <div className="col-md-8 align-self-center ps-2 ps-md-5">
-                <div className="pb-3">
-                  <h6 className="text-secondarynew text-uppercase letter-spacing font-bold pb-2">
-                    Why Us
-                  </h6>
-                  <h1 className="font-bold text-primarynew">
-                    Why choose Amrat
-                  </h1>
-                </div>
-                <p>
+              <div className="col-lg-6">
+                <h1 className="font-bold text-primarynew mb-3">
+                  Why choose Amrat?
+                </h1>
+                <p className="lead">
                   At Amrat Chits (India) Pvt. Ltd., we're more than a chit fund
                   company; we're your financial partner in realizing your
-                  dreams. With us, trust is the bedrock, and service is our
-                  compass. Your faith in us drives us to continually redefine
-                  the standards of excellence in the chit fund field.
+                  dreams.
                 </p>
+              </div>
+            </div>
 
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="py-3 my-2 d-flex icondiv-section pb-3">
-                      <div className="div-icon">
-                        <i className="fi fi-rr-shield-keyhole icomoon"></i>
+            <div className="why-choose-swiper-wrapper">
+              <Swiper
+                modules={[Navigation, Pagination, Autoplay]}
+                spaceBetween={30}
+                slidesPerView={1}
+                navigation={{
+                  nextEl: ".why-next",
+                  prevEl: ".why-prev",
+                }}
+                pagination={{
+                  clickable: true,
+                  el: ".why-pagination",
+                }}
+                autoplay={{
+                  delay: 8000,
+                  disableOnInteraction: false,
+                }}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                  },
+                }}
+                className="why-choose-swiper pt-4"
+              >
+                {[
+                  {
+                    title: "Secure Platform",
+                    desc: "We prioritize trust and integrity. Our track record reflects our commitment to ethical conduct.",
+                    icon: "fi-rr-shield-keyhole",
+                  },
+                  {
+                    title: "Customer-centric",
+                    desc: "Our customers are at the heart of everything. We provide personalized services for your well-being.",
+                    icon: "fi-rs-hr-person",
+                  },
+                  {
+                    title: "Experienced Team",
+                    desc: "Seasoned professionals with extensive expertise to deliver superior services and value.",
+                    icon: "fi-rr-team-check",
+                  },
+                  {
+                    title: "Regulatory Compliance",
+                    desc: "We comply with all relevant regulations to ensure a secure environment for our customers.",
+                    icon: "fi-rr-calendar-gavel-legal",
+                  },
+                  {
+                    title: "Transparency",
+                    desc: "Transparent processes and open communication build the foundation of our long-term relationships.",
+                    icon: "fi-rr-eye",
+                  },
+                  {
+                    title: "Financial Freedom",
+                    desc: "Empowering your financial journey with flexible plans designed for your success.",
+                    icon: "fi-rr-chart-line-up",
+                  },
+                ].map((item, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div className="why-choose-card">
+                      <div className="why-card-icon">
+                        <i className={`fi ${item.icon}`}></i>
                       </div>
-                      <article>
-                        <h4 className="font-bold text-primarynew pb-2">
-                          Creating a Secure and Transparent Platform
-                        </h4>
-                        <p>
-                          We prioritize trust and integrity in every aspect of
-                          our operations. Our track record reflects our
-                          commitment to maintaining the highest standards of
-                          ethical conduct.
-                        </p>
-                      </article>
+                      <h4 className="font-bold text-primarynew mb-3">{item.title}</h4>
+                      <p className="text-muted mb-0">{item.desc}</p>
                     </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              <div className="why-swiper-controls d-flex align-items-center justify-content-between mt-4">
+                <div className="why-pagination"></div>
+                <div className="why-nav-btns d-flex gap-2">
+                  <div className="why-prev swiper-nav-btn-custom">
+                    <i className="fi fi-rr-arrow-small-left"></i>
                   </div>
-
-                  <div className="col-md-6">
-                    <div className="py-3 my-2 d-flex icondiv-section pb-3">
-                      <div className="div-icon">
-                        <i className="fi fi-rs-hr-person icomoon"></i>
-                      </div>
-                      <article>
-                        <h4 className="font-bold text-primarynew pb-2">
-                          Customer-centric Approach
-                        </h4>
-                        <p>
-                          Our customers are at the heart of everything we do. We
-                          strive to provide personalized services and ensure
-                          their financial well-being.
-                        </p>
-                      </article>
-                    </div>
-                  </div>
-
-                  <div className="col-md-6">
-                    <div className="py-3 my-2 d-flex icondiv-section pb-3">
-                      <div className="div-icon">
-                       <i class="fi fi-rr-team-check icomoon"></i>
-                      </div>
-                      <article>
-                        <h4 className="font-bold text-primarynew pb-2">
-                          Experienced Team
-                        </h4>
-                        <p>
-                          Our team comprises seasoned professionals with
-                          extensive expertise in the financial industry. We
-                          leverage our knowledge to deliver superior services
-                          and value to our customers.
-                        </p>
-                      </article>
-                    </div>
-                  </div>
-
-                  <div className="col-md-6">
-                    <div className="py-3 my-2 d-flex icondiv-section pb-3">
-                      <div className="div-icon">
-                        <i className="fi fi-rr-calendar-gavel-legal icomoon"></i>
-                      </div>
-                      <article>
-                        <h4 className="font-bold text-primarynew pb-2">
-                          Regulatory Compliance
-                        </h4>
-                        <p>
-                          We operate within the legal framework and comply with
-                          all relevant regulations to ensure a secure and
-                          compliant environment for our customers.
-                        </p>
-                      </article>
-                    </div>
+                  <div className="why-next swiper-nav-btn-custom">
+                    <i className="fi fi-rr-arrow-small-right"></i>
                   </div>
                 </div>
               </div>
@@ -327,45 +270,42 @@ const About = () => {
           </div>
         </div>
 
-        <div className="subpage-section about-anim">
+        <div className="subpage-section team-section about-anim">
           <div className="container">
-            <div className="row">
-              <div className="col-md-4">
-                <div className="pb-3">
-                  <h6 className="text-secondarynew text-uppercase letter-spacing font-bold pb-2">
-                    OUR TEAM
-                  </h6>
-                  <h1 className="font-bold text-primarynew">
-                    Leading the way in business transformation
-                  </h1>
-                </div>
-              </div>
-              <div className="col-md-8">
-                  <div className="row">
-                    {[
-                      { name: "Amrat Kumar Jain", title: "Chairman", img: "https://randomuser.me/api/portraits/men/11.jpg"},
-                      { name: "S.K. Saxena", title: "Director", img: "https://randomuser.me/api/portraits/men/21.jpg"},
-                      { name: "Vishal Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/31.jpg"},
-                      { name: "Abhay Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/41.jpg"},
-                      { name: "Shailesh Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/51.jpg"}
-                    ].map((member, idx) => (
-                      <div className="col-md-4 mb-4 about-anim" key={member.name}>
-                        <div className="card text-center border-0 shadow-sm h-100 pb-2 d-flex flex-column align-items-center justify-content-center" style={{ background: "rgba(255,255,255,0.95)", borderRadius: "1rem" }}>
-                          <div style={{ width: "100%", aspectRatio: "1/1", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                              <img
-                                src={member.img}
-                                alt={member.name}
-                                className="w-100"
-                                style={{ width: "100%", height: "100%", objectFit: "cover", borderTopLeftRadius: "15px", borderTopRightRadius: "15px", borderBottomLeftRadius: "50%", borderBottomRightRadius: "50%" }}
-                            />
-                          </div>
-                          <h5 className="font-bold mt-3 mb-1 text-primarynew w-100">{member.name}</h5>
-                          <p className="text-secondarynew mb-0 w-100">{member.title}</p>
-                        </div>
-                      </div>
-                    ))}
+            <div className="text-center mb-5">
+              <h6 className="text-secondarynew text-uppercase letter-spacing font-bold pb-2">
+                OUR TEAM
+              </h6>
+              <h1 className="font-bold text-primarynew">
+                Meet Our Leadership
+              </h1>
+            </div>
+
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 justify-content-center g-4">
+              {[
+                { name: "Amrat Kumar Jain", title: "Chairman", img: "https://randomuser.me/api/portraits/men/11.jpg" },
+                { name: "S.K. Saxena", title: "Director", img: "https://randomuser.me/api/portraits/men/21.jpg" },
+                { name: "Vishal Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/31.jpg" },
+                { name: "Abhay Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/41.jpg" },
+                { name: "Shailesh Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/51.jpg" }
+              ].map((member, idx) => (
+                <div className="col about-anim" key={member.name}>
+                  <div className="team-card text-center h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white">
+                    <div className="team-img-wrapper position-relative overflow-hidden">
+                      <img
+                        src={member.img}
+                        alt={member.name}
+                        className="w-100"
+                        style={{ aspectRatio: "1/1", objectFit: "cover" }}
+                      />
+                    </div>
+                    <div className="team-info p-3">
+                      <h5 className="font-bold text-primarynew mb-1">{member.name}</h5>
+                      <p className="text-secondarynew mb-0 small">{member.title}</p>
+                    </div>
                   </div>
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
