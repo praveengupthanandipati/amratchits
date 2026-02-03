@@ -24,6 +24,7 @@ const Header = () => {
 
   // GSAP animation for fixed-header
   useEffect(() => {
+    return;
     // Initial load animation
     gsap.fromTo(
       headerRef.current,
@@ -172,6 +173,15 @@ const Header = () => {
                       onClick={closeMenu}
                     >
                       About
+                    </Link>
+                  </li>
+                   <li className="nav-item">
+                    <Link
+                      to="/chitplans"
+                      className="nav-link text-uppercase font-medium"
+                      onClick={closeMenu}
+                    >
+                      Chit Plans
                     </Link>
                   </li>
                   <li className="nav-item">

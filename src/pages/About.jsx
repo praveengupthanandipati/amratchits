@@ -44,6 +44,7 @@ const About = () => {
         // markers: true
       });
     }
+
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
@@ -281,31 +282,54 @@ const About = () => {
               </h1>
             </div>
 
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 justify-content-center g-4">
-              {[
-                { name: "Amrat Kumar Jain", title: "Chairman", img: "https://randomuser.me/api/portraits/men/11.jpg" },
-                { name: "S.K. Saxena", title: "Director", img: "https://randomuser.me/api/portraits/men/21.jpg" },
-                { name: "Vishal Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/31.jpg" },
-                { name: "Abhay Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/41.jpg" },
-                { name: "Shailesh Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/51.jpg" }
-              ].map((member, idx) => (
-                <div className="col about-anim" key={member.name}>
-                  <div className="team-card text-center h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white">
-                    <div className="team-img-wrapper position-relative overflow-hidden">
-                      <img
-                        src={member.img}
-                        alt={member.name}
-                        className="w-100"
-                        style={{ aspectRatio: "1/1", objectFit: "cover" }}
-                      />
+            <div className="row g-4">
+              {/* Featured Leader: Chairman (6 Columns) */}
+              <div className="col-lg-6 about-anim">
+                <div className="featured-leader-card h-100">
+                  <div className="leader-content-wrapper h-100 flex-column">
+                    <div className="leader-img-container w-100" style={{ minHeight: "400px", height: "50%" }}>
+                      <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Amrat Kumar Jain" />
                     </div>
-                    <div className="team-info p-3">
-                      <h5 className="font-bold text-primarynew mb-1">{member.name}</h5>
-                      <p className="text-secondarynew mb-0 small">{member.title}</p>
+                    <div className="leader-info w-100" style={{ padding: "2.5rem" }}>
+                      <h3>Amrat Kumar Jain</h3>
+                      <span className="leader-title">Chairman</span>
+                      <p className="leader-bio">
+                        A visionary leader with over four decades of experience in the financial sector.
+                        His guidance has been the cornerstone of Amrat Chits' enduring success, driving the company
+                        forward with a commitment to trust, transparency, and customer satisfaction.
+                      </p>
                     </div>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* Other Directors (6 Columns - 2x2 Grid) */}
+              <div className="col-lg-6">
+                <div className="row row-cols-1 row-cols-sm-2 g-4">
+                  {[
+                    { name: "S.K. Saxena", title: "Director", img: "https://randomuser.me/api/portraits/men/21.jpg" },
+                    { name: "Vishal Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/31.jpg" },
+                    { name: "Abhay Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/41.jpg" },
+                    { name: "Shailesh Jain", title: "Director", img: "https://randomuser.me/api/portraits/men/51.jpg" }
+                  ].map((member, idx) => (
+                    <div className="col about-anim" key={member.name}>
+                      <div className="team-card">
+                        <div className="team-img-wrapper">
+                          <img
+                            src={member.img}
+                            alt={member.name}
+                          />
+                          <div className="team-overlay"></div>
+                        </div>
+                        <div className="team-info">
+                          <h5>{member.name}</h5>
+                          <p>{member.title}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

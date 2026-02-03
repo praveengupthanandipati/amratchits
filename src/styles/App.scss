@@ -531,6 +531,10 @@ h1 {
       top: 60px;
       width: 100%;
       height: 100%;
+
+      @include m.respond-below(map.get(v.$breakpoints, "md")) {
+        display: none;
+      }
     }
 
     .swiper-slide {
@@ -545,13 +549,12 @@ h1 {
 
     img.sliderimg {
       width: 100%;
-      height: 100%;
       border-top-left-radius: 500px !important;
       border-top-right-radius: 500px !important;
 
       @include m.respond-below(map.get(v.$breakpoints, "md")) {
         width: 100%;
-        display: block;
+        display: none;
       }
     }
 
@@ -689,11 +692,16 @@ h1 {
   height: 100%;
   width: 100%;
   padding: 2rem;
+
   border-radius: 30px;
   color: map.get(v.$colors, "black");
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @include m.respond-below(map.get(v.$breakpoints, "sm")) {
+    height: auto;
+  }
 
   h2 {
     font-size: clamp(2rem, 4vw, 3rem);
@@ -922,6 +930,10 @@ footer {
 
   .HeroCarousel {
     background: url("../assets/img/herobannerpattern.png") no-repeat right center;
+
+    @include m.respond-below(map.get(v.$breakpoints, "md")) {
+      background: none;
+    }
   }
 
   // Equal height columns
@@ -1006,22 +1018,22 @@ footer {
 // Hero Carousel Mobile Responsive Updates
 .HeroCarousel {
   @include m.respond-below(map.get(v.$breakpoints, "md")) {
-    height: 280px;
+    height: auto;
     margin-bottom: 1rem;
   }
 
   @include m.respond-below(map.get(v.$breakpoints, "sm")) {
-    height: 250px;
+    height: auto;
   }
 
   .carousel-slide {
     img.sliderimg {
       @include m.respond-below(map.get(v.$breakpoints, "md")) {
-        height: 280px;
+        height: auto;
       }
 
       @include m.respond-below(map.get(v.$breakpoints, "sm")) {
-        height: 250px;
+        height: auto;
       }
     }
 
@@ -1079,7 +1091,7 @@ footer {
 
   @include m.respond-below(map.get(v.$breakpoints, "md")) {
     height: 100vh;
-    min-height: 100vh;
+    min-height: 50vh;
   }
 }
 
@@ -1211,7 +1223,7 @@ footer {
   .chit-price-title {
     color: map.get(v.$colors, "primary");
     font-weight: map.get(v.$lato-weights, "black");
-    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-size: clamp(1.2rem, 1.7vw, 1.7rem);
     margin: 0 0 1rem 0;
     padding: 0.5rem;
     background: linear-gradient(45deg,
@@ -1440,6 +1452,10 @@ footer {
   padding: 8rem 0;
   background-color: map.get(v.$colors, "primarynew");
   overflow: hidden;
+
+  @include m.respond-below(map.get(v.$breakpoints, "md")) {
+    padding: 4rem 0;
+  }
 
   &:before {
     content: "";
@@ -1671,6 +1687,12 @@ footer {
     width: 100%;
     height: 100%;
     z-index: 99;
+
+    @include m.respond-below(map.get(v.$breakpoints, "md")) {
+      display: none;
+    }
+
+
   }
 
   .customer-block {
@@ -3139,181 +3161,816 @@ footer {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     color: white !important;
   }
-}/* Refined "What We Do" Section Styles */
+}
+
+/* Refined "What We Do" Section Styles */
 .what-we-do-refined {
-    padding: 100px 0;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+
+  @include m.respond-below(map.get(v.$breakpoints, "md")) {
+    padding: 40px 0;
+  }
+
+  .section-bg-element {
+    position: absolute;
+    top: -10%;
+    left: -5%;
+    width: 40%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(32, 24, 93, 0.03) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .content-wrapper {
     position: relative;
-    overflow: hidden;
-    background: #fff;
+    z-index: 1;
+  }
 
-    .section-bg-element {
-        position: absolute;
-        top: -10%;
-        left: -5%;
-        width: 40%;
-        height: 60%;
-        background: radial-gradient(circle, rgba(32, 24, 93, 0.03) 0%, transparent 70%);
-        z-index: 0;
-        pointer-events: none;
+  .sidebar-title {
+    position: relative;
+    padding-left: 20px;
+    border-left: 4px solid map.get(v.$colors, "secondarynew");
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
     }
+  }
 
-    .content-wrapper {
-        position: relative;
-        z-index: 1;
-    }
+  .info-card-modern {
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: flex-start;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
 
-    .sidebar-title {
-        position: relative;
-        padding-left: 20px;
-        border-left: 4px solid map.get(v.$colors, "secondarynew");
+    &:hover {
+      transform: translateX(15px);
+      box-shadow: 0 20px 40px rgba(32, 24, 93, 0.08);
+      border-color: rgba(32, 24, 93, 0.1);
 
-        h2 {
-            font-size: 3rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
+      .icon-wrapper {
+        background: map.get(v.$colors, "secondarynew");
+        transform: rotate(10deg);
+
+        i {
+          color: #fff;
         }
+      }
     }
 
-    .info-card-modern {
-        background: #ffffff;
-        border-radius: 30px;
-        padding: 2.5rem;
-        margin-bottom: 2rem;
+    .icon-wrapper {
+      width: 80px;
+      height: 80px;
+      background: #f8faff;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.4s ease;
+
+      i {
+        font-size: 2.2rem;
+        color: map.get(v.$colors, "primarynew");
+        transition: all 0.4s ease;
+      }
+    }
+
+    .card-text {
+      margin-left: 2rem;
+
+      h4 {
+        font-weight: 800;
+        color: map.get(v.$colors, "primarynew");
+        margin-bottom: 0.75rem;
+        font-size: 1.4rem;
+      }
+
+      p {
+        color: map.get(v.$colors, "gray-80");
+        line-height: 1.7;
+        margin-bottom: 0;
+        font-size: 1.05rem;
+      }
+    }
+  }
+
+  .image-side-wrapper {
+    position: relative;
+
+    .main-image {
+      border-radius: 40px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+      transition: all 0.5s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .floating-badge {
+      position: absolute;
+      bottom: -30px;
+      right: -20px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+
+      .badge-icon {
+        width: 50px;
+        height: 50px;
+        background: #fff0f0;
+        border-radius: 12px;
         display: flex;
-        align-items: flex-start;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        border: 1px solid rgba(0, 0, 0, 0.03);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        align-items: center;
+        justify-content: center;
 
-        &:hover {
-            transform: translateX(15px);
-            box-shadow: 0 20px 40px rgba(32, 24, 93, 0.08);
-            border-color: rgba(32, 24, 93, 0.1);
+        i {
+          color: map.get(v.$colors, "secondarynew");
+          font-size: 1.5rem;
+        }
+      }
 
-            .icon-wrapper {
-                background: map.get(v.$colors, "secondarynew");
-                transform: rotate(10deg);
-
-                i {
-                    color: #fff;
-                }
-            }
+      .badge-info {
+        span {
+          display: block;
+          font-weight: 900;
+          font-size: 1.2rem;
+          color: map.get(v.$colors, "primarynew");
         }
 
-        .icon-wrapper {
-            width: 80px;
-            height: 80px;
-            background: #f8faff;
-            border-radius: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all 0.4s ease;
-
-            i {
-                font-size: 2.2rem;
-                color: map.get(v.$colors, "primarynew");
-                transition: all 0.4s ease;
-            }
+        small {
+          color: map.get(v.$colors, "gray-40");
+          text-transform: uppercase;
+          font-weight: 700;
+          letter-spacing: 1px;
         }
-
-        .card-text {
-            margin-left: 2rem;
-
-            h4 {
-                font-weight: 800;
-                color: map.get(v.$colors, "primarynew");
-                margin-bottom: 0.75rem;
-                font-size: 1.4rem;
-            }
-
-            p {
-                color: map.get(v.$colors, "gray-80");
-                line-height: 1.7;
-                margin-bottom: 0;
-                font-size: 1.05rem;
-            }
-        }
+      }
     }
-
-    .image-side-wrapper {
-        position: relative;
-
-        .main-image {
-            border-radius: 40px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-            transition: all 0.5s ease;
-
-            &:hover {
-                transform: scale(1.02);
-            }
-        }
-
-        .floating-badge {
-            position: absolute;
-            bottom: -30px;
-            right: -20px;
-            background: #fff;
-            padding: 2rem;
-            border-radius: 25px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-
-            .badge-icon {
-                width: 50px;
-                height: 50px;
-                background: #fff0f0;
-                border-radius: 12px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                i {
-                    color: map.get(v.$colors, "secondarynew");
-                    font-size: 1.5rem;
-                }
-            }
-
-            .badge-info {
-                span {
-                    display: block;
-                    font-weight: 900;
-                    font-size: 1.2rem;
-                    color: map.get(v.$colors, "primarynew");
-                }
-
-                small {
-                    color: map.get(v.$colors, "gray-40");
-                    text-transform: uppercase;
-                    font-weight: 700;
-                    letter-spacing: 1px;
-                }
-            }
-        }
-    }
+  }
 }
 
 @media (max-width: 991px) {
-    .what-we-do-refined {
-        .info-card-modern {
-            padding: 2rem;
+  .what-we-do-refined {
+    .info-card-modern {
+      padding: 2rem;
 
-            &:hover {
-                transform: translateY(-5px);
-            }
-        }
-
-        .image-side-wrapper {
-            margin-top: 4rem;
-
-            .floating-badge {
-                right: 0;
-            }
-        }
+      &:hover {
+        transform: translateY(-5px);
+      }
     }
+
+    .image-side-wrapper {
+      margin-top: 4rem;
+
+      .floating-badge {
+        right: 0;
+      }
+    }
+  }
 }
+
+/* Refined Who We Are Section */
+.who-we-are-refined {
+  padding: 120px 0;
+  background: #fcfdfe;
+  position: relative;
+  overflow: hidden;
+
+  .bg-shape {
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 40%;
+    height: 50%;
+    background: radial-gradient(circle, rgba(227, 30, 37, 0.02) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .image-grid-composite {
+    position: relative;
+    padding-right: 40px;
+    padding-bottom: 40px;
+
+    .main-img-wrapper {
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 2;
+
+      img {
+        transition: transform 0.6s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+    }
+
+    .experience-floating-card {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: map.get(v.$colors, "primarynew");
+      color: white;
+      padding: 2.5rem;
+      border-radius: 35px;
+      z-index: 3;
+      box-shadow: 0 20px 40px rgba(32, 24, 93, 0.2);
+      text-align: center;
+      min-width: 180px;
+
+      .exp-num {
+        display: block;
+        font-size: 3.5rem;
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.6) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .exp-text {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 700;
+        opacity: 0.9;
+      }
+    }
+
+    .abstract-dot-pattern {
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      width: 150px;
+      height: 150px;
+      background-image: radial-gradient(#d1d5db 2px, transparent 2px);
+      background-size: 20px 20px;
+      z-index: 1;
+      opacity: 0.4;
+    }
+  }
+
+  .content-side {
+    .section-tag {
+      color: map.get(v.$colors, "secondarynew");
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    h2 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: map.get(v.$colors, "primarynew");
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+
+    .who-we-are-p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: map.get(v.$colors, "gray-40");
+      margin-bottom: 2.5rem;
+    }
+
+    .stats-grid-modern {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+
+      @include m.respond-below(map.get(v.$breakpoints, "md")) {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-item-modern {
+        background: white;
+        padding: 2rem;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        border: 1px solid rgba(0, 0, 0, 0.02);
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+          border-color: rgba(32, 24, 93, 0.05);
+        }
+
+        .stat-icon {
+          width: 50px;
+          height: 50px;
+          background: #f0f4ff;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1.25rem;
+
+          i {
+            color: map.get(v.$colors, "primarynew");
+            font-size: 1.5rem;
+          }
+        }
+
+        .stat-val {
+          display: block;
+          font-size: 1.8rem;
+          font-weight: 900;
+          color: map.get(v.$colors, "primarynew");
+          margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+          color: map.get(v.$colors, "gray-40");
+          font-weight: 700;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+
+    .btn-wrap {
+      margin-top: 3.5rem;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .who-we-are-refined {
+    padding: 80px 0;
+
+    .image-grid-composite {
+      padding-right: 0;
+      margin-bottom: 4rem;
+    }
+
+    .content-side {
+      h2 {
+        font-size: 2.5rem;
+      }
+    }
+
+    .stats-grid-modern {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+/* Leadership Section Styles */
+.featured-leader-card {
+  background: white;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  margin-bottom: 3rem;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+  }
+
+  .leader-content-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .leader-img-container {
+    width: 40%;
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.2), transparent);
+    }
+  }
+
+  &:hover .leader-img-container img {
+    transform: scale(1.05);
+  }
+
+  .leader-info {
+    width: 60%;
+    padding: 3rem 4rem;
+
+    h3 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: map.get(v.$colors, 'primarynew');
+      margin-bottom: 0.5rem;
+    }
+
+    .leader-title {
+      font-size: 1.2rem;
+      color: map.get(v.$colors, 'secondarynew');
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .leader-bio {
+      color: map.get(v.$colors, 'gray-80');
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+
+      a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #f0f4ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: map.get(v.$colors, 'primarynew');
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: map.get(v.$colors, 'primarynew');
+          color: white;
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+
+  @include m.respond-below(map.get(v.$breakpoints, 'md')) {
+    .leader-content-wrapper {
+      flex-direction: column;
+    }
+
+    .leader-img-container {
+      width: 100%;
+      min-height: 300px;
+    }
+
+    .leader-info {
+      width: 100%;
+      padding: 2rem;
+
+      h3 {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+.team-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  height: 100%;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+
+    .team-img-wrapper img {
+      transform: scale(1.1);
+    }
+
+    .team-overlay {
+      opacity: 1;
+    }
+  }
+
+  .team-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .team-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  .team-info {
+    padding: 1.5rem;
+    text-align: center;
+
+    h5 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: map.get(v.$colors, 'primarynew');
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: map.get(v.$colors, 'gray-80');
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+  }
+}
+
+/* Enhanced Chit Plan Card Design */
+.chit-plan-card-refined {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+
+    .plan-header {
+      background: map.get(v.$colors, "primarynew");
+
+      .chit-label,
+      .chit-value {
+        color: white;
+      }
+    }
+
+    .btn-plan {
+      background: map.get(v.$colors, "secondarynew");
+      color: white;
+    }
+  }
+
+  .plan-header {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: #f8faff;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+
+    .chit-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: map.get(v.$colors, "gray-60");
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+
+    .chit-value {
+      font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+      font-weight: 800;
+      color: map.get(v.$colors, "primarynew");
+      margin: 0;
+      line-height: 1;
+      transition: color 0.3s ease;
+    }
+  }
+
+  .plan-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    .plan-feature-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+
+      .feature-label {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: map.get(v.$colors, "gray-60");
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        i {
+          font-size: 1.1rem;
+          color: map.get(v.$colors, "secondarynew");
+          width: 20px;
+          text-align: center;
+        }
+      }
+
+      .feature-value {
+        font-weight: 800;
+        color: map.get(v.$colors, "primarynew");
+        font-size: 1.1rem;
+        text-align: left;
+        padding-left: calc(20px + 0.75rem); // Align with text, skipping icon
+        line-height: 1.2;
+      }
+    }
+  }
+
+  .plan-footer {
+    padding: 1.5rem;
+    margin-top: auto;
+
+    .btn-plan {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 12px;
+      background: rgba(18, 63, 117, 0.08); // Light primary tint
+      color: map.get(v.$colors, "primarynew");
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        background: map.get(v.$colors, "primarynew");
+        color: white;
+      }
+    }
+  }
+}
+
+/* Chit Plans Page Specific Styles */
+.chitplans-page {
+  position: relative;
+  background: #fcfcfc;
+
+  .main-title {
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+  }
+
+  .branch-tabs-wrapper {
+    background: white;
+    padding: 0.5rem;
+    border-radius: 50px;
+    display: inline-flex;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+
+    button {
+      background: transparent;
+      border: none;
+      padding: 0.85rem 2.5rem;
+      border-radius: 40px;
+      font-weight: 800;
+      color: map.get(v.$colors, 'gray-60');
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      font-size: 1rem;
+
+      &.active {
+        background: map.get(v.$colors, 'primarynew');
+        color: white;
+        box-shadow: 0 8px 25px rgba(32, 24, 93, 0.25);
+      }
+
+      &:hover:not(.active) {
+        color: map.get(v.$colors, 'primarynew');
+        background: rgba(18, 63, 117, 0.05);
+      }
+    }
+  }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+
+    .divider-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 16px;
+      background: rgba(18, 63, 117, 0.08); // Primary light
+      color: map.get(v.$colors, 'primarynew');
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-right: 1.25rem;
+      transition: transform 0.3s ease;
+
+      &.secondary {
+        background: rgba(227, 30, 37, 0.08); // Secondary light
+        color: map.get(v.$colors, 'secondarynew');
+      }
+    }
+
+    &:hover .divider-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .divider-title {
+      font-size: 1.8rem;
+      line-height: 1;
+      font-weight: 900;
+      margin: 0;
+      color: map.get(v.$colors, 'primarynew');
+      white-space: nowrap;
+    }
+
+    .divider-line {
+      height: 2px;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.08) 0%, transparent 100%);
+      flex-grow: 1;
+      margin-left: 2rem;
+      border-radius: 2px;
+    }
+  }
+
+  // Enhance standard chit plan card for this page
+  .chit-plan-card-refined {
+    border-color: rgba(0, 0, 0, 0.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+
+    .plan-header {
+      background: transparent;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+      padding-top: 2rem;
+    }
+
+    .plan-body {
+      background: transparent;
+    }
+
+    .chit-value {
+      font-size: 2.2rem;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(32, 24, 93, 0.12);
+
+      .plan-header {
+        background: map.get(v.$colors, 'primarynew');
+        border-bottom-color: transparent;
+      }
+    }
+  }
+}
+

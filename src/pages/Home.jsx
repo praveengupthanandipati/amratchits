@@ -18,12 +18,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const ServiceCard = ({ item, index, servicesRef }) => {
-  const [isExpanded, setIsExpanded] = React.useState(false);
-
   return (
     <div
       className="col-md-4 d-flex"
-      ref={el => servicesRef.current[index] = el}
+      ref={(el) => (servicesRef.current[index] = el)}
     >
       <div className="service-card-modern w-100 shadow-lg">
         <div className="card-inner">
@@ -33,25 +31,14 @@ const ServiceCard = ({ item, index, servicesRef }) => {
           </div>
           <div className="card-content">
             <h3>{item.title}</h3>
-            <p style={{
-              display: '-webkit-box',
-              WebkitLineClamp: isExpanded ? 'unset' : 2,
-              WebkitBoxOrient: 'vertical',
-              overflow: isExpanded ? 'visible' : 'hidden',
-              transition: 'all 0.3s ease'
-            }}>
-              {item.desc}
-            </p>
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="card-learn-more bg-transparent border-0 p-0 text-start"
+            <p>{item.desc}</p>
+            <Link
+              to="/chitplans"
+              className="card-learn-more bg-transparent border-0 p-0 text-start text-decoration-none"
             >
-              {isExpanded ? 'Show Less' : 'Read More'}
-              <i className={`fi fi-ts-arrow-right-long ms-2`} style={{
-                transform: isExpanded ? 'rotate(-90deg)' : 'none',
-                transition: 'transform 0.3s ease'
-              }}></i>
-            </button>
+              Read More
+              <i className="fi fi-ts-arrow-right-long ms-2"></i>
+            </Link>
           </div>
         </div>
       </div>
@@ -67,95 +54,101 @@ const Home = () => {
     {
       img: chitfundImg,
       title: "Chit Fund Solutions",
-      desc: "We offer a wide range of chit fund options tailored to meet the diverse needs of our customers. Our chit funds provide an opportunity for disciplined savings and the chance to access funds when needed."
+      desc: "We offer a wide range of chit fund options tailored to meet the diverse needs of our customers. Our chit funds provide an opportunity for disciplined savings and the chance to access funds when needed.",
     },
     {
       img: transparentImg,
       title: "Transparent Processes",
-      desc: "We believe in maintaining transparency in all our processes. Our customers can trust that their investments are handled with utmost care and transparency."
+      desc: "We believe in maintaining transparency in all our processes. Our customers can trust that their investments are handled with utmost care and transparency.",
     },
     {
       img: financialGuidenImg,
       title: "Financial Guidance",
-      desc: "We understand that financial decisions can be complex. Our expert team is always available to provide guidance and assist our customers in making informed investment choices."
-    }
+      desc: "We understand that financial decisions can be complex. Our expert team is always available to provide guidance and assist our customers in making informed investment choices.",
+    },
   ];
 
   const customerAgentsRef = useRef([]);
   const testimonialsRef = useRef(null);
 
   useLayoutEffect(() => {
+    return;
     // Set initial visibility for all elements
-    gsap.set([
-      welcomeRef.current,
-      ...servicesRef.current,
-      ...customerAgentsRef.current,
-      testimonialsRef.current
-    ], { clearProps: "all" });
+    gsap.set(
+      [
+        welcomeRef.current,
+        ...servicesRef.current,
+        ...customerAgentsRef.current,
+        testimonialsRef.current,
+      ],
+      { clearProps: "all" },
+    );
 
     // Welcome section animation (top-bottom, repeat on scroll)
     if (welcomeRef.current) {
-      const welcomeCols = welcomeRef.current.querySelectorAll('.welcome-col');
-      let observer = new window.IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            welcomeCols.forEach((el, idx) => {
-              gsap.fromTo(
-                el,
-                { opacity: 0, y: -60 },
-                {
-                  opacity: 1,
-                  y: 0,
-                  duration: 1,
-                  delay: idx * 0.5,
-                  ease: "power3.out"
-                }
-              );
-            });
-          } else {
-            welcomeCols.forEach((el) => {
-              gsap.set(el, { opacity: 0 });
-            });
-          }
-        });
-      }, { threshold: 0.3 });
+      const welcomeCols = welcomeRef.current.querySelectorAll(".welcome-col");
+      let observer = new window.IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              welcomeCols.forEach((el, idx) => {
+                gsap.fromTo(
+                  el,
+                  { opacity: 0, y: -60 },
+                  {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    delay: idx * 0.5,
+                    ease: "power3.out",
+                  },
+                );
+              });
+            } else {
+              welcomeCols.forEach((el) => {
+                gsap.set(el, { opacity: 0 });
+              });
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
       observer.observe(welcomeRef.current);
-      return () => {
-        if (observer && welcomeRef.current) observer.unobserve(welcomeRef.current);
-      };
     }
 
     // .service-card-modern GSAP animation on scroll with delay
     if (servicesSectionRef.current) {
-      const serviceCols = servicesSectionRef.current.querySelectorAll('.service-card-modern');
+      const serviceCols = servicesSectionRef.current.querySelectorAll(
+        ".service-card-modern",
+      );
       serviceCols.forEach((el) => {
         if (el) gsap.set(el, { opacity: 0, y: -60 });
       });
-      let observer = new window.IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            serviceCols.forEach((el, idx) => {
-              if (el) {
-                gsap.to(el, {
-                  opacity: 1,
-                  y: 0,
-                  duration: 1,
-                  delay: idx * 0.5,
-                  ease: "power3.out"
-                });
-              }
-            });
-          } else {
-            serviceCols.forEach((el) => {
-              if (el) gsap.set(el, { opacity: 0, y: -60 });
-            });
-          }
-        });
-      }, { threshold: 0.3 });
+      let observer = new window.IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              serviceCols.forEach((el, idx) => {
+                if (el) {
+                  gsap.to(el, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    delay: idx * 0.5,
+                    ease: "power3.out",
+                  });
+                }
+              });
+            } else {
+              serviceCols.forEach((el) => {
+                if (el) gsap.set(el, { opacity: 0, y: -60 });
+              });
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
       observer.observe(servicesSectionRef.current);
-      return () => {
-        if (observer && servicesSectionRef.current) observer.unobserve(servicesSectionRef.current);
-      };
     }
 
     // Customer/Agents section animation (onscroll, left/right fade-in)
@@ -165,42 +158,43 @@ const Home = () => {
       if (rightEl) gsap.set(rightEl, { opacity: 0, x: 60 });
       const parent = leftEl?.parentNode?.parentNode;
       if (parent) {
-        let observer = new window.IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              if (leftEl) {
-                gsap.to(leftEl, {
-                  opacity: 1,
-                  x: 0,
-                  duration: 1,
-                  ease: "power3.out"
-                });
+        let observer = new window.IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                if (leftEl) {
+                  gsap.to(leftEl, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                  });
+                }
+                if (rightEl) {
+                  gsap.to(rightEl, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    delay: 0.3,
+                    ease: "power3.out",
+                  });
+                }
+              } else {
+                if (leftEl) gsap.set(leftEl, { opacity: 0, x: -60 });
+                if (rightEl) gsap.set(rightEl, { opacity: 0, x: 60 });
               }
-              if (rightEl) {
-                gsap.to(rightEl, {
-                  opacity: 1,
-                  x: 0,
-                  duration: 1,
-                  delay: 0.3,
-                  ease: "power3.out"
-                });
-              }
-            } else {
-              if (leftEl) gsap.set(leftEl, { opacity: 0, x: -60 });
-              if (rightEl) gsap.set(rightEl, { opacity: 0, x: 60 });
-            }
-          });
-        }, { threshold: 0.3 });
+            });
+          },
+          { threshold: 0.3 },
+        );
         observer.observe(parent);
-        return () => {
-          if (observer && parent) observer.unobserve(parent);
-        };
       }
     }
 
     // Testimonials section animation
     if (testimonialsRef.current) {
-      gsap.fromTo(testimonialsRef.current,
+      gsap.fromTo(
+        testimonialsRef.current,
         {
           opacity: 0,
           y: 50,
@@ -216,7 +210,7 @@ const Home = () => {
           y: 0,
           duration: 1,
           ease: "power3.out",
-        }
+        },
       );
     }
 
@@ -244,32 +238,36 @@ const Home = () => {
         <div className="section-bg-element"></div>
         <div className="container content-wrapper">
           <div className="sidebar-title mb-5 welcome-col">
-            <h6 className="text-secondarynew text-uppercase letter-spacing font-bold mb-3">Our Core Process</h6>
+            <h6 className="text-secondarynew text-uppercase letter-spacing font-bold mb-3">
+              Our Core Process
+            </h6>
             <h2 className="text-primarynew">How a Chit Group Works?</h2>
-            <p className="lead text-muted">With transparency, trust, and timely payouts, we turn your disciplined savings into achievable realities.</p>
+            <p className="lead text-muted">
+              With transparency, trust, and timely payouts, we turn your
+              disciplined savings into achievable realities.
+            </p>
           </div>
 
           <div className="row g-5">
             {/* Left Side: Content */}
             <div className="col-lg-7">
-
               <div className="info-cards-container">
                 {[
                   {
                     icon: "fi-rr-diamond",
                     title: "Chit Value",
-                    desc: "The total pool of funds contributed by all the members (subscribers) of the chit fund for a particular chit scheme refers to the Chit Value."
+                    desc: "The total pool of funds contributed by all the members (subscribers) of the chit fund for a particular chit scheme refers to the Chit Value.",
                   },
                   {
                     icon: "fi-rr-calendar-clock",
                     title: "Chit Period",
-                    desc: "For the purpose of this illustration, we will consider the duration of the chit to be 50 months. This is known as the term period for the chit groups."
+                    desc: "For the purpose of this illustration, we will consider the duration of the chit to be 50 months. This is known as the term period for the chit groups.",
                   },
                   {
                     icon: "fi-rr-users-alt",
                     title: "Subscribers",
-                    desc: "The Foreman or Chit Fund company gathers 50 interested people for a chit group. These 50 persons are called subscribers."
-                  }
+                    desc: "The Foreman or Chit Fund company gathers 50 interested people for a chit group. These 50 persons are called subscribers.",
+                  },
                 ].map((item, idx) => (
                   <div className="info-card-modern welcome-col" key={idx}>
                     <div className="icon-wrapper">
@@ -285,7 +283,7 @@ const Home = () => {
             </div>
 
             {/* Right Side: Image & Stats */}
-            <div className="col-lg-5 welcome-col">
+            <div className="col-lg-5 welcome-col  d-none d-md-block">
               <div className="image-side-wrapper h-100 d-flex flex-column">
                 <img
                   src={welcomeImg}
@@ -319,7 +317,10 @@ const Home = () => {
               title="Our Services"
               titleClass="text-white text-uppercase font-bold mb-3"
             />
-            <p className="text-white opacity-75 max-w-600">Our reliable chit schemes help you achieve financial goals through disciplined savings and timely payouts.</p>
+            <p className="text-white opacity-75 max-w-600">
+              Our reliable chit schemes help you achieve financial goals through
+              disciplined savings and timely payouts.
+            </p>
           </div>
           <div className="row g-4 align-items-stretch position-relative z-index-1">
             {servicesData.map((item, idx) => (
@@ -333,9 +334,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* <Whatsets /> */}
-
 
       {/*customers / agents*/}
       <section className="customer-agents mt-3 mt-md-5">
@@ -346,9 +345,13 @@ const Home = () => {
               ref={(el) => (customerAgentsRef.current[0] = el)}
             >
               <article>
-                <h4 className="text-uppercase font-bold mb-2">join us as an employee</h4>
-                <p>Amrat Chits empowers your personal financial journey. Our tailored chit schemes help you systematically save for life's big moments—a new home, your child's education, or a dream wedding.  </p>
-                <Link to="" className="btn-primary-light">Find Out More</Link>
+                <h4 className="text-uppercase font-bold mb-4">
+                  join us as an employee
+                </h4>
+                {/* <p>Amrat Chits empowers your personal financial journey. Our tailored chit schemes help you systematically save for life's big moments—a new home, your child's education, or a dream wedding.  </p> */}
+                <Link to="/careers" className="btn-primary-light">
+                  Find Out More
+                </Link>
               </article>
             </div>
             <div
@@ -356,9 +359,13 @@ const Home = () => {
               ref={(el) => (customerAgentsRef.current[1] = el)}
             >
               <article>
-                <h4 className="text-uppercase font-bold mb-2">JOin us as an Agent</h4>
-                <p>Amrat Chits empowers your personal financial journey. Our tailored chit schemes help you systematically save for life's big moments—a new home, your child's education, or a dream wedding.  </p>
-                <Link to="" className="btn-primary-light">Find Out More</Link>
+                <h4 className="text-uppercase font-bold mb-4">
+                  JOin us as an Agent
+                </h4>
+                {/* <p>Amrat Chits empowers your personal financial journey. Our tailored chit schemes help you systematically save for life's big moments—a new home, your child's education, or a dream wedding.  </p> */}
+                <Link to="/contact" className="btn-primary-light">
+                  Find Out More
+                </Link>
               </article>
             </div>
           </div>
@@ -366,9 +373,7 @@ const Home = () => {
       </section>
 
       {/* Who We are Section */}
-      <section className="homeWhoweare">
-        <Whoweare />
-      </section>
+      <Whoweare />
 
       {/* testimonials section */}
       <section className="testimonials-home" ref={testimonialsRef}>

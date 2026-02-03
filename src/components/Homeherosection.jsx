@@ -37,6 +37,7 @@ const Homeherosection = () => {
   };
 
   useEffect(() => {
+    return;
     // Animate carousel on load
     if (carouselRef.current) {
       gsap.fromTo(
@@ -54,6 +55,7 @@ const Homeherosection = () => {
         }
       );
     }
+
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
@@ -74,7 +76,7 @@ const Homeherosection = () => {
       alt: "Investment Growth",
       title: "Your Goal, Our Plan. Achieve It Sooner. ",
       description: "Plan for education, a home, or a business with our disciplined chit schemes. Turn your ambitions into reality faster.",
-      link: { url: "/chit-plans", label: "View Chit Plans" }
+      link: { url: "/chitplans", label: "View Chit Plans" }
     },
     {
       id: 3,
@@ -118,7 +120,7 @@ const Homeherosection = () => {
                       <div className="row align-items-center flex-column flex-md-row h-100">
                         {/* Left: Image */}
                         <div className="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-center align-items-center h-100">
-                          <div style={{ position: 'relative', width: '100%' }}>
+                          <div style={{ position: 'relative' }}>
                             <img
                               src={slide.image}
                               alt={slide.alt}
@@ -140,7 +142,7 @@ const Homeherosection = () => {
                               <p className="mb-3" >{slide.description}</p>
                               {slide.link && (
                                 <Link to={slide.link.url} className="btn-secondary text-uppercase mt-2 text-white">
-                                  Read More About us
+                                  {slide.link.label}
                                 </Link>
                               )}
                             </article>

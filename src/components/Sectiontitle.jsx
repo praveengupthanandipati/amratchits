@@ -8,6 +8,7 @@ const Sectiontitle = ({ title, description, className, titleClass, descriptionCl
   const titleRef = useRef(null);
 
   useEffect(() => {
+    return;
     if (titleRef.current) {
       gsap.fromTo(titleRef.current,
         { opacity: 0, y: 30 },

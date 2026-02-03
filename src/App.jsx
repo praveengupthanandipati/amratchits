@@ -15,8 +15,10 @@ import Guide from './pages/Guide';
 import Contact from './pages/Contact';
 import Careers from './pages/Careers';
 import Faqs from './pages/Faqs';
+import Chitplans from './pages/Chitplans';
 import React, { useState, useEffect } from "react";
 import LoadingSpinner from "./components/LoadingSpinner";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -32,10 +34,12 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/chitplans" element={<Chitplans />} />
         <Route path="/services" element={<Services />} />
         <Route path="/guide" element={<Guide />} />
         <Route path="/contact" element={<Contact />} />

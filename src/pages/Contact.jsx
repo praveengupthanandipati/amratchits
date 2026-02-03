@@ -18,6 +18,7 @@ const Contact = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    return;
     if (sectionRef.current) {
       const animElements = sectionRef.current.querySelectorAll('.contact-anim');
 

@@ -10,6 +10,7 @@ const Services = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    return;
     if (!sectionRef.current) return;
 
     const items = sectionRef.current.querySelectorAll(".service-anim");

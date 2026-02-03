@@ -8,6 +8,7 @@ const Faqs = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    return;
     if (sectionRef.current) {
       const animElements = sectionRef.current.querySelectorAll('.faq-anim');
 

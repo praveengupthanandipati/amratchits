@@ -72,3 +72,13 @@ footer{
         font-size: 18px;
     }
 }
+
+.whatsappicon{
+  position: fixed;
+  right:30px;  
+  bottom:100px;
+  z-index: 99999;
+   img{
+     width:50px;
+   }
+}

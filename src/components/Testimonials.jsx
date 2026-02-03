@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 //Import swiper React components
-import {Swiper, SwiperSlide} from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 //Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -16,6 +16,7 @@ const Testimonials = () => {
   const swiperRef = useRef(null);
 
   useEffect(() => {
+    return;
     // Set initial visibility
     if (swiperRef.current) {
       gsap.set(swiperRef.current, { clearProps: "all" });
@@ -24,7 +25,7 @@ const Testimonials = () => {
     // Animate testimonials swiper on scroll
     if (swiperRef.current) {
       gsap.fromTo(swiperRef.current,
-        {         
+        {
           scale: 0.95,
         },
         {
@@ -57,7 +58,7 @@ const Testimonials = () => {
     },
     {
       id: 2,
-      name: "Priya Sharma", 
+      name: "Priya Sharma",
       designation: "Homemaker, Warangal",
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
       testimonial: "I've been investing with Amrat Chits for 2 years now. The monthly savings plan helped me save for my daughter's education. Very trustworthy and reliable service with excellent support team."
@@ -65,7 +66,7 @@ const Testimonials = () => {
     {
       id: 3,
       name: "Venkat Reddy",
-      designation: "IT Professional, Secunderabad", 
+      designation: "IT Professional, Secunderabad",
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
       testimonial: "The customer service is exceptional. They guided me through every step and made the chit fund process very simple and transparent. I'm extremely satisfied with their professional approach."
     },
@@ -80,69 +81,69 @@ const Testimonials = () => {
 
   return (
     <React.Fragment>
-       <div ref={swiperRef}>
-       <Swiper
-        slidesPerView={1}
-        spaceBetween={10}
-        pagination={{
-          clickable: true,
-        }}
-        breakpoints={{
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 2,
-            spaceBetween: 50,
-          },
-        }}
-        modules={[Pagination]}
-        className="testimonialsSwiper"
-      >
-        {testimonialsData.map((testimonial) => (
-          <SwiperSlide key={testimonial.id}>
-            <div className="testimonial-slide">
-              {/* Top right corner quote icon */}
-              <div className="quote-icon">
-                <span className="icon-quotes icomoon"></span>
-              </div>
-              
-              {/* Second row: Avatar and Name/Designation */}
-              <div className="testimonial-header d-flex align-items-center mb-3">
-                <div className="testimonial-image me-3">
-                  <img 
-                    src={testimonial.avatar} 
-                    alt={testimonial.name}
-                    className="avatar-img rounded-circle"
-                    onError={(e) => {
-                      // Fallback to avatar with initials if image fails to load
-                      e.target.style.display = 'none';
-                      e.target.nextElementSibling.style.display = 'flex';
-                    }}
-                  />
-                  <div className="avatar-circle rounded-circle" style={{display: 'none'}}>
-                    {testimonial.name.charAt(0)}
+      <div ref={swiperRef}>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={10}
+          pagination={{
+            clickable: true,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 2,
+              spaceBetween: 50,
+            },
+          }}
+          modules={[Pagination]}
+          className="testimonialsSwiper"
+        >
+          {testimonialsData.map((testimonial) => (
+            <SwiperSlide key={testimonial.id}>
+              <div className="testimonial-slide">
+                {/* Top right corner quote icon */}
+                <div className="quote-icon">
+                  <span className="icon-quotes icomoon"></span>
+                </div>
+
+                {/* Second row: Avatar and Name/Designation */}
+                <div className="testimonial-header d-flex align-items-center mb-3">
+                  <div className="testimonial-image me-3">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="avatar-img rounded-circle"
+                      onError={(e) => {
+                        // Fallback to avatar with initials if image fails to load
+                        e.target.style.display = 'none';
+                        e.target.nextElementSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="avatar-circle rounded-circle" style={{ display: 'none' }}>
+                      {testimonial.name.charAt(0)}
+                    </div>
+                  </div>
+                  <div className="testimonial-info">
+                    <h5 className="testimonial-name mb-1">{testimonial.name}</h5>
+                    <p className="testimonial-designation mb-0">{testimonial.designation}</p>
                   </div>
                 </div>
-                <div className="testimonial-info">
-                  <h5 className="testimonial-name mb-1">{testimonial.name}</h5>
-                  <p className="testimonial-designation mb-0">{testimonial.designation}</p>
+                {/* Third row: Testimonial description */}
+                <div className="testimonial-description">
+                  <p>{testimonial.testimonial}</p>
                 </div>
-              </div>              
-              {/* Third row: Testimonial description */}
-              <div className="testimonial-description">
-                <p>{testimonial.testimonial}</p>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-       </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </React.Fragment>
   )
 }

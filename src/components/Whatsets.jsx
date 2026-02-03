@@ -10,6 +10,7 @@ const Whatsets = () => {
   const cardsRef = useRef([]);
 
   useEffect(() => {
+    return;
     // Set initial visibility
     gsap.set(cardsRef.current, { clearProps: "all" });
 
@@ -80,8 +81,8 @@ const Whatsets = () => {
           />
           <div className="row py-4">
             {whatsetsData.map((item, index) => (
-              <div 
-                key={item.id} 
+              <div
+                key={item.id}
                 className="col-md-3"
                 ref={(el) => (cardsRef.current[index] = el)}
               >

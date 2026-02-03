@@ -9,6 +9,7 @@ const Careers = () => {
     const sectionRef = useRef(null);
 
     useEffect(() => {
+        return;
         if (sectionRef.current) {
             const animElements = sectionRef.current.querySelectorAll('.careers-anim');
 
@@ -33,8 +34,7 @@ const Careers = () => {
         ['Manager (Various Departments)', 'Lead and drive excellence in your department.'],
         ['Assistant Manager', 'Assist in managing key functions.'],
         ['Accounts', 'Manage financial transactions and reporting.'],
-        ['Bid-Payable', 'Oversee bid-related payments and processes.'],
-        ['Ledger', 'Maintain accurate financial records.'],
+        ['Bid-Payable', 'Oversee bid-related payments and processes.'],        
         ['Development', 'Contribute to innovative financial solutions.'],
         ['Verification', 'Ensure authenticity and compliance through meticulous checks.'],
         ['Bill Collectors', 'Play a vital role in timely collections and client relations.'],
@@ -111,7 +111,7 @@ const Careers = () => {
                             {jobs.map((job, idx) => (
                                 <div className="col-xl-3 col-lg-4 col-md-6" key={idx}>
                                     <div className="job-card shadow-sm">
-                                        <div className="job-num">Pos 0{idx + 1}</div>
+                                        <div className="job-num">Pos {idx + 1}</div>
                                         <h5 className="job-title mt-2">{job[0]}</h5>
                                         <p className="job-desc">{job[1]}</p>
                                     </div>
