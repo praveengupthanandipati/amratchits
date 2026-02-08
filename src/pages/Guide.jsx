@@ -162,8 +162,8 @@ const Guide = () => {
           <div className="container py-4">
             <div className="row mb-5 text-center justify-content-center guide-anim">
               <div className="col-lg-8">
-                <h6 className="text-uppercase letter-spacing mb-3">Workflow</h6>
-                <h2 className="display-5 font-bold mb-4 text-white">How does it work?</h2>
+                <h6 className="text-secondarynew text-uppercase letter-spacing font-bold mb-3 d-inline-block px-3 py-1 bg-white-10 rounded-pill">Workflow</h6>
+                <h2 className="display-3 font-bold mb-4 text-white">How does it work?</h2>
                 <p className="lead text-white">A simple five-step process that ensures transparency, security, and exponential growth for every subscriber.</p>
               </div>
             </div>
@@ -215,7 +215,7 @@ const Guide = () => {
           <div className="container py-5">
             <div className="row mb-5 text-center justify-content-center guide-anim">
               <div className="col-lg-8">
-                <h2 className="font-bold text-primarynew h1 mb-4">Financial Instruments</h2>
+                <h2 className="font-bold text-primarynew mb-4">Financial Instruments</h2>
                 <p className="text-muted">Compare the most common investment avenues to see where Chit Funds stand in terms of value and community impact.</p>
               </div>
             </div>

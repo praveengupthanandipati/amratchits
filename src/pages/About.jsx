@@ -106,7 +106,7 @@ const About = () => {
         <div className="subpage-section">
           <div className="container">
             <div className="row">
-              <div className="col-md-12">
+              <div className="col-lg-6">
                 <div className="py-3 my-2 d-flex icondiv-section pb-3 border-bottom about-anim">
                   <div className="div-icon">
                     <i className="fi fi-rr-time-forward icomoon"></i>
@@ -125,7 +125,9 @@ const About = () => {
                     </p>
                   </article>
                 </div>
+              </div>
 
+              <div className="col-lg-6">
                 <div className="py-3 my-2 d-flex icondiv-section pb-3 border-bottom about-anim">
                   <div className="div-icon">
                     <i className="fi fi-rs-shield-check icomoon"></i>
@@ -143,6 +145,9 @@ const About = () => {
                     </p>
                   </article>
                 </div>
+                </div>
+
+                 <div className="col-lg-6">
 
                 <div className="py-3 my-2 d-flex icondiv-section pb-3 border-bottom about-anim">
                   <div className="div-icon">
@@ -162,7 +167,8 @@ const About = () => {
                     </p>
                   </article>
                 </div>
-              </div>
+                </div>
+             
             </div>
           </div>
         </div>

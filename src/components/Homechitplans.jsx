@@ -3,12 +3,16 @@ import { useNavigate } from "react-router-dom";
 import Sectiontitle from "./Sectiontitle";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 const Homechitplans = () => {
-    const [activeTab, setActiveTab] = useState("monthly-long");
+    const [activeTab, setActiveTab] = useState("monthly");
     const [isAnimating, setIsAnimating] = useState(false);
     const sectionRef = useRef(null);
     const navigate = useNavigate();
@@ -59,11 +63,11 @@ const Homechitplans = () => {
         }
     };
 
-    // Tab data - 5 cards per tab
+    // Tab data - 2 main tabs
     const tabsData = [
         {
-            id: "monthly-long",
-            label: "Monthly Long-period",
+            id: "monthly",
+            label: "Monthly Chits",
             plans: [
                 {
                     id: 1,
@@ -107,28 +111,22 @@ const Homechitplans = () => {
                     months: 50,
                     members: 50,
                 },
-            ],
-        },
-        {
-            id: "monthly-short",
-            label: "Monthly Short-period",
-            plans: [
                 {
-                    id: 1,
+                    id: 7,
                     chitPrice: "₹25,00,000",
                     monthly: "₹1,00,000",
                     months: 25,
                     members: 25,
                 },
                 {
-                    id: 2,
+                    id: 8,
                     chitPrice: "₹10,00,000",
                     monthly: "₹40,000",
                     months: 25,
                     members: 25,
                 },
                 {
-                    id: 3,
+                    id: 9,
                     chitPrice: "₹5,00,000",
                     monthly: "₹20,000",
                     months: 25,
@@ -137,8 +135,8 @@ const Homechitplans = () => {
             ],
         },
         {
-            id: "daily-long",
-            label: "Daily Long-Period",
+            id: "daily",
+            label: "Daily Chits",
             plans: [
                 {
                     id: 1,
@@ -168,14 +166,8 @@ const Homechitplans = () => {
                     days: 1000,
                     members: 100,
                 },
-            ],
-        },
-        {
-            id: "daily-short",
-            label: "Daily Short-period",
-            plans: [
                 {
-                    id: 1,
+                    id: 5,
                     chitPrice: "₹5,00,000",
                     daily: "₹1,000",
                     days: 500,
@@ -198,10 +190,10 @@ const Homechitplans = () => {
                         descriptionClass="text-primary-50 small"
                     />
 
-                    {/* Desktop Tabs */}
-                    <div className="chit-tabs-container d-none d-md-block">
+                    {/* Desktop & Mobile Tabs with Carousel */}
+                    <div className="chit-tabs-container">
                         {/* Tab Navigation */}
-                        <ul className="nav nav-tabs chit-nav-tabs" role="tablist">
+                        <ul className="nav nav-tabs chit-nav-tabs nav-justified" role="tablist">
                             {tabsData.map((tab) => (
                                 <li key={tab.id} className="nav-item" role="presentation">
                                     <button
@@ -223,136 +215,94 @@ const Homechitplans = () => {
                                 className={`tab-pane fade show active ${isAnimating ? "tab-animating-out" : "tab-animating-in"
                                     }`}
                             >
-                                <div className="row g-3 pt-4" key={activeTab}>
-                                    {currentTabData?.plans.map((plan, index) => (
-                                        <div
-                                            key={plan.id}
-                                            className="col-xl-3 col-md-4 col-sm-6"
-                                            style={{
-                                                animationDelay: `${index * 0.1}s`,
-                                            }}
-                                        >
-                                            <div className="chit-plan-card-refined">
-                                                <div className="plan-header">
-                                                    <span className="chit-label">Chit Value</span>
-                                                    <h3 className="chit-value">{plan.chitPrice}</h3>
-                                                </div>
-                                                <div className="plan-body">
-                                                    <div className="plan-feature-row">
-                                                        <span className="feature-label">
-                                                            <i className="fi fi-rr-hand-holding-usd"></i>
-                                                            Investment
-                                                        </span>
-                                                        <span className="feature-value">
-                                                            {(activeTab === "daily-long" || activeTab === "daily-short") ? `${plan.daily} / Day` : `${plan.monthly} / Mo`}
-                                                        </span>
+                                <div className="pt-4" key={activeTab}>
+                                    <Swiper
+                                        modules={[Navigation, Autoplay]}
+                                        spaceBetween={24}
+                                        slidesPerView={1}
+                                        navigation={true}
+                                        autoplay={{
+                                            delay: 5000,
+                                            disableOnInteraction: false,
+                                            pauseOnMouseEnter: true
+                                        }}
+                                        breakpoints={{
+                                            576: {
+                                                slidesPerView: 1,
+                                            },
+                                            768: {
+                                                slidesPerView: 2,
+                                            },
+                                            1024: {
+                                                slidesPerView: 3,
+                                            },
+                                            1200: {
+                                                slidesPerView: 4,
+                                            },
+                                        }}
+                                        style={{
+                                            "--swiper-navigation-color": "#b8860b",
+                                            "--swiper-navigation-size": "30px",
+                                            padding: "10px 5px"
+                                        }}
+                                        className="chit-plans-swiper"
+                                    >
+                                        {currentTabData?.plans.map((plan, index) => (
+                                            <SwiperSlide key={plan.id}>
+                                                <div
+                                                    className="chit-plan-card-refined h-100"
+                                                    style={{
+                                                        animationDelay: `${index * 0.1}s`,
+                                                    }}
+                                                >
+                                                    <div className="plan-header">
+                                                        <span className="chit-label">Chit Value</span>
+                                                        <h3 className="chit-value">{plan.chitPrice}</h3>
                                                     </div>
-                                                    <div className="plan-feature-row">
-                                                        <span className="feature-label">
-                                                            <i className="fi fi-rr-calendar"></i>
-                                                            Duration
-                                                        </span>
-                                                        <span className="feature-value">
-                                                            {(activeTab === "daily-long" || activeTab === "daily-short") ? `${plan.days} Days` : `${plan.months} Months`}
-                                                        </span>
+                                                    <div className="plan-body">
+                                                        <div className="plan-feature-row">
+                                                            <span className="feature-label">
+                                                                <i className="fi fi-rr-hand-holding-usd"></i>
+                                                                Investment
+                                                            </span>
+                                                            <span className="feature-value">
+                                                                {activeTab === "daily" ? `${plan.daily} / Day` : `${plan.monthly} / Mo`}
+                                                            </span>
+                                                        </div>
+                                                        <div className="plan-feature-row">
+                                                            <span className="feature-label">
+                                                                <i className="fi fi-rr-calendar"></i>
+                                                                Duration
+                                                            </span>
+                                                            <span className="feature-value">
+                                                                {activeTab === "daily" ? `${plan.days} Days` : `${plan.months} Months`}
+                                                            </span>
+                                                        </div>
+                                                        <div className="plan-feature-row">
+                                                            <span className="feature-label">
+                                                                <i className="fi fi-rr-users-alt"></i>
+                                                                Members
+                                                            </span>
+                                                            <span className="feature-value">
+                                                                {plan.members}
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                    <div className="plan-feature-row">
-                                                        <span className="feature-label">
-                                                            <i className="fi fi-rr-users-alt"></i>
-                                                            Members
-                                                        </span>
-                                                        <span className="feature-value">
-                                                            {plan.members}
-                                                        </span>
+                                                    <div className="plan-footer">
+                                                        <button className="btn-plan" onClick={() => navigate('/contact')}>
+                                                            Start Investing
+                                                        </button>
                                                     </div>
                                                 </div>
-                                                <div className="plan-footer">
-                                                    <button className="btn-plan" onClick={() => navigate('/contact')}>
-                                                        Start Investing
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
+                                            </SwiperSlide>
+                                        ))}
+                                    </Swiper>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Mobile Accordion */}
-                    <div className="chit-accordion-container d-block d-md-none">
-                        <div className="accordion" id="chitPlansAccordion">
-                            {tabsData.map((tab, index) => (
-                                <div key={tab.id} className="accordion-item">
-                                    <h2 className="accordion-header">
-                                        <button
-                                            className="accordion-button collapsed"
-                                            type="button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target={`#collapse${index}`}
-                                            aria-expanded="false"
-                                            aria-controls={`collapse${index}`}
-                                        >
-                                            {tab.label}
-                                        </button>
-                                    </h2>
-                                    <div
-                                        id={`collapse${index}`}
-                                        className="accordion-collapse collapse"
-                                        data-bs-parent="#chitPlansAccordion"
-                                    >
-                                        <div className="accordion-body">
-                                            {tab.plans.map((plan) => (
-                                                <div
-                                                    key={plan.id}
-                                                    className="chit-plan-card-refined mb-3"
-                                                >
-                                                    <div className="plan-header pt-3 pb-3">
-                                                        <span className="chit-label" style={{ fontSize: '0.8rem' }}>Chit Value</span>
-                                                        <h3 className="chit-value" style={{ fontSize: '1.5rem' }}>{plan.chitPrice}</h3>
-                                                    </div>
-                                                    <div className="plan-body p-3 gap-2">
-                                                        <div className="plan-feature-row">
-                                                            <span className="feature-label font-md">
-                                                                <i className="fi fi-rr-hand-holding-usd"></i>
-                                                                Invest
-                                                            </span>
-                                                            <span className="feature-value font-md">
-                                                                {(tab.id === "daily-long" || tab.id === "daily-short") ? `${plan.daily} / Day` : `${plan.monthly} / Mo`}
-                                                            </span>
-                                                        </div>
-                                                        <div className="plan-feature-row">
-                                                            <span className="feature-label font-md">
-                                                                <i className="fi fi-rr-calendar"></i>
-                                                                Duration
-                                                            </span>
-                                                            <span className="feature-value font-md">
-                                                                {(tab.id === "daily-long" || tab.id === "daily-short") ? `${plan.days} Days` : `${plan.months} Months`}
-                                                            </span>
-                                                        </div>
-                                                        <div className="plan-feature-row">
-                                                            <span className="feature-label font-md">
-                                                                <i className="fi fi-rr-users-alt"></i>
-                                                                Members
-                                                            </span>
-                                                            <span className="feature-value font-md">
-                                                                {plan.members}
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="plan-footer p-3">
-                                                        <button className="btn-plan py-2" onClick={() => navigate('/contact')}>
-                                                            Start Investing
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+
                 </div>
             </section>
         </React.Fragment>

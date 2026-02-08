@@ -1995,7 +1995,7 @@ footer {
   }
 
   h2 {
-    font-size: clamp(1.6rem, 1.8vw, 1.8rem);
+    font-size: clamp(1.6rem, 2vw, 2rem);
     color: map.get(v.$colors, "primarynew");
     margin-bottom: 1rem;
   }

@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Chitplans = () => {
-  const [activeBranch, setActiveBranch] = useState("secunderabad");
+  const [activeBranch, setActiveBranch] = useState("abids");
   const containerRef = useRef(null);
   const navigate = useNavigate();
 
@@ -49,11 +49,20 @@ const Chitplans = () => {
     ]
   };
 
-  const currentPlans = activeBranch === 'secunderabad' ? secunderabadPlans : abidsPlans;
+  // For the new tab logic
+  let currentPlans = { monthly: [], daily: [] };
+  if (activeBranch === 'abids') {
+    currentPlans = abidsPlans;
+  } else if (activeBranch === 'secunderabad') {
+    currentPlans = { ...secunderabadPlans, daily: [] };
+  } else if (activeBranch === 'dailychits') {
+    currentPlans = { monthly: [], daily: secunderabadPlans.daily };
+  }
 
   const branches = [
+    { id: "abids", label: "Abids Branch" },
     { id: "secunderabad", label: "Secunderabad Branch" },
-    { id: "abids", label: "Abids Branch" }
+    { id: "dailychits", label: "Daily Chits" }
   ];
 
   useEffect(() => {
@@ -132,110 +141,112 @@ const Chitplans = () => {
           <div className="custom-container">
 
             {/* Monthly Schemes */}
-            <div className="plan-section-anim mb-5">
-              <div className="section-divider mb-4">
-                <span className="divider-icon"><i className="fi fi-rr-calendar-clock"></i></span>
-                <h3 className="divider-title">Monthly Schemes</h3>
-                <div className="divider-line"></div>
-              </div>
-
-              <div className="row g-4">
-                {currentPlans.monthly.map((plan, idx) => (
-                  <div className="col-xl-3 col-lg-4 col-md-6 plan-card-anim" key={idx}>
-                    <div className="chit-plan-card-refined h-100 feature-hover">
-                      <div className="plan-header pt-4 pb-2">
-                        <span className="chit-label d-block mb-1">Chit Value</span>
-                        <h3 className="chit-value">{plan.price}</h3>
-                      </div>
-                      <div className="plan-body px-4 pb-4 pt-2 d-flex flex-column gap-3">
-                        <div className="plan-feature-row">
-                          <span className="feature-label">
-                            <i className="fi fi-rr-hand-holding-usd"></i> Investment
-                          </span>
-                          <span className="feature-value pl-0 text-dark">
-                            {plan.install} <span className="text-muted fs-6 fw-normal">/ Mo</span>
-                          </span>
+            {currentPlans.monthly && currentPlans.monthly.length > 0 && (
+              <div className="plan-section-anim mb-5">
+                <div className="section-divider mb-4">
+                  <span className="divider-icon"><i className="fi fi-rr-calendar-clock"></i></span>
+                  <h3 className="divider-title">Monthly Schemes</h3>
+                  <div className="divider-line"></div>
+                </div>
+                <div className="row g-4">
+                  {currentPlans.monthly.map((plan, idx) => (
+                    <div className="col-xl-3 col-lg-4 col-md-6 plan-card-anim" key={idx}>
+                      <div className="chit-plan-card-refined h-100 feature-hover">
+                        <div className="plan-header pt-4 pb-2">
+                          <span className="chit-label d-block mb-1">Chit Value</span>
+                          <h3 className="chit-value">{plan.price}</h3>
                         </div>
-                        <div className="plan-feature-row">
-                          <span className="feature-label">
-                            <i className="fi fi-rr-calendar"></i> Duration
-                          </span>
-                          <span className="feature-value text-dark">
-                            {plan.duration}
-                          </span>
+                        <div className="plan-body px-4 pb-4 pt-2 d-flex flex-column gap-3">
+                          <div className="plan-feature-row">
+                            <span className="feature-label">
+                              <i className="fi fi-rr-hand-holding-usd"></i> Investment
+                            </span>
+                            <span className="feature-value pl-0 text-dark">
+                              {plan.install} <span className="text-muted fs-6 fw-normal">/ Mo</span>
+                            </span>
+                          </div>
+                          <div className="plan-feature-row">
+                            <span className="feature-label">
+                              <i className="fi fi-rr-calendar"></i> Duration
+                            </span>
+                            <span className="feature-value text-dark">
+                              {plan.duration}
+                            </span>
+                          </div>
+                          <div className="plan-feature-row">
+                            <span className="feature-label">
+                              <i className="fi fi-rr-users-alt"></i> Members
+                            </span>
+                            <span className="feature-value text-dark">
+                              {plan.members}
+                            </span>
+                          </div>
                         </div>
-                        <div className="plan-feature-row">
-                          <span className="feature-label">
-                            <i className="fi fi-rr-users-alt"></i> Members
-                          </span>
-                          <span className="feature-value text-dark">
-                            {plan.members}
-                          </span>
+                        <div className="plan-footer p-3 mt-auto">
+                          <button className="btn-plan py-2 w-100 rounded-3 fw-bold text-uppercase" onClick={() => navigate('/contact')}>
+                            Start Investing
+                          </button>                      
                         </div>
-                      </div>
-                      <div className="plan-footer p-3 mt-auto">
-                        <button className="btn-plan py-2 w-100 rounded-3 fw-bold text-uppercase" onClick={() => navigate('/contact')}>
-                           Start Investing
-                        </button>                      
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Daily Schemes */}
-            <div className="plan-section-anim">
-              <div className="section-divider mb-4">
-                <span className="divider-icon secondary"><i className="fi fi-rr-sun"></i></span>
-                <h3 className="divider-title">Daily Schemes</h3>
-                <div className="divider-line"></div>
-              </div>
-
-              <div className="row g-4">
-                {currentPlans.daily.map((plan, idx) => (
-                  <div className="col-xl-3 col-lg-4 col-md-6 plan-card-anim" key={idx}>
-                    <div className="chit-plan-card-refined h-100 feature-hover">
-                      <div className="plan-header pt-4 pb-2">
-                        <span className="chit-label d-block mb-1">Chit Value</span>
-                        <h3 className="chit-value">{plan.price}</h3>
-                      </div>
-                      <div className="plan-body px-4 pb-4 pt-2 d-flex flex-column gap-3">
-                        <div className="plan-feature-row">
-                          <span className="feature-label">
-                            <i className="fi fi-rr-hand-holding-usd"></i> Investment
-                          </span>
-                          <span className="feature-value pl-0 text-dark">
-                            {plan.install} <span className="text-muted fs-6 fw-normal">/ Day</span>
-                          </span>
+            {currentPlans.daily && currentPlans.daily.length > 0 && (
+              <div className="plan-section-anim">
+                <div className="section-divider mb-4">
+                  <span className="divider-icon secondary"><i className="fi fi-rr-sun"></i></span>
+                  <h3 className="divider-title">Daily Schemes</h3>
+                  <div className="divider-line"></div>
+                </div>
+                <div className="row g-4">
+                  {currentPlans.daily.map((plan, idx) => (
+                    <div className="col-xl-3 col-lg-4 col-md-6 plan-card-anim" key={idx}>
+                      <div className="chit-plan-card-refined h-100 feature-hover">
+                        <div className="plan-header pt-4 pb-2">
+                          <span className="chit-label d-block mb-1">Chit Value</span>
+                          <h3 className="chit-value">{plan.price}</h3>
                         </div>
-                        <div className="plan-feature-row">
-                          <span className="feature-label">
-                            <i className="fi fi-rr-calendar"></i> Duration
-                          </span>
-                          <span className="feature-value text-dark">
-                            {plan.duration}
-                          </span>
+                        <div className="plan-body px-4 pb-4 pt-2 d-flex flex-column gap-3">
+                          <div className="plan-feature-row">
+                            <span className="feature-label">
+                              <i className="fi fi-rr-hand-holding-usd"></i> Investment
+                            </span>
+                            <span className="feature-value pl-0 text-dark">
+                              {plan.install} <span className="text-muted fs-6 fw-normal">/ Day</span>
+                            </span>
+                          </div>
+                          <div className="plan-feature-row">
+                            <span className="feature-label">
+                              <i className="fi fi-rr-calendar"></i> Duration
+                            </span>
+                            <span className="feature-value text-dark">
+                              {plan.duration}
+                            </span>
+                          </div>
+                          <div className="plan-feature-row">
+                            <span className="feature-label">
+                              <i className="fi fi-rr-users-alt"></i> Members
+                            </span>
+                            <span className="feature-value text-dark">
+                              {plan.members}
+                            </span>
+                          </div>
+                        </div>                      
+                        <div className="plan-footer p-3 mt-auto">
+                          <button className="btn-plan py-2 w-100 rounded-3 fw-bold text-uppercase" onClick={() => navigate('/contact')}>
+                            Start Investing
+                          </button>
                         </div>
-                        <div className="plan-feature-row">
-                          <span className="feature-label">
-                            <i className="fi fi-rr-users-alt"></i> Members
-                          </span>
-                          <span className="feature-value text-dark">
-                            {plan.members}
-                          </span>
-                        </div>
-                      </div>                      
-                      <div className="plan-footer p-3 mt-auto">
-                        <button className="btn-plan py-2 w-100 rounded-3 fw-bold text-uppercase" onClick={() => navigate('/contact')}>
-                          Start Investing
-                        </button>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
           </div>
         </div>
