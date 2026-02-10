@@ -40,7 +40,7 @@ const Footer = () => {
               </div>
             </div>       
             <div className='col-md-4'>
-              <div className='footer-col pe-2 pe-md-5'>
+              <div className='footer-col pe-2 pe-md-5 pt-5 mt-md-0'>
                 <ul>
                   <li>
                     <Link to="/" className="nav-link pb-3">Facebook</Link>

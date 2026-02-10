@@ -90,12 +90,17 @@ const About = () => {
           </div>
         </div>
 
-        <figure className="about-anim about-hero">
-          <img
-            src={Aboutbanner01}
-            alt="about banner"
-            className="img-fluid w-100"
-          />
+        <figure
+          className="about-anim about-hero"
+          style={{
+            backgroundImage: `url(${Aboutbanner01})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            minHeight: "600px",
+            width: "100%",
+            display: "block" // Ensure figure behaves as a block
+          }}
+        >
           <div className="about-hero-content">
             <h2 className="spaced-title font-bold">Increase your money systematically</h2>
             <p className="lead">Everyone with a high and useful reward for his/her trading, purchase and investment. Our goal is to make the financial journey reliable and rewarding.</p>
@@ -107,7 +112,7 @@ const About = () => {
           <div className="container">
             <div className="row">
               <div className="col-lg-6">
-                <div className="py-3 my-2 d-flex icondiv-section pb-3 border-bottom about-anim">
+                <div className="py-3 my-2 d-md-flex icondiv-section pb-3 border-bottom about-anim">
                   <div className="div-icon">
                     <i className="fi fi-rr-time-forward icomoon"></i>
                   </div>
@@ -128,7 +133,7 @@ const About = () => {
               </div>
 
               <div className="col-lg-6">
-                <div className="py-3 my-2 d-flex icondiv-section pb-3 border-bottom about-anim">
+                <div className="py-3 my-2 d-md-flex icondiv-section pb-3 border-bottom about-anim">
                   <div className="div-icon">
                     <i className="fi fi-rs-shield-check icomoon"></i>
                   </div>
@@ -145,11 +150,11 @@ const About = () => {
                     </p>
                   </article>
                 </div>
-                </div>
+              </div>
 
-                 <div className="col-lg-6">
+              <div className="col-lg-6">
 
-                <div className="py-3 my-2 d-flex icondiv-section pb-3 border-bottom about-anim">
+                <div className="py-3 my-2 d-md-flex icondiv-section pb-3 border-bottom about-anim">
                   <div className="div-icon">
                     <i className="fi fi-rr-user-robot icomoon"></i>
                   </div>
@@ -167,8 +172,8 @@ const About = () => {
                     </p>
                   </article>
                 </div>
-                </div>
-             
+              </div>
+
             </div>
           </div>
         </div>
@@ -296,7 +301,7 @@ const About = () => {
                     <div className="leader-img-container w-100" style={{ minHeight: "400px", height: "50%" }}>
                       <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Amrat Kumar Jain" />
                     </div>
-                    <div className="leader-info w-100" style={{ padding: "2.5rem" }}>
+                    <div className="leader-info w-100" style={{ padding: "1.5rem" }}>
                       <h3>Amrat Kumar Jain</h3>
                       <span className="leader-title">Chairman</span>
                       <p className="leader-bio">
@@ -329,7 +334,7 @@ const About = () => {
                         </div>
                         <div className="team-info">
                           <h5>{member.name}</h5>
-                          <p>{member.title}</p>
+                          <p className="p-0 m-0">{member.title}</p>
                         </div>
                       </div>
                     </div>

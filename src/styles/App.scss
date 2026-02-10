@@ -19,6 +19,7 @@
 body {
   font-size: v.$fsize;
   @include m.siteMain;
+  overflow-x: hidden; // Critical fix for preventing horizontal scroll
 }
 
 /* Financial Instruments thumbnails */
@@ -362,9 +363,13 @@ body {
 .custom-container {
   width: 90%;
   margin: 0 auto;
+  padding-left: 15px; // Add padding to prevent edge touching
+  padding-right: 15px;
 
   @include m.respond-below(map.get(v.$breakpoints, "md")) {
-    width: 95%;
+    width: 100%; // Use full width with padding on mobile
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -570,7 +575,7 @@ h1 {
         }
 
         h3 {
-          font-size: clamp(1rem, 3vw, 3rem);
+          font-size: clamp(1.8rem, 3vw, 3rem);
           color: map.get(v.$colors, "primarynew");
         }
 
@@ -838,8 +843,13 @@ footer {
     padding: 2rem;
     z-index: 2;
 
+    @include m.respond-below(map.get(v.$breakpoints, "md")) {
+      padding: 1rem;
+      width: 90%;
+    }
+
     .spaced-title {
-      letter-spacing: 6px;
+      // letter-spacing: 6px;
       font-size: clamp(1.75rem, 3.8vw, 3.8rem);
       text-transform: none;
       margin-bottom: 0.75rem;
@@ -1990,6 +2000,11 @@ footer {
     line-height: 1.8rem;
   }
 
+  h1 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    color: map.get(v.$colors, "primarynew");
+  }
+
   h6 {
     letter-spacing: 0.2rem;
   }
@@ -2776,7 +2791,7 @@ footer {
   .contact-form-wrapper {
     background: white;
     border-radius: 40px;
-    padding: 4rem;
+    padding: 2rem;
     box-shadow: 0 50px 120px rgba(18, 63, 117, 0.08);
     border: 1px solid rgba(0, 0, 0, 0.03);
 
@@ -2801,7 +2816,7 @@ footer {
     }
 
     .form-group {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
 
       label {
         font-weight: 800;
@@ -3196,7 +3211,7 @@ footer {
     border-left: 4px solid map.get(v.$colors, "secondarynew");
 
     h2 {
-      font-size: 3rem;
+      font-size: clamp(1.8rem, 2.6vw, 2.6rem);
       font-weight: 900;
       line-height: 1.1;
       margin-bottom: 20px;
@@ -3249,6 +3264,10 @@ footer {
 
     .card-text {
       margin-left: 2rem;
+
+      @include m.respond-below(map.get(v.$breakpoints, "md")) {
+        margin-left: 0;
+      }
 
       h4 {
         font-weight: 800;
@@ -3330,6 +3349,7 @@ footer {
   .what-we-do-refined {
     .info-card-modern {
       padding: 2rem;
+      flex-direction: column;
 
       &:hover {
         transform: translateY(-5px);
@@ -3872,17 +3892,26 @@ footer {
     display: inline-flex;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(0, 0, 0, 0.02);
+    overflow-x: auto;
+    max-width: 100%; // Ensure it doesn't overflow container
+    scrollbar-width: none; // Hide scrollbar for cleaner look
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     button {
       background: transparent;
       border: none;
-      padding: 0.85rem 2.5rem;
+      padding: 0.75rem 1.5rem; // Reduce padding for mobile
       border-radius: 40px;
       font-weight: 800;
       color: map.get(v.$colors, 'gray-60');
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
-      font-size: 1rem;
+      font-size: 0.9rem; // Slightly smaller font for mobile
+      white-space: nowrap; // Prevent text wrapping
 
       &.active {
         background: map.get(v.$colors, 'primarynew');
@@ -3973,4 +4002,3 @@ footer {
     }
   }
 }
-

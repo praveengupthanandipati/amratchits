@@ -152,7 +152,7 @@ const Contact = () => {
               <div className="contact-form-wrapper">
                 <h2 className="form-title">Send Us a Message</h2>
                 <form className="contact-form" onSubmit={handleSubmit} noValidate>
-                  <div className="row g-4">
+                  <div className="row g-2">
                     <div className="col-md-6">
                       <div className={`form-group ${errors.name ? "has-error" : ""}`}>
                         <label>Your Name</label>

@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const Chitplans = () => {
   const [activeBranch, setActiveBranch] = useState("abids");
@@ -148,9 +152,21 @@ const Chitplans = () => {
                   <h3 className="divider-title">Monthly Schemes</h3>
                   <div className="divider-line"></div>
                 </div>
-                <div className="row g-4">
+                <Swiper
+                  modules={[Navigation, Pagination]}
+                  spaceBetween={24}
+                  slidesPerView={1}
+                  navigation
+                  pagination={{ clickable: true }}
+                  breakpoints={{
+                    640: { slidesPerView: 2 },
+                    992: { slidesPerView: 3 },
+                    1200: { slidesPerView: 4 },
+                  }}
+                  className="monthly-schemes-swiper pb-5 px-2"
+                >
                   {currentPlans.monthly.map((plan, idx) => (
-                    <div className="col-xl-3 col-lg-4 col-md-6 plan-card-anim" key={idx}>
+                    <SwiperSlide key={idx}>
                       <div className="chit-plan-card-refined h-100 feature-hover">
                         <div className="plan-header pt-4 pb-2">
                           <span className="chit-label d-block mb-1">Chit Value</span>
@@ -185,12 +201,12 @@ const Chitplans = () => {
                         <div className="plan-footer p-3 mt-auto">
                           <button className="btn-plan py-2 w-100 rounded-3 fw-bold text-uppercase" onClick={() => navigate('/contact')}>
                             Start Investing
-                          </button>                      
+                          </button>
                         </div>
                       </div>
-                    </div>
+                    </SwiperSlide>
                   ))}
-                </div>
+                </Swiper>
               </div>
             )}
 
@@ -202,9 +218,21 @@ const Chitplans = () => {
                   <h3 className="divider-title">Daily Schemes</h3>
                   <div className="divider-line"></div>
                 </div>
-                <div className="row g-4">
+                <Swiper
+                  modules={[Navigation, Pagination]}
+                  spaceBetween={24}
+                  slidesPerView={1}
+                  navigation
+                  pagination={{ clickable: true }}
+                  breakpoints={{
+                    640: { slidesPerView: 2 },
+                    992: { slidesPerView: 3 },
+                    1200: { slidesPerView: 4 },
+                  }}
+                  className="daily-schemes-swiper pb-5 px-2"
+                >
                   {currentPlans.daily.map((plan, idx) => (
-                    <div className="col-xl-3 col-lg-4 col-md-6 plan-card-anim" key={idx}>
+                    <SwiperSlide key={idx}>
                       <div className="chit-plan-card-refined h-100 feature-hover">
                         <div className="plan-header pt-4 pb-2">
                           <span className="chit-label d-block mb-1">Chit Value</span>
@@ -235,16 +263,16 @@ const Chitplans = () => {
                               {plan.members}
                             </span>
                           </div>
-                        </div>                      
+                        </div>
                         <div className="plan-footer p-3 mt-auto">
                           <button className="btn-plan py-2 w-100 rounded-3 fw-bold text-uppercase" onClick={() => navigate('/contact')}>
                             Start Investing
                           </button>
                         </div>
                       </div>
-                    </div>
+                    </SwiperSlide>
                   ))}
-                </div>
+                </Swiper>
               </div>
             )}
 

@@ -273,7 +273,7 @@ const Home = () => {
                     <div className="icon-wrapper">
                       <i className={`fi ${item.icon}`}></i>
                     </div>
-                    <div className="card-text">
+                    <div className="card-text mt-2 mt-md-0">
                       <h4>{item.title}</h4>
                       <p>{item.desc}</p>
                     </div>

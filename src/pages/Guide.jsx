@@ -56,11 +56,12 @@ const Guide = () => {
   useEffect(() => {
     return;
     if (sectionRef.current) {
-      const animElements = sectionRef.current.querySelectorAll('.guide-anim');
+      const animElements = sectionRef.current.querySelectorAll(".guide-anim");
 
       ScrollTrigger.batch(animElements, {
         onEnter: (batch) => {
-          gsap.fromTo(batch,
+          gsap.fromTo(
+            batch,
             { opacity: 0, y: 50 },
             {
               opacity: 1,
@@ -68,15 +69,15 @@ const Guide = () => {
               duration: 0.8,
               stagger: 0.15,
               ease: "power3.out",
-              overwrite: true
-            }
+              overwrite: true,
+            },
           );
         },
         start: "top 85%",
       });
     }
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
@@ -96,10 +97,17 @@ const Guide = () => {
                   <span className="text-secondarynew">Chit Fund Journey</span>
                 </h1>
                 <p className="lead text-white mb-4 me-lg-5">
-                  Unlock the potential of community-driven finance. Discover how Amrat Chits empowers your family's future through disciplined savings and collective growth.
+                  Unlock the potential of community-driven finance. Discover how
+                  Amrat Chits empowers your family's future through disciplined
+                  savings and collective growth.
                 </p>
                 <div className="d-flex gap-3">
-                  <a href="#concept" className="btn-secondary px-4 py-3 text-uppercase font-bold">Start Learning</a>
+                  <a
+                    href="#concept"
+                    className="btn-secondary px-4 py-3 text-uppercase font-bold"
+                  >
+                    Start Learning
+                  </a>
                 </div>
               </div>
             </div>
@@ -130,14 +138,33 @@ const Guide = () => {
                   </h2>
                 </div>
                 <p className="mb-4 text-muted">
-                  A Chitfund is a unique financial instrument that blends the best aspects of <strong>Savings, Investment, and Borrowing</strong> within a trusted community. It's a formal recognition of the age-old practice of collective saving, now regulated and secured.
+                  A Chitfund is a unique financial instrument that blends the
+                  best aspects of{" "}
+                  <strong>Savings, Investment, and Borrowing</strong> within a
+                  trusted community. It's a formal recognition of the age-old
+                  practice of collective saving, now regulated and secured.
                 </p>
 
                 <div className="row g-4 mt-2">
                   {[
-                    { title: "Disciplined Savings", icon: "fi-rr-bank", color: "blue", desc: "Structured approach to setting aside a fixed amount regularly." },
-                    { title: "Financial Flexibility", icon: "fi-rr-chart-line-up", color: "maroon", desc: "Access lump sums through transparent auctions when you need them." },
-                    { title: "Smart Alternative", icon: "fi-rr-refresh", color: "gold", desc: "A borrowing option within the community without formal bank hassle." }
+                    {
+                      title: "Disciplined Savings",
+                      icon: "fi-rr-bank",
+                      color: "blue",
+                      desc: "Structured approach to setting aside a fixed amount regularly.",
+                    },
+                    {
+                      title: "Financial Flexibility",
+                      icon: "fi-rr-chart-line-up",
+                      color: "maroon",
+                      desc: "Access lump sums through transparent auctions when you need them.",
+                    },
+                    {
+                      title: "Smart Alternative",
+                      icon: "fi-rr-refresh",
+                      color: "gold",
+                      desc: "A borrowing option within the community without formal bank hassle.",
+                    },
                   ].map((item, idx) => (
                     <div className="col-md-12" key={idx}>
                       <div className="d-flex align-items-start gap-4 p-4 rounded-4 bg-light hover-lift transition-all">
@@ -145,7 +172,9 @@ const Guide = () => {
                           <i className={`fi ${item.icon}`}></i>
                         </div>
                         <div>
-                          <h5 className="font-bold text-primarynew mb-1">{item.title}</h5>
+                          <h5 className="font-bold text-primarynew mb-1">
+                            {item.title}
+                          </h5>
                           <p className="small mb-0 text-muted">{item.desc}</p>
                         </div>
                       </div>
@@ -162,16 +191,28 @@ const Guide = () => {
           <div className="container py-4">
             <div className="row mb-5 text-center justify-content-center guide-anim">
               <div className="col-lg-8">
-                <h6 className="text-secondarynew text-uppercase letter-spacing font-bold mb-3 d-inline-block px-3 py-1 bg-white-10 rounded-pill">Workflow</h6>
-                <h2 className="display-3 font-bold mb-4 text-white">How does it work?</h2>
-                <p className="lead text-white">A simple five-step process that ensures transparency, security, and exponential growth for every subscriber.</p>
+                <h6 className="text-secondarynew text-uppercase letter-spacing font-bold mb-3 d-inline-block px-3 py-1 bg-white-10 rounded-pill">
+                  Workflow
+                </h6>
+                <h2 className="display-3 font-bold mb-4 text-white">
+                  How does it work?
+                </h2>
+                <p className="lead text-white">
+                  A simple five-step process that ensures transparency,
+                  security, and exponential growth for every subscriber.
+                </p>
               </div>
             </div>
 
             <div className="row g-4 align-items-center">
               <div className="col-lg-5 guide-anim text-center">
                 <div className="image-stack position-relative d-inline-block">
-                  <img src={Workimg} alt="How it works" className="img-fluid z-index-2 position-relative" style={{ maxHeight: '450px' }} />
+                  <img
+                    src={Workimg}
+                    alt="How it works"
+                    className="img-fluid z-index-2 position-relative"
+                    style={{ maxHeight: "450px" }}
+                  />
                   <div className="abstract-shape shape-1"></div>
                   <div className="abstract-shape shape-2"></div>
                 </div>
@@ -189,7 +230,9 @@ const Guide = () => {
                     <SwiperSlide key={i}>
                       <div className="how-work-card">
                         <div className="how-step-num">Step 0{i + 1}</div>
-                        <h3 className="font-bold mb-4 text-secondarynew h2">{s.title}</h3>
+                        <h3 className="font-bold mb-4 text-secondarynew h2">
+                          {s.title}
+                        </h3>
                         <ul className="list-unstyled">
                           {s.bullets.map((b, bi) => (
                             <li key={bi} className="d-flex gap-3 mb-3">
@@ -215,24 +258,48 @@ const Guide = () => {
           <div className="container py-5">
             <div className="row mb-5 text-center justify-content-center guide-anim">
               <div className="col-lg-8">
-                <h2 className="font-bold text-primarynew mb-4">Financial Instruments</h2>
-                <p className="text-muted">Compare the most common investment avenues to see where Chit Funds stand in terms of value and community impact.</p>
+                <h2 className="font-bold text-primarynew mb-4">
+                  Financial Instruments
+                </h2>
+                <p className="text-muted">
+                  Compare the most common investment avenues to see where Chit
+                  Funds stand in terms of value and community impact.
+                </p>
               </div>
             </div>
             <div className="row g-4">
               {[
-                { title: "FIXED DEPOSITS", img: fdImg, desc: "Safe investment offered by banks with capital protection. Suitable for risk-averse individuals looking for stable but modest returns over fixed periods." },
-                { title: "MUTUAL FUNDS", img: mfImg, desc: "Market-linked investments pooling money from multiple investors. Offers professional management and diversification across equities and bonds." },
-                { title: "CHIT FUNDS", img: chitImg, desc: "A hybrid model of saving and borrowing. Offers internal ROI through dividends and access to immediate lump sums via transparent community auctions." }
+                {
+                  title: "FIXED DEPOSITS",
+                  img: fdImg,
+                  desc: "Safe investment offered by banks with capital protection. Suitable for risk-averse individuals looking for stable but modest returns over fixed periods.",
+                },
+                {
+                  title: "MUTUAL FUNDS",
+                  img: mfImg,
+                  desc: "Market-linked investments pooling money from multiple investors. Offers professional management and diversification across equities and bonds.",
+                },
+                {
+                  title: "CHIT FUNDS",
+                  img: chitImg,
+                  desc: "A hybrid model of saving and borrowing. Offers internal ROI through dividends and access to immediate lump sums via transparent community auctions.",
+                },
               ].map((item, idx) => (
                 <div className="col-lg-4 guide-anim" key={idx}>
                   <div className="instrument-card h-100 shadow-sm border-0 rounded-5 overflow-hidden bg-white hover-up transition-all">
                     <div className="card-img-top-wrapper overflow-hidden">
-                      <img src={item.img} alt={item.title} className="w-100" style={{ height: '240px', objectFit: 'cover' }} />
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="w-100"
+                        style={{ height: "240px", objectFit: "cover" }}
+                      />
                       <div className="card-overlay-gradient"></div>
                     </div>
                     <div className="card-body p-4 text-center">
-                      <h4 className="font-bold text-primarynew mb-3">{item.title}</h4>
+                      <h4 className="font-bold text-primarynew mb-3">
+                        {item.title}
+                      </h4>
                       <p className="text-muted mb-0 small">{item.desc}</p>
                     </div>
                   </div>
@@ -247,9 +314,16 @@ const Guide = () => {
           <div className="container py-5">
             <div className="row mb-5 text-center justify-content-center guide-anim">
               <div className="col-lg-8">
-                <h6 className="text-secondarynew text-uppercase letter-spacing mb-3">At a Glance</h6>
-                <h2 className="font-bold text-primarynew h1 mb-4">The Ultimate Comparison</h2>
-                <p className="text-muted">Why choose Chit Funds? Let the numbers and features speak for themselves.</p>
+                <h6 className="text-secondarynew text-uppercase letter-spacing mb-3">
+                  At a Glance
+                </h6>
+                <h2 className="font-bold text-primarynew h1 mb-4">
+                  The Ultimate Comparison
+                </h2>
+                <p className="text-muted">
+                  Why choose Chit Funds? Let the numbers and features speak for
+                  themselves.
+                </p>
               </div>
             </div>
 
@@ -262,10 +336,10 @@ const Guide = () => {
                     { label: "Risk", val: "Low" },
                     { label: "Liquidity", val: "Low" },
                     { label: "Term", val: "Fixed" },
-                    { label: "Flexibility", val: "Nil" }
+                    { label: "Flexibility", val: "Nil" },
                   ],
                   color: "blue",
-                  best: false
+                  best: false,
                 },
                 {
                   title: "Mutual Funds",
@@ -274,10 +348,10 @@ const Guide = () => {
                     { label: "Risk", val: "High" },
                     { label: "Liquidity", val: "High" },
                     { label: "Term", val: "Variable" },
-                    { label: "Flexibility", val: "High" }
+                    { label: "Flexibility", val: "High" },
                   ],
                   color: "maroon",
-                  best: false
+                  best: false,
                 },
                 {
                   title: "Chit Funds",
@@ -286,14 +360,16 @@ const Guide = () => {
                     { label: "Risk", val: "Low" },
                     { label: "Liquidity", val: "High" },
                     { label: "Term", val: "Flexible" },
-                    { label: "Flexibility", val: "Very High" }
+                    { label: "Flexibility", val: "Very High" },
                   ],
                   color: "gold",
-                  best: true
-                }
+                  best: true,
+                },
               ].map((card, idx) => (
                 <div className="col-lg-4" key={idx}>
-                  <div className={`comp-ui-card h-100 ${card.best ? 'featured-card' : ''}`}>
+                  <div
+                    className={`comp-ui-card h-100 ${card.best ? "featured-card" : ""}`}
+                  >
                     {card.best && <div className="best-tag">Most Balanced</div>}
                     <div className={`comp-ui-header bg-${card.color}`}>
                       <h4 className="font-bold mb-0">{card.title}</h4>
@@ -302,7 +378,9 @@ const Guide = () => {
                       {card.data.map((row, ri) => (
                         <div className="comp-ui-row" key={ri}>
                           <span className="label text-muted">{row.label}</span>
-                          <span className="value font-bold text-primarynew">{row.val}</span>
+                          <span className="value font-bold text-primarynew">
+                            {row.val}
+                          </span>
                         </div>
                       ))}
                     </div>
