@@ -1,10 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import heroleftimg from "../assets/img/heroleft-banner.jpg";
-import herocarousel01 from "../assets/img/Herocarousel01.png";
-import herocarousel02 from "../assets/img/Herocarousel02.png";
-import herocarousel03 from "../assets/img/Herocarousel03.png";
-import herobannerpattern from "../assets/img/herobannerpattern.png";
-import herovideoimg from "../assets/img/video-img.jpg";
+import slideIllust1 from "../assets/img/slide_illust_1.png";
+import slideIllust2 from "../assets/img/slide_illust_2.png";
+import slideIllust3 from "../assets/img/slide_illust_3.png";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
@@ -64,35 +61,38 @@ const Homeherosection = () => {
   const carouselSlides = [
     {
       id: 1,
-      image: herocarousel01,
+      image: slideIllust1,
       alt: "Chit Fund Benefits",
       title: "A Legacy of Trust, A Future of Security.",
       description: "For decades, we've empowered dreams with transparent, RBI-compliant chit funds. Your trusted partner for secure savings and timely loans.",
-      link: { url: "/contact", label: "Contact Us" }
+      link: { url: "/chitplans", label: "View Chit Plans" },
+      imagePosition: "left"
     },
     {
       id: 2,
-      image: herocarousel02,
+      image: slideIllust2,
       alt: "Investment Growth",
       title: "Your Goal, Our Plan. Achieve It Sooner. ",
       description: "Plan for education, a home, or a business with our disciplined chit schemes. Turn your ambitions into reality faster.",
-      link: { url: "/chitplans", label: "View Chit Plans" }
+      link: { url: "/chitplans", label: "View Chit Plans" },
+      imagePosition: "right"
     },
     {
       id: 3,
-      image: herocarousel03,
+      image: slideIllust3,
       alt: "Trusted Partnership",
       title: "Simple Savings, Collective Growth. ",
       description: "Join a community-driven financial journey. Save regularly and access a large fund when you need it most.",
-      link: { url: "/about", label: "Learn More" }
+      link: { url: "/chitplans", label: "View Chit Plans" },
+      imagePosition: "left"
     },
   ];
 
   return (
     <React.Fragment>
-      <section className="hero-section position-relative overflow-hidden">
-        <div className="w-100">
-          <div className="HeroCarousel" ref={carouselRef}>
+      <section className="hero-section position-relative overflow-hidden" style={{ height: '60vh' }}>
+        <div className="w-100 h-100">
+          <div className="HeroCarousel h-100" ref={carouselRef}>
             <Swiper
               modules={[Navigation, Autoplay, EffectFade]}
               spaceBetween={30}
@@ -102,7 +102,7 @@ const Homeherosection = () => {
                 prevEl: ".hero-swiper-button-prev",
               }}
               autoplay={{
-                delay: 4000,
+                delay: 6000,
                 disableOnInteraction: false,
               }}
               effect="fade"
@@ -117,29 +117,34 @@ const Homeherosection = () => {
                 <SwiperSlide key={slide.id} className="position-relative">
                   <div className="carousel-slide carousel-slide-inner">
                     <div className="container h-100">
-                      <div className="row align-items-center flex-column flex-md-row h-100">
-                        {/* Left: Image */}
-                        <div className="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-center align-items-center h-100">
-                          <div style={{ position: 'relative' }}>
+                      <div className={`row align-items-center flex-column h-100 flex-md-row${slide.imagePosition === 'right' ? '-reverse' : ''}`}>
+                        {/* Image Side */}
+                        <div className="col-12 col-md-6 mb-3 mb-md-0 d-flex justify-content-center align-items-center h-100 slide-image-container">
+                          <div style={{ position: 'relative', width: '100%', maxWidth: '400px' }}>
                             <img
                               src={slide.image}
                               alt={slide.alt}
-                              className="img-fluid sliderimg rounded-4"
+                              className="img-fluid sliderimg"
                               style={{
                                 position: 'relative',
                                 zIndex: 3,
+                                display: 'block',
+                                margin: '0 auto',
+                                width: '100%',
+                                objectFit: 'contain',
+                                mixBlendMode: 'multiply'
                               }}
                             />
                           </div>
                         </div>
-                        {/* Right: Article */}
-                        <div className="col-12 col-md-6 d-flex align-items-center justify-content-center h-100">
-                          <div className="carousel-content carousel-content-wrapper text-center text-md-start">
+                        {/* Article Side */}
+                        <div className="col-12 col-md-6 d-flex align-items-center justify-content-center h-100 slide-content-container">
+                          <div className="carousel-content carousel-content-wrapper text-center text-md-start d-flex flex-column justify-content-center" style={{ paddingLeft: slide.imagePosition === 'right' ? '0' : '5%', paddingRight: slide.imagePosition === 'right' ? '5%' : '0' }}>
                             <article>
                               <h3 className="roboto-bold text-uppercase mb-3">
                                 {slide.title}
                               </h3>
-                              <p className="mb-3" >{slide.description}</p>
+                              <p className="mb-4" style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>{slide.description}</p>
                               {slide.link && (
                                 <Link to={slide.link.url} className="btn-secondary text-uppercase mt-2 text-white">
                                   {slide.link.label}

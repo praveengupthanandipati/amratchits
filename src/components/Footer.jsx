@@ -66,13 +66,11 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-
      
       <a target="_blank" href="https://api.whatsapp.com/send?phone=+919676387760&text=Hi"
           className="whatsappicon">
           <img src={WhatsappImg} alt="" />
-      </a>
-    
+      </a>    
 
       {/* Scroll to Top Button */}
       {showScrollTop && (
