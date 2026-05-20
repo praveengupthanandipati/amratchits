@@ -241,8 +241,8 @@ const Home = () => {
             <h6 className="text-secondarynew text-uppercase letter-spacing font-bold mb-3">
               Our Core Process
             </h6>
-            <h2 className="text-primarynew">How a Chit Group Works?</h2>
-            <p className="lead text-muted">
+            <h2 className="text-white">How a Chit Group Works?</h2>
+            <p className="lead text-white opacity-75">
               With transparency, trust, and timely payouts, we turn your
               disciplined savings into achievable realities.
             </p>
@@ -290,51 +290,25 @@ const Home = () => {
                   alt="Amrat Chits Process"
                   className="img-fluid main-image mb-4"
                 />
-                <div className="floating-badge">
-                  <div className="badge-icon">
-                    <i className="fi fi-rr-shield-check"></i>
-                  </div>
-                  <div className="badge-info">
-                    <span>Government Regulated</span>
-                    <small>100% Secure & Trusted</small>
-                  </div>
-                </div>
               </div>
+            </div>
+          </div>
+
+          {/* Know More Row */}
+          <div className="row mt-5 pt-3">
+            <div className="col-12 d-flex flex-column flex-md-row align-items-center justify-content-between gap-4 know-more-row">
+              <h4 className="text-white mb-0">Do you want to know more about how chit funds work?</h4>
+              <Link to="/about" className="btn-primary-light flex-shrink-0">
+                Learn More
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* services Section */}
-      <section className="serviceshome">
-        <div className="services-bg-decor">
-          <div className="decor-circle circle-1"></div>
-          <div className="decor-circle circle-2"></div>
-        </div>
-        <div className="container" ref={servicesSectionRef}>
-          <div className="pb-4 pb-md-5 position-relative z-index-1">
-            <Sectiontitle
-              title="Our Services"
-              titleClass="text-white text-uppercase font-bold mb-3"
-            />
-            <p className="text-white opacity-75 max-w-600">
-              Our reliable chit schemes help you achieve financial goals through
-              disciplined savings and timely payouts.
-            </p>
-          </div>
-          <div className="row g-4 align-items-stretch position-relative z-index-1">
-            {servicesData.map((item, idx) => (
-              <ServiceCard
-                key={idx}
-                item={item}
-                index={idx}
-                servicesRef={servicesRef}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-      {/* <Whatsets /> */}
+       {/* Who We are Section */}
+      <Whoweare />
+
 
       {/*customers / agents*/}
       <section className="customer-agents mt-3 mt-md-5">
@@ -372,8 +346,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Who We are Section */}
-      <Whoweare />
+     
 
       {/* testimonials section */}
       <section className="testimonials-home" ref={testimonialsRef}>

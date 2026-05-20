@@ -39,7 +39,7 @@ const Footer = () => {
                 <p className='pb-0 m-0'><span className='text-white'>Email :</span>info@amratchits.com</p>
               </div>
             </div>       
-            <div className='col-md-4'>
+            <div className='col-md-3'>
               <div className='footer-col pe-2 pe-md-5 pt-5 mt-md-0'>
                 <ul>
                   <li>
@@ -53,6 +53,28 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link to="/" className="nav-link pb-3">Google</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className='col-md-3'>
+              <div className='footer-col pe-2 pe-md-5 pt-5 mt-md-0'>
+                <h6 className='footer-title text-white pb-3 font-black'>Quick Links</h6>
+                <ul>
+                  <li>
+                    <Link to="/" className="nav-link pb-3">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/about" className="nav-link pb-3">About</Link>
+                  </li>
+                  <li>
+                    <Link to="/chitplans" className="nav-link pb-3">Chit Plans</Link>
+                  </li>
+                  <li>
+                    <Link to="/guide" className="nav-link pb-3">Guide To Chitfund</Link>
+                  </li>
+                  <li>
+                    <Link to="/contact" className="nav-link pb-3">Contact</Link>
                   </li>
                 </ul>
               </div>

@@ -42,24 +42,10 @@ const Whoweare = () => {
             <section className="who-we-are-refined" ref={sectionRef}>
                 <div className="bg-shape"></div>
                 <div className="container">
-                    <div className="row align-items-center g-5">
-                        {/* Left Side: Image Composition */}
-                        <div className="col-lg-6 wwa-anim">
-                            <div className="image-grid-composite">
-                                <div className="abstract-dot-pattern"></div>
-                                <div className="main-img-wrapper">
-                                    <img src={whoweareimg1} alt="Amrat Chits Office" className="img-fluid w-100" />
-                                </div>
-                                <div className="experience-floating-card">
-                                    <span className="exp-num">10+</span>
-                                    <span className="exp-text">Years of <br />Excellence</span>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div className="row align-items-center g-5">                      
                         {/* Right Side: Content & Stats */}
                         <div className="col-lg-6 content-side">
-                            <span className="section-tag wwa-anim">About Amrat Chits</span>
+                            <span className="section-tag wwa-anim">Why Amrat</span>
                             <h2 className="wwa-anim">Empowering Your Financial Dreams</h2>
                             <p className="who-we-are-p wwa-anim">
                                 Since 1980, Amrat Chits (India) Pvt. Ltd. has been a trusted beacon of financial stability in Hyderabad. We combine traditional wisdom with modern efficiency to provide secure chitfund solutions that foster disciplined savings and community growth.
@@ -102,6 +88,23 @@ const Whoweare = () => {
                                 </Link>
                             </div>
                         </div>
+
+                          {/* Left Side: Image Composition */}
+                        <div className="col-lg-6 wwa-anim">
+                            <div className="image-grid-composite">
+                                <div className="abstract-dot-pattern"></div>
+                                <div className="main-img-wrapper">
+                                    <img src={whoweareimg1} alt="Amrat Chits Office" className="img-fluid w-100" />
+                                </div>
+                                <div className="experience-floating-card">
+                                    <span className="exp-num">10+</span>
+                                    <span className="exp-text">Years of <br />Excellence</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                     </div>
                 </div>
             </section>

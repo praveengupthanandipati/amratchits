@@ -694,15 +694,13 @@ h1 {
 }
 
 .feature-column {
-  background: linear-gradient(45deg,
-      rgba(223, 218, 255, 0.8),
-      rgba(255, 219, 221, 0.8));
+  background: map.get(v.$colors, "primarynew");
   height: 100%;
   width: 100%;
   padding: 2rem;
 
   border-radius: 30px;
-  color: map.get(v.$colors, "black");
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -727,7 +725,7 @@ h1 {
 
   .icomoon {
     font-size: clamp(3rem, 6vw, 4rem);
-    color: map.get(v.$colors, "primary");
+    color: map.get(v.$colors, "primary-50");
   }
 }
 
@@ -790,7 +788,7 @@ footer {
   }
 
   .rightsrow {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    // border-top: 1px solid rgba(255, 255, 255, 0.06);
     padding-top: 1rem;
     margin-top: 1.5rem;
   }
@@ -1134,10 +1132,9 @@ footer {
 }
 
 .chitplans-section {
-  background: url("../assets/img/chitplansbg.png") right center no-repeat map.get(v.$colors, "primarynew");
+  background: linear-gradient(135deg, rgba(184, 174, 255, 0.18) 0%, #ffffff 50%, rgba(255, 214, 192, 0.18) 100%);
   padding: 5rem 0;
   min-height: 500px;
-  background-size: cover;
 }
 
 .section-title {
@@ -1159,7 +1156,7 @@ footer {
   margin-top: 3rem;
 
   .chit-nav-tabs {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(32, 24, 93, 0.12);
     margin-bottom: 0;
 
     .nav-item {
@@ -1169,7 +1166,7 @@ footer {
         background: transparent;
         border: none;
         border-bottom: 2px solid transparent;
-        color: map.get(v.$colors, "white");
+        color: map.get(v.$colors, "primarynew");
         padding: 1rem 1.5rem;
         font-weight: map.get(v.$roboto-weights, "medium");
         @include m.transition(all, 0.3s, ease);
@@ -1177,13 +1174,13 @@ footer {
         &:hover {
           border-bottom-color: map.get(v.$colors, "secondarynew");
           color: map.get(v.$colors, "secondarynew");
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(32, 24, 93, 0.04);
         }
 
         &.active {
           border-bottom-color: map.get(v.$colors, "secondarynew");
           color: map.get(v.$colors, "secondarynew");
-          background: map.get(v.$colors, "white");
+          background: rgba(255, 255, 255, 0.7);
         }
       }
     }
@@ -3186,21 +3183,14 @@ footer {
   padding: 100px 0;
   position: relative;
   overflow: hidden;
-  background: #fff;
+  background: map.get(v.$colors, "primarynew");
 
   @include m.respond-below(map.get(v.$breakpoints, "md")) {
     padding: 40px 0;
   }
 
   .section-bg-element {
-    position: absolute;
-    top: -10%;
-    left: -5%;
-    width: 40%;
-    height: 60%;
-    background: radial-gradient(circle, rgba(32, 24, 93, 0.03) 0%, transparent 70%);
-    z-index: 0;
-    pointer-events: none;
+    display: none;
   }
 
   .content-wrapper {
@@ -3222,20 +3212,20 @@ footer {
   }
 
   .info-card-modern {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.07);
     border-radius: 30px;
     padding: 2.5rem;
     margin-bottom: 2rem;
     display: flex;
     align-items: flex-start;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 1px solid rgba(0, 0, 0, 0.03);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
     &:hover {
       transform: translateX(15px);
-      box-shadow: 0 20px 40px rgba(32, 24, 93, 0.08);
-      border-color: rgba(32, 24, 93, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border-color: rgba(255, 255, 255, 0.2);
 
       .icon-wrapper {
         background: map.get(v.$colors, "secondarynew");
@@ -3250,7 +3240,7 @@ footer {
     .icon-wrapper {
       width: 80px;
       height: 80px;
-      background: #f8faff;
+      background: rgba(255, 255, 255, 0.12);
       border-radius: 22px;
       display: flex;
       align-items: center;
@@ -3260,7 +3250,7 @@ footer {
 
       i {
         font-size: 2.2rem;
-        color: map.get(v.$colors, "primarynew");
+        color: map.get(v.$colors, "primary-50");
         transition: all 0.4s ease;
       }
     }
@@ -3274,13 +3264,13 @@ footer {
 
       h4 {
         font-weight: 800;
-        color: map.get(v.$colors, "primarynew");
+        color: #ffffff;
         margin-bottom: 0.75rem;
         font-size: 1.4rem;
       }
 
       p {
-        color: map.get(v.$colors, "gray-80");
+        color: rgba(255, 255, 255, 0.75);
         line-height: 1.7;
         margin-bottom: 0;
         font-size: 1.05rem;
@@ -3345,6 +3335,17 @@ footer {
         }
       }
     }
+  }
+}
+
+.know-more-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 2rem;
+
+  h4 {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 700;
+    max-width: 600px;
   }
 }
 
@@ -3427,7 +3428,7 @@ footer {
         line-height: 1;
         margin-bottom: 0.5rem;
         background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.6) 100%);
-        -webkit-background-clip: text;
+        // -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 

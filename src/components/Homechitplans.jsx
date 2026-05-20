@@ -186,8 +186,8 @@ const Homechitplans = () => {
                     <Sectiontitle
                         title="Flexible, Secure CHIT Plans For You"
                         description="Our reliable chit schemes help you achieve financial goals through disciplined savings and timely payouts."
-                        titleClass=" text-white text-uppercase font-bold"
-                        descriptionClass="text-primary-50 small"
+                        titleClass="text-primarynew text-uppercase font-bold"
+                        descriptionClass="text-gray-40 small"
                     />
 
                     {/* Desktop & Mobile Tabs with Carousel */}
