@@ -178,6 +178,80 @@ const About = () => {
           </div>
         </div>
 
+        
+      {/* How It Works Section */}
+      <section className="howitworks-section about-anim">
+        <div className="container">
+          {/* Header */}
+          <div className="hiw-header">
+            <span className="hiw-label">How It Works</span>
+            <h2 className="hiw-title">A chit fund in 4 simple steps</h2>
+            <p className="hiw-subtitle">No complexity, no jargon — here's the core idea behind every chit group at Amrat Chits.</p>
+          </div>
+
+          {/* Steps */}
+          <div className="row g-4 mt-2">
+            {[
+              {
+                step: "Step 01",
+                icon: "fi-rr-users-alt",
+                title: "Group Formed",
+                desc: "A fixed group of members each commit to a monthly or daily installment for a set period. Everyone contributes equally — every month, no exceptions.",
+                tag: "e.g. 50 members × ₹20,000/month",
+              },
+              {
+                step: "Step 02",
+                icon: "fi-rr-comment-dollar",
+                title: "Open Auction",
+                desc: "Every month an open auction is held. Members bid by offering to accept less than the full chit value. The highest bidder wins — the one willing to forgo the most receives the pot.",
+                tag: "Up to 30–40% discount on long-tenure chits",
+                highlight: "highest bidder wins",
+              },
+              {
+                step: "Step 03",
+                icon: "fi-rr-time-forward",
+                title: "Funds Disbursed",
+                desc: "The winning bidder receives the lump sum within 30–35 days of submitting surety forms. Amount is after deduction of 5% foreman commission and applicable GST.",
+                tag: "Post surety form submission",
+              },
+              {
+                step: "Step 04",
+                icon: "fi-rr-star",
+                title: "Cycle Completes",
+                desc: "Every member gets their turn over the full tenure. The last subscriber receives the highest net payout — full chit value minus only the foreman commission and GST.",
+                tag: "Every member wins exactly once",
+              },
+            ].map((item, idx) => (
+              <div className="col-md-6 col-lg-3" key={idx}>
+                <div className="hiw-card h-100">
+                  <div className="hiw-card-top">
+                    <span className="hiw-step">{item.step}</span>
+                    <div className="hiw-icon-box">
+                      <i className={`fi ${item.icon}`}></i>
+                    </div>
+                  </div>
+                  <h4 className="hiw-card-title">{item.title}</h4>
+                  <p className="hiw-card-desc">{item.desc}</p>
+                  <div className="hiw-tag">{item.tag}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="hiw-cta-row">
+            <div className="hiw-cta-text">
+              <span className="hiw-label">Want to know more?</span>
+              <p className="mb-0">Auctions, dividends, surety, foreman commission, real examples — <strong>all covered in our Guide to Chit Funds.</strong></p>
+            </div>
+            <a href="/guide" className="hiw-cta-btn">
+              Read the Full Guide &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+
         <div className="subpage-section why-choose-amrat-section about-anim">
           <div className="container">
             <div className="row">

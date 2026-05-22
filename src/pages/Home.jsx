@@ -311,36 +311,44 @@ const Home = () => {
 
 
       {/*customers / agents*/}
-      <section className="customer-agents mt-3 mt-md-5">
-        <div className="custom-container w-100 g-0">
-          <div className="row g-0">
-            <div
-              className="col-md-6 customer-block left-customer  text-center border-end"
-              ref={(el) => (customerAgentsRef.current[0] = el)}
-            >
-              <article>
-                <h4 className="text-uppercase font-bold mb-4">
-                  join us as an employee
-                </h4>
-                {/* <p>Amrat Chits empowers your personal financial journey. Our tailored chit schemes help you systematically save for life's big moments—a new home, your child's education, or a dream wedding.  </p> */}
-                <Link to="/careers" className="btn-primary-light">
-                  Find Out More
-                </Link>
-              </article>
+      <section className="customer-agents-new">
+        <div className="row g-0 h-100">
+          {/* Left Panel */}
+          <div
+            className="col-md-6 ca-panel ca-panel-left"
+            ref={(el) => (customerAgentsRef.current[0] = el)}
+          >
+            <div className="ca-circle-bg"></div>
+            <div className="ca-content">
+              <span className="ca-label">Full-Time Roles</span>
+              <h2 className="ca-heading">Build your career with us</h2>
+              <p className="ca-desc">Join a team of 150+ professionals in a company led by 40+ years of industry expertise.</p>
+              <Link to="/careers" className="ca-btn ca-btn-light">
+                View Open Roles
+              </Link>
             </div>
-            <div
-              className="col-md-6 customer-block right-customer  text-center border-end"
-              ref={(el) => (customerAgentsRef.current[1] = el)}
-            >
-              <article>
-                <h4 className="text-uppercase font-bold mb-4">
-                  JOin us as an Agent
-                </h4>
-                {/* <p>Amrat Chits empowers your personal financial journey. Our tailored chit schemes help you systematically save for life's big moments—a new home, your child's education, or a dream wedding.  </p> */}
-                <Link to="/contact" className="btn-primary-light">
-                  Find Out More
-                </Link>
-              </article>
+          </div>
+
+          {/* Center Divider Icon */}
+          <div className="ca-divider">
+            <div className="ca-divider-icon">
+              <i className="fi fi-rr-arrow-left"></i>
+            </div>
+          </div>
+
+          {/* Right Panel */}
+          <div
+            className="col-md-6 ca-panel ca-panel-right"
+            ref={(el) => (customerAgentsRef.current[1] = el)}
+          >
+            <div className="ca-circle-bg"></div>
+            <div className="ca-content">
+              <span className="ca-label">Independent Agents</span>
+              <h2 className="ca-heading">Join our agent network</h2>
+              <p className="ca-desc">Earn commissions across your neighbourhood. Flexible hours, trusted product, strong brand.</p>
+              <Link to="/contact" className="ca-btn ca-btn-outline">
+                Become an Agent
+              </Link>
             </div>
           </div>
         </div>
